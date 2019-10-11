@@ -5,9 +5,9 @@
   <subtitle>一个有梦想的人工智能爱好者</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://skecis.top/"/>
   <updated>2019-10-11T12:55:24.815Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://skecis.top/</id>
   
   <author>
     <name>SkecisAI</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>mysql安装</title>
-    <link href="http://yoursite.com/2019/10/11/mysql%E5%AE%89%E8%A3%85/"/>
-    <id>http://yoursite.com/2019/10/11/mysql安装/</id>
+    <link href="http://skecis.top/2019/10/11/mysql%E5%AE%89%E8%A3%85/"/>
+    <id>http://skecis.top/2019/10/11/mysql安装/</id>
     <published>2019-10-11T12:55:24.000Z</published>
     <updated>2019-10-11T12:55:24.815Z</updated>
     
@@ -33,8 +33,8 @@
   
   <entry>
     <title>世界那么大-出去看看</title>
-    <link href="http://yoursite.com/2019/10/11/science-internet/"/>
-    <id>http://yoursite.com/2019/10/11/science-internet/</id>
+    <link href="http://skecis.top/2019/10/11/science-internet/"/>
+    <id>http://skecis.top/2019/10/11/science-internet/</id>
     <published>2019-10-11T04:41:33.000Z</published>
     <updated>2019-10-11T05:12:46.301Z</updated>
     
@@ -48,14 +48,14 @@
     
     
     
-      <category term="get小技能" scheme="http://yoursite.com/tags/get%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
+      <category term="get小技能" scheme="http://skecis.top/tags/get%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
     
   </entry>
   
   <entry>
     <title>Git学习笔记</title>
-    <link href="http://yoursite.com/2019/10/10/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/10/10/git学习笔记/</id>
+    <link href="http://skecis.top/2019/10/10/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://skecis.top/2019/10/10/git学习笔记/</id>
     <published>2019-10-10T12:42:16.000Z</published>
     <updated>2019-10-10T15:51:06.616Z</updated>
     
@@ -69,14 +69,14 @@
     
     
     
-      <category term="get小技能" scheme="http://yoursite.com/tags/get%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
+      <category term="get小技能" scheme="http://skecis.top/tags/get%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
     
   </entry>
   
   <entry>
     <title>机器学习-模型实现</title>
-    <link href="http://yoursite.com/2019/09/15/%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
-    <id>http://yoursite.com/2019/09/15/西瓜书学习之旅/</id>
+    <link href="http://skecis.top/2019/09/15/%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
+    <id>http://skecis.top/2019/09/15/西瓜书学习之旅/</id>
     <published>2019-09-15T11:12:45.000Z</published>
     <updated>2019-10-10T15:59:16.625Z</updated>
     
@@ -119,9 +119,9 @@
     
     
     
-      <category term="机器学习" scheme="http://yoursite.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+      <category term="机器学习" scheme="http://skecis.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+      <category term="Python" scheme="http://skecis.top/tags/Python/"/>
     
   </entry>
   
