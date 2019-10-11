@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>世界那么大-出去看看</title>
+    <url>/2019/10/11/science-internet/</url>
+    <content><![CDATA[<p>知识不分边界，在这广袤的土地上寻求知识吧</p><h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><h3 id="购买一台VPS服务器"><a href="#购买一台VPS服务器" class="headerlink" title="购买一台VPS服务器"></a>购买一台VPS服务器</h3><p><a href="https://bwh88.net/index.php" target="_blank" rel="noopener">BanWaGong</a>挺不错</p><h3 id="远程登录服务器"><a href="#远程登录服务器" class="headerlink" title="远程登录服务器"></a>远程登录服务器</h3><p>Windows可用<a href="https://xshell.en.softonic.com/" target="_blank" rel="noopener">Xshell</a>等远程工具</p><h3 id="为服务器部署linux系统，最合适的系统为Centos-6-x86-64-bbr"><a href="#为服务器部署linux系统，最合适的系统为Centos-6-x86-64-bbr" class="headerlink" title="为服务器部署linux系统，最合适的系统为Centos 6 x86_64-bbr"></a>为服务器部署linux系统，最合适的系统为<code>Centos 6 x86_64-bbr</code></h3><a id="more"></a>
+
+
+<h2 id="二、开始"><a href="#二、开始" class="headerlink" title="二、开始"></a>二、开始</h2><h3 id="安装基本工具"><a href="#安装基本工具" class="headerlink" title="安装基本工具"></a>安装基本工具</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum install wget</span><br></pre></td></tr></table></figure>
+<h3 id="安装核心工具SS"><a href="#安装核心工具SS" class="headerlink" title="安装核心工具SS"></a>安装核心工具SS</h3><p>下载工具SS，在服务器终端以root身份执行<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ wget — no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改执行权限"><a href="#修改执行权限" class="headerlink" title="修改执行权限"></a>修改执行权限</h3><p>执行命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ chmod +x shadowsocks.sh</span><br></pre></td></tr></table></figure></p>
+<h3 id="运行安装"><a href="#运行安装" class="headerlink" title="运行安装"></a>运行安装</h3><p>执行命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装过程中"><a href="#安装过程中" class="headerlink" title="安装过程中"></a>安装过程中</h3><p>执行刚刚的命令后，开始安装SS，安装过程中会有修改端口、密码等提示，可修改也可遵从默认，接着会选择加密方式，这里选择<code>aes-256-cfb</code></p>
+<h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>完成安装后，会显示你的所有配置信息:端口，密码，加密方式等以供记忆。</p>
+<h2 id="三、写在后面"><a href="#三、写在后面" class="headerlink" title="三、写在后面"></a>三、写在后面</h2><p>请合理使用SS工具，学习自己所需要的知识，毕竟工具开发原作者曾被请去喝茶，之后便不再维护了。</p>
+<h4 id="爱祖国，爱社会"><a href="#爱祖国，爱社会" class="headerlink" title="爱祖国，爱社会"></a>爱祖国，爱社会</h4>]]></content>
+      <tags>
+        <tag>get小技能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记</title>
+    <url>/2019/10/10/git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>记录学习的一些Git常用命令</p><h2 id="git本地操作"><a href="#git本地操作" class="headerlink" title="git本地操作"></a>git本地操作</h2><h3 id="生成git仓库"><a href="#生成git仓库" class="headerlink" title="生成git仓库"></a>生成git仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure><h3 id="从当前git仓库添加并提交文件"><a href="#从当前git仓库添加并提交文件" class="headerlink" title="从当前git仓库添加并提交文件"></a>从当前git仓库添加并提交文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git add . | git add &lt;filename&gt;</span><br><span class="line">$ git commit -m <span class="string">"注释"</span></span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<p>上述第一条命令的作用为添加目录下所有文件到仓库或者添加单个文件到暂存仓库，第二条命令的作用是提交添加的所有文件到当前分支。<br>每一次修改，如果不用git add将其放入仓库，则在使用git commit时则不会对其提交</p>
+<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><ol>
+<li><p>查看git仓库的状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看文件的改动信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git diff &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><ol>
+<li><p>查看日志</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>回退上一个版本：HEAD^  回退上上一个版本：HEAD^^（HEAD^n）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看历史命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reflog</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><ol>
+<li><p>撤销工作区的修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -- &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤销暂存区的修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git reset HEAD &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>从版本库中删除并提交<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git rm &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="git远程仓库"><a href="#git远程仓库" class="headerlink" title="git远程仓库"></a>git远程仓库</h2><h3 id="生成SSH-Key"><a href="#生成SSH-Key" class="headerlink" title="生成SSH Key"></a>生成SSH Key</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global user.email <span class="string">"邮箱"</span></span><br><span class="line">$ git config --global user.name <span class="string">"用户名"</span></span><br></pre></td></tr></table></figure>
+<h3 id="提交文件到远程仓库"><a href="#提交文件到远程仓库" class="headerlink" title="提交文件到远程仓库"></a>提交文件到远程仓库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git remote add origin master git@github.com:username/repository.git</span><br><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>第二行命令有可选参数<code>-f</code>意为强制提交</p>
+<h3 id="另一方使用同一仓库，在push前需要拉取最新版本"><a href="#另一方使用同一仓库，在push前需要拉取最新版本" class="headerlink" title="另一方使用同一仓库，在push前需要拉取最新版本"></a>另一方使用同一仓库，在push前需要拉取最新版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull --rebase origin master</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>get小技能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>机器学习-模型实现</title>
+    <url>/2019/09/15/%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/</url>
+    <content><![CDATA[<p>基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码</p><h2 id="一-模型清单"><a href="#一-模型清单" class="headerlink" title="一. 模型清单"></a>一. 模型清单</h2><ul>
+<li><strong>逻辑回归</strong></li>
+<li><strong>线性判别分析</strong></li>
+<li><strong>决策树</strong><ol>
+<li>划分选择<ol>
+<li>基于信息增益</li>
+<li>基于基尼指数</li>
+</ol>
+</li>
+<li>剪枝<ol>
+<li>预剪枝</li>
+<li>后剪枝</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong>神经网络</strong><ol>
+<li>标准BP算法</li>
+</ol>
+</li>
+<li><strong>（待续）</strong><h2 id="二-代码清单"><a href="#二-代码清单" class="headerlink" title="二. 代码清单"></a>二. 代码清单</h2>代码中重要的部分都配有蹩脚的英文注释（T.T苦学英语ing），具体使用的数据集内容请参考代码引用和数据集清单。</li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/logistic_regression.py" target="_blank" rel="noopener">logistic_regression</a>: 逻辑回归实现。</li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/linear_discriminant_analysis.py" target="_blank" rel="noopener">linear_discriminant_analysis</a>: 线性判别分析实现。</li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/decision_tree.py" target="_blank" rel="noopener">decision_tree</a>: 决策树实现，集成各个思想，包含划分方式有<code>信息增益</code>、<code>基尼指数</code>，连续值的处理方式有<code>平均值法</code>、<code>二分法</code>，以及剪枝方法有<code>预剪枝</code>、<code>后剪枝</code>。</li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/neural_network.py" target="_blank" rel="noopener">neural_network</a>: 神经网络实现，标准BP算法。</li>
+<li>（待续）<h2 id="三-数据集清单"><a href="#三-数据集清单" class="headerlink" title="三. 数据集清单"></a>三. 数据集清单</h2>均为csv文件，内容如下</li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon.csv" target="_blank" rel="noopener">西瓜数据集3.0alpha</a></li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon4.csv" target="_blank" rel="noopener">西瓜数据集2.0</a></li>
+<li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon3.csv" target="_blank" rel="noopener">西瓜数据集3.0</a></li>
+</ul><a id="more"></a>
+
+<p><em>才疏学浅，以上资料仅供参考，交流。</em></p>
+]]></content>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+</search>
