@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>mysql安装</title>
+    <url>/2019/10/11/mysql%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>世界那么大-出去看看</title>
     <url>/2019/10/11/science-internet/</url>
     <content><![CDATA[<p>知识不分边界，在这广袤的土地上寻求知识吧</p><h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><h3 id="购买一台VPS服务器"><a href="#购买一台VPS服务器" class="headerlink" title="购买一台VPS服务器"></a>购买一台VPS服务器</h3><p><a href="https://bwh88.net/index.php" target="_blank" rel="noopener">BanWaGong</a>挺不错</p><h3 id="远程登录服务器"><a href="#远程登录服务器" class="headerlink" title="远程登录服务器"></a>远程登录服务器</h3><p>Windows可用<a href="https://xshell.en.softonic.com/" target="_blank" rel="noopener">Xshell</a>等远程工具</p><h3 id="为服务器部署linux系统，最合适的系统为Centos-6-x86-64-bbr"><a href="#为服务器部署linux系统，最合适的系统为Centos-6-x86-64-bbr" class="headerlink" title="为服务器部署linux系统，最合适的系统为Centos 6 x86_64-bbr"></a>为服务器部署linux系统，最合适的系统为<code>Centos 6 x86_64-bbr</code></h3><a id="more"></a>
