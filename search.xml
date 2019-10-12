@@ -25,6 +25,9 @@
 <p>修改字段类型<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ALTER TABLE &lt;表名&gt; MODIFY &lt;字段名&gt; &lt;类型定义&gt;;</span><br></pre></td></tr></table></figure></p>
 <p>修改字段名<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ALTER TABLE &lt;表名&gt; CHANGE &lt;需修改字段名&gt; &lt;新字段名&gt; &lt;类型定义&gt;;</span><br></pre></td></tr></table></figure></p>
 ]]></content>
+      <categories>
+        <category>程序语言</category>
+      </categories>
       <tags>
         <tag>数据库</tag>
       </tags>
@@ -45,6 +48,9 @@
 <p>启动服务<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure></p>
 <h3 id="登录MySQL"><a href="#登录MySQL" class="headerlink" title="登录MySQL"></a>登录MySQL</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -h 主机名 -u 用户名 -p</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>软件安装</category>
+      </categories>
       <tags>
         <tag>数据库</tag>
       </tags>
@@ -63,6 +69,9 @@
 <h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>完成安装后，会显示你的所有配置信息:端口，密码，加密方式等以供记忆。</p>
 <h2 id="三、写在后面"><a href="#三、写在后面" class="headerlink" title="三、写在后面"></a>三、写在后面</h2><p>请合理使用SS工具，学习自己所需要的知识，毕竟工具开发原作者曾被请去喝茶，之后便不再维护了。</p>
 <h4 id="爱祖国，爱社会"><a href="#爱祖国，爱社会" class="headerlink" title="爱祖国，爱社会"></a>爱祖国，爱社会</h4>]]></content>
+      <categories>
+        <category>小技能</category>
+      </categories>
       <tags>
         <tag>get小技能</tag>
       </tags>
@@ -108,6 +117,9 @@
 <p>第二行命令有可选参数<code>-f</code>意为强制提交</p>
 <h3 id="另一方使用同一仓库，在push前需要拉取最新版本"><a href="#另一方使用同一仓库，在push前需要拉取最新版本" class="headerlink" title="另一方使用同一仓库，在push前需要拉取最新版本"></a>另一方使用同一仓库，在push前需要拉取最新版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git pull --rebase origin master</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>小技能</category>
+      </categories>
       <tags>
         <tag>get小技能</tag>
       </tags>
@@ -148,6 +160,9 @@
 
 <p><em>才疏学浅，以上资料仅供参考，交流。</em></p>
 ]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
       <tags>
         <tag>机器学习</tag>
         <tag>Python</tag>
