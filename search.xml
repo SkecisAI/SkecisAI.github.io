@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MySQL语法</title>
+    <url>/2019/10/12/MySQL%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; CREATE DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; DROP DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; USE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+
+<h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; CREATE TABLE IF NOT EXISTS &lt;表名&gt; (字段名1 字段1类型定义, [...]);</span><br></pre></td></tr></table></figure>
+<p>以下代码创建了一个学生成绩表：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; CREATE TABLE IF NOT EXISTS student_grade</span><br><span class="line">(</span><br><span class="line">    id    INT AUTO_INCREMENT,</span><br><span class="line">    name  CHAR(10),</span><br><span class="line">    sex   CHAR(5),</span><br><span class="line">    age   INT(2),</span><br><span class="line">    grade INT(2),</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">) CHARSET = utf8;</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; DROP TABLE &lt;表名&gt;;</span><br></pre></td></tr></table></figure>
+<h3 id="向表中插入记录"><a href="#向表中插入记录" class="headerlink" title="向表中插入记录"></a>向表中插入记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; INSERT INTO &lt;表名&gt; (字段名1, [...]) VALUES (值1, [...]);</span><br></pre></td></tr></table></figure>
+<h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; SELECT &lt;字段名&gt;, [...] FROM &lt;表名&gt; [WHERE字句] [LIMIT字句];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可用<code>*</code>替换字段名表示查询所有字段</li>
+<li>WHERE字句包含了查询条件</li>
+<li>LIMIT字句包含了需要返回的记录数量<h4 id="WHERE字句"><a href="#WHERE字句" class="headerlink" title="WHERE字句"></a>WHERE字句</h4>格式<br><code>WHERE 对象1[关系]对象1的值 [AND|OR] [...]</code><br>例如：查询男生的成绩<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; SELECT grade FROM student_grade WHERE sex=<span class="string">'男'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; UPDATE &lt;表名&gt; SET &lt;字段名&gt;=&lt;值&gt;, [...] [WHERE字句];</span><br></pre></td></tr></table></figure>
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; DELETE FROM &lt;表名&gt; [WHERE字句];</span><br></pre></td></tr></table></figure>
+<h3 id="模糊查询：LIKE子句"><a href="#模糊查询：LIKE子句" class="headerlink" title="模糊查询：LIKE子句"></a>模糊查询：LIKE子句</h3><p>例如查询李姓同学的记录<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; SELECT * FROM student_grade WHERE name LIKE <span class="string">'李'</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改字段信息：ALTER命令"><a href="#修改字段信息：ALTER命令" class="headerlink" title="修改字段信息：ALTER命令"></a>修改字段信息：ALTER命令</h3><p>删除字段<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ALTER TABLE &lt;表名&gt; DROP &lt;字段名&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>添加字段：ADD子句<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ALTER TABLE &lt;表名&gt; ADD &lt;字段名&gt;&lt;类型&gt;[AFTER &lt;已有字段名&gt;|FIRST];</span><br></pre></td></tr></table></figure></p>
+<p>修改字段类型<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ALTER TABLE &lt;表名&gt; MODIFY &lt;字段名&gt; &lt;类型定义&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>修改字段名<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ALTER TABLE &lt;表名&gt; CHANGE &lt;需修改字段名&gt; &lt;新字段名&gt; &lt;类型定义&gt;;</span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL安装</title>
     <url>/2019/10/11/mysql%E5%AE%89%E8%A3%85/</url>
     <content><![CDATA[<h2 id="Windows下安装MySQL"><a href="#Windows下安装MySQL" class="headerlink" title="Windows下安装MySQL"></a>Windows下安装MySQL</h2><h3 id="下载MySQL安装文件"><a href="#下载MySQL安装文件" class="headerlink" title="下载MySQL安装文件"></a>下载MySQL安装文件</h3><p>MySQL官网<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">下载地址</a><br>在下载页面中<code>Select Platform</code>选择<code>Microsoft Windows</code>, 然后在下方的下载选项中选择点击第一个<code>Downloads</code>下载，跳转到另一个个页面后点击左下角<code>No thanks, just start my download.</code>开始下载，下载后得到一个.zip文件。将其解压得到类似<code>mysql-8.0.17-winx64</code>这样的文件夹。<br>将得到的文件夹放入C盘中的DB文件夹中(这里的DB为新建文件夹)得到mysql安装路径为<code>C:\DB\mysql-8.0.17-winx64</code></p><a id="more"></a>
