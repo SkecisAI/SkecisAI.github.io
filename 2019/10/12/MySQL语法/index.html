@@ -11,8 +11,8 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 3.9.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.1">
   <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
   <link rel="alternate" href="/atom.xml" title="Mr. Liu's blog" type="application/atom+xml">
 
@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Mr. Liu&#39;s blog">
 <meta property="og:description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;选择数据库1&amp;gt; USE &amp;lt;数据库名&amp;gt;;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-12T10:19:31.740Z">
+<meta property="og:updated_time" content="2019-10-12T11:06:36.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL语法">
 <meta name="twitter:description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;选择数据库1&amp;gt; USE &amp;lt;数据库名&amp;gt;;">
@@ -278,7 +278,7 @@
                 
               
 
-              <time title="创建时间：2019-10-12 10:56:54 / 修改时间：18:19:31" itemprop="dateCreated datePublished" datetime="2019-10-12T10:56:54+08:00">2019-10-12</time>
+              <time title="创建时间：2019-10-12 10:56:54 / 修改时间：19:06:36" itemprop="dateCreated datePublished" datetime="2019-10-12T10:56:54+08:00">2019-10-12</time>
             </span>
           
             
@@ -352,9 +352,9 @@
 <ul>
 <li>可用<code>*</code>替换字段名表示查询所有字段</li>
 <li>WHERE字句包含了查询条件</li>
-<li>LIMIT字句包含了需要返回的记录数量<h4 id="WHERE字句"><a href="#WHERE字句" class="headerlink" title="WHERE字句"></a>WHERE字句</h4>格式<br><code>WHERE 对象1[关系]对象1的值 [AND|OR] [...]</code><br>例如：查询男生的成绩<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; SELECT grade FROM student_grade WHERE sex=<span class="string">'男'</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<li>LIMIT字句包含了需要返回的记录数量</li>
 </ul>
+<h4 id="WHERE字句"><a href="#WHERE字句" class="headerlink" title="WHERE字句"></a>WHERE字句</h4><p>格式<br><code>WHERE 对象1[关系]对象1的值 [AND|OR] [...]</code><br>例如：查询男生的成绩<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; SELECT grade FROM student_grade WHERE sex=<span class="string">'男'</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; UPDATE &lt;表名&gt; SET &lt;字段名&gt;=&lt;值&gt;, [...] [WHERE字句];</span><br></pre></td></tr></table></figure>
 <h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; DELETE FROM &lt;表名&gt; [WHERE字句];</span><br></pre></td></tr></table></figure>
 <h3 id="模糊查询：LIKE子句"><a href="#模糊查询：LIKE子句" class="headerlink" title="模糊查询：LIKE子句"></a>模糊查询：LIKE子句</h3><p>例如查询李姓同学的记录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; SELECT * FROM student_grade WHERE name LIKE <span class="string">'李'</span>;</span><br></pre></td></tr></table></figure></p>

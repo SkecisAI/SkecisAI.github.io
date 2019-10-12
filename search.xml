@@ -14,9 +14,9 @@
 <ul>
 <li>可用<code>*</code>替换字段名表示查询所有字段</li>
 <li>WHERE字句包含了查询条件</li>
-<li>LIMIT字句包含了需要返回的记录数量<h4 id="WHERE字句"><a href="#WHERE字句" class="headerlink" title="WHERE字句"></a>WHERE字句</h4>格式<br><code>WHERE 对象1[关系]对象1的值 [AND|OR] [...]</code><br>例如：查询男生的成绩<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; SELECT grade FROM student_grade WHERE sex=<span class="string">'男'</span>;</span><br></pre></td></tr></table></figure>
-</li>
+<li>LIMIT字句包含了需要返回的记录数量</li>
 </ul>
+<h4 id="WHERE字句"><a href="#WHERE字句" class="headerlink" title="WHERE字句"></a>WHERE字句</h4><p>格式<br><code>WHERE 对象1[关系]对象1的值 [AND|OR] [...]</code><br>例如：查询男生的成绩<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; SELECT grade FROM student_grade WHERE sex=<span class="string">'男'</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; UPDATE &lt;表名&gt; SET &lt;字段名&gt;=&lt;值&gt;, [...] [WHERE字句];</span><br></pre></td></tr></table></figure>
 <h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; DELETE FROM &lt;表名&gt; [WHERE字句];</span><br></pre></td></tr></table></figure>
 <h3 id="模糊查询：LIKE子句"><a href="#模糊查询：LIKE子句" class="headerlink" title="模糊查询：LIKE子句"></a>模糊查询：LIKE子句</h3><p>例如查询李姓同学的记录<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; SELECT * FROM student_grade WHERE name LIKE <span class="string">'李'</span>;</span><br></pre></td></tr></table></figure></p>
