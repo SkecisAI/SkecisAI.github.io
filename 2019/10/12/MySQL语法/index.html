@@ -56,18 +56,18 @@
   };
 </script>
 
-  <meta name="description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;选择数据库1&amp;gt; USE &amp;lt;数据库名&amp;gt;;">
+  <meta name="description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL语法">
 <meta property="og:url" content="http://www.skecis.top/2019/10/12/MySQL语法/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;选择数据库1&amp;gt; USE &amp;lt;数据库名&amp;gt;;">
+<meta property="og:description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-10-12T11:06:36.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL语法">
-<meta name="twitter:description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;选择数据库1&amp;gt; USE &amp;lt;数据库名&amp;gt;;">
+<meta name="twitter:description" content="创建数据库1&amp;gt; CREATE DATABASE &amp;lt;数据库名&amp;gt;;删除数据库1&amp;gt; DROP DATABASE &amp;lt;数据库名&amp;gt;;">
   <link rel="canonical" href="http://www.skecis.top/2019/10/12/MySQL语法/">
 
 
@@ -352,9 +352,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; CREATE DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; DROP DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; USE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><a id="more"></a>
+        <h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; CREATE DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; DROP DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><a id="more"></a>
 
-
+<h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; USE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure>
 <h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; CREATE TABLE IF NOT EXISTS &lt;表名&gt; (字段名1 字段1类型定义, [...]);</span><br></pre></td></tr></table></figure>
 <p>以下代码创建了一个学生成绩表：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; CREATE TABLE IF NOT EXISTS student_grade</span><br><span class="line">(</span><br><span class="line">    id    INT AUTO_INCREMENT,</span><br><span class="line">    name  CHAR(10),</span><br><span class="line">    sex   CHAR(5),</span><br><span class="line">    age   INT(2),</span><br><span class="line">    grade INT(2),</span><br><span class="line">    PRIMARY KEY (id)</span><br><span class="line">) CHARSET = utf8;</span><br></pre></td></tr></table></figure></p>
 <h3 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; DROP TABLE &lt;表名&gt;;</span><br></pre></td></tr></table></figure>
