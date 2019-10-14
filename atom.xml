@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.skecis.top/"/>
-  <updated>2019-10-14T01:52:59.859Z</updated>
+  <updated>2019-10-12T11:06:36.840Z</updated>
   <id>http://www.skecis.top/</id>
   
   <author>
@@ -15,29 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>hello</title>
-    <link href="http://www.skecis.top/2019/10/14/hello/"/>
-    <id>http://www.skecis.top/2019/10/14/hello/</id>
-    <published>2019-10-14T01:49:47.000Z</published>
-    <updated>2019-10-14T01:52:59.859Z</updated>
-    
-    <content type="html"><![CDATA[<img src="/.top//10/14/hello/1_2.png" title="1_2">]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;img src=&quot;/.top//10/14/hello/1_2.png&quot; title=&quot;1_2&quot;&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>MySQL语法</title>
