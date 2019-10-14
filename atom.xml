@@ -113,13 +113,14 @@
     <link href="http://www.skecis.top/2019/09/15/%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
     <id>http://www.skecis.top/2019/09/15/西瓜书学习之旅/</id>
     <published>2019-09-15T11:12:45.000Z</published>
-    <updated>2019-10-12T10:20:15.792Z</updated>
+    <updated>2019-10-14T00:39:43.088Z</updated>
     
-    <content type="html"><![CDATA[<p>基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码</p><h2 id="一-模型清单"><a href="#一-模型清单" class="headerlink" title="一. 模型清单"></a>一. 模型清单</h2><ul><li><strong>逻辑回归</strong></li><li><strong>线性判别分析</strong></li><li><strong>决策树</strong><ol><li>划分选择<ol><li>基于信息增益</li><li>基于基尼指数</li></ol></li><li>剪枝<ol><li>预剪枝</li><li>后剪枝</li></ol></li></ol></li><li><strong>神经网络</strong><ol><li>标准BP算法</li></ol></li><li><strong>（待续）</strong><h2 id="二-代码清单"><a href="#二-代码清单" class="headerlink" title="二. 代码清单"></a>二. 代码清单</h2>代码中重要的部分都配有蹩脚的英文注释（T.T苦学英语ing），具体使用的数据集内容请参考代码引用和数据集清单。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/logistic_regression.py" target="_blank" rel="noopener">logistic_regression</a>: 逻辑回归实现。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/linear_discriminant_analysis.py" target="_blank" rel="noopener">linear_discriminant_analysis</a>: 线性判别分析实现。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/decision_tree.py" target="_blank" rel="noopener">decision_tree</a>: 决策树实现，集成各个思想，包含划分方式有<code>信息增益</code>、<code>基尼指数</code>，连续值的处理方式有<code>平均值法</code>、<code>二分法</code>，以及剪枝方法有<code>预剪枝</code>、<code>后剪枝</code>。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/neural_network.py" target="_blank" rel="noopener">neural_network</a>: 神经网络实现，标准BP算法。</li><li>（待续）<h2 id="三-数据集清单"><a href="#三-数据集清单" class="headerlink" title="三. 数据集清单"></a>三. 数据集清单</h2>均为csv文件，内容如下</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon.csv" target="_blank" rel="noopener">西瓜数据集3.0alpha</a></li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon4.csv" target="_blank" rel="noopener">西瓜数据集2.0</a></li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon3.csv" target="_blank" rel="noopener">西瓜数据集3.0</a></li></ul><a id="more"></a><p><em>才疏学浅，以上资料仅供参考，交流。</em></p>]]></content>
+    <content type="html"><![CDATA[<p>基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码</p><h2 id="一-模型清单"><a href="#一-模型清单" class="headerlink" title="一. 模型清单"></a>一. 模型清单</h2><ul><li><strong>逻辑回归</strong></li><li><strong>线性判别分析</strong></li><li><strong>决策树</strong><ol><li>划分选择<ol><li>基于信息增益</li><li>基于基尼指数</li></ol></li><li>剪枝<ol><li>预剪枝</li><li>后剪枝 <a id="more"></a></li></ol></li></ol></li><li><strong>神经网络</strong><ol><li>标准BP算法</li></ol></li><li><strong>（待续）</strong><h2 id="二-代码清单"><a href="#二-代码清单" class="headerlink" title="二. 代码清单"></a>二. 代码清单</h2>代码中重要的部分都配有蹩脚的英文注释（T.T苦学英语ing），具体使用的数据集内容请参考代码引用和数据集清单。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/logistic_regression.py" target="_blank" rel="noopener">logistic_regression</a>: 逻辑回归实现。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/linear_discriminant_analysis.py" target="_blank" rel="noopener">linear_discriminant_analysis</a>: 线性判别分析实现。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/decision_tree.py" target="_blank" rel="noopener">decision_tree</a>: 决策树实现，集成各个思想，包含划分方式有<code>信息增益</code>、<code>基尼指数</code>，连续值的处理方式有<code>平均值法</code>、<code>二分法</code>，以及剪枝方法有<code>预剪枝</code>、<code>后剪枝</code>。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/neural_network.py" target="_blank" rel="noopener">neural_network</a>: 神经网络实现，标准BP算法。</li><li>（待续）<h2 id="三-数据集清单"><a href="#三-数据集清单" class="headerlink" title="三. 数据集清单"></a>三. 数据集清单</h2>均为csv文件，内容如下</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon.csv" target="_blank" rel="noopener">西瓜数据集3.0alpha</a></li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon4.csv" target="_blank" rel="noopener">西瓜数据集2.0</a></li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon3.csv" target="_blank" rel="noopener">西瓜数据集3.0</a></li></ul><p><em>才疏学浅，以上资料仅供参考，交流。</em></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码&lt;/p&gt;&lt;h2 id=&quot;一-模型清单&quot;&gt;&lt;a href=&quot;#一-模型清单&quot; class=&quot;headerlink&quot; title=&quot;一. 模型清单&quot;&gt;&lt;/a&gt;一. 模型清单&lt;/h2&gt;&lt;ul&gt;
+      &lt;p&gt;基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码&lt;/p&gt;
+&lt;h2 id=&quot;一-模型清单&quot;&gt;&lt;a href=&quot;#一-模型清单&quot; class=&quot;headerlink&quot; title=&quot;一. 模型清单&quot;&gt;&lt;/a&gt;一. 模型清单&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;逻辑回归&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;线性判别分析&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;决策树&lt;/strong&gt;&lt;ol&gt;
@@ -130,25 +131,7 @@
 &lt;/li&gt;
 &lt;li&gt;剪枝&lt;ol&gt;
 &lt;li&gt;预剪枝&lt;/li&gt;
-&lt;li&gt;后剪枝&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;神经网络&lt;/strong&gt;&lt;ol&gt;
-&lt;li&gt;标准BP算法&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;（待续）&lt;/strong&gt;&lt;h2 id=&quot;二-代码清单&quot;&gt;&lt;a href=&quot;#二-代码清单&quot; class=&quot;headerlink&quot; title=&quot;二. 代码清单&quot;&gt;&lt;/a&gt;二. 代码清单&lt;/h2&gt;代码中重要的部分都配有蹩脚的英文注释（T.T苦学英语ing），具体使用的数据集内容请参考代码引用和数据集清单。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/logistic_regression.py&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;logistic_regression&lt;/a&gt;: 逻辑回归实现。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/linear_discriminant_analysis.py&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;linear_discriminant_analysis&lt;/a&gt;: 线性判别分析实现。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/decision_tree.py&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;decision_tree&lt;/a&gt;: 决策树实现，集成各个思想，包含划分方式有&lt;code&gt;信息增益&lt;/code&gt;、&lt;code&gt;基尼指数&lt;/code&gt;，连续值的处理方式有&lt;code&gt;平均值法&lt;/code&gt;、&lt;code&gt;二分法&lt;/code&gt;，以及剪枝方法有&lt;code&gt;预剪枝&lt;/code&gt;、&lt;code&gt;后剪枝&lt;/code&gt;。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/neural_network.py&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;neural_network&lt;/a&gt;: 神经网络实现，标准BP算法。&lt;/li&gt;
-&lt;li&gt;（待续）&lt;h2 id=&quot;三-数据集清单&quot;&gt;&lt;a href=&quot;#三-数据集清单&quot; class=&quot;headerlink&quot; title=&quot;三. 数据集清单&quot;&gt;&lt;/a&gt;三. 数据集清单&lt;/h2&gt;均为csv文件，内容如下&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/watermelon.csv&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;西瓜数据集3.0alpha&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/watermelon4.csv&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;西瓜数据集2.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/SkecisAI/ML-Practice/blob/master/watermelon3.csv&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;西瓜数据集3.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;后剪枝
     
     </summary>
     
