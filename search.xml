@@ -1,6 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Pandas数据结构-Series(一)</title>
+    <url>/2019/10/15/Pandas-Series/</url>
+    <content><![CDATA[<h2 id="导入必要的包"><a href="#导入必要的包" class="headerlink" title="导入必要的包"></a>导入必要的包</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br></pre></td></tr></table></figure><h2 id="创建Series"><a href="#创建Series" class="headerlink" title="创建Series"></a>创建Series</h2><a id="more"></a>
+<h3 id="创建只含一个元素的Series"><a href="#创建只含一个元素的Series" class="headerlink" title="创建只含一个元素的Series"></a>创建只含一个元素的Series</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s1 = pd.Series(16)</span><br><span class="line">print(s1)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">0    16</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过索引获取值"><a href="#通过索引获取值" class="headerlink" title="通过索引获取值"></a>通过索引获取值</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">val = s1[0]</span><br><span class="line">print(val)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">16</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过列表创建Series"><a href="#通过列表创建Series" class="headerlink" title="通过列表创建Series"></a>通过列表创建Series</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s2 = pd.Series([7, 8, 9, 10, 11])</span><br><span class="line">print(s2)</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">0     7</span><br><span class="line">1     8</span><br><span class="line">2     9</span><br><span class="line">3    10</span><br><span class="line">4    11</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<h3 id="获取Series的所有值或索引"><a href="#获取Series的所有值或索引" class="headerlink" title="获取Series的所有值或索引"></a>获取Series的所有值或索引</h3><p>使用Series实例的两个属性：values和index<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s2.values) # 获取值</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[ 7  8  9 10 11]</span><br></pre></td></tr></table></figure></p>
+<p>使用index属性<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s2.index) # 获取索引</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">RangeIndex(start=0, stop=5, step=1)</span><br></pre></td></tr></table></figure></p>
+<h3 id="指定值和索引创建Series"><a href="#指定值和索引创建Series" class="headerlink" title="指定值和索引创建Series"></a>指定值和索引创建Series</h3><p>使用了参数index，参数类型为列表(list)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s3 = pd.Series([1, 2, 3], index=[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;])</span><br><span class="line">print(s3)</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a    1</span><br><span class="line">b    2</span><br><span class="line">c    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用已存在的Series索引创建Series"><a href="#使用已存在的Series索引创建Series" class="headerlink" title="使用已存在的Series索引创建Series"></a>使用已存在的Series索引创建Series</h3><p>将已存在Series的索引(使用index属性)赋值给参数index<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s4 = pd.Series(2, index=s3.index)</span><br><span class="line">print(s4)</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a    2</span><br><span class="line">b    2</span><br><span class="line">c    2</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<p>值的数量不足时，将会依每个索引把值复制一遍</p>
+<h3 id="使用5个正态随机数生成Series"><a href="#使用5个正态随机数生成Series" class="headerlink" title="使用5个正态随机数生成Series"></a>使用5个正态随机数生成Series</h3><p>这里用了numpy的1-darray类型来创建<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dict1 = &#123;&apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3&#125;</span><br><span class="line">s5 = pd.Series(dict1)</span><br><span class="line">print(s5)</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a    1</span><br><span class="line">b    2</span><br><span class="line">c    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于Series值的属性、函数和方法"><a href="#关于Series值的属性、函数和方法" class="headerlink" title="关于Series值的属性、函数和方法"></a>关于Series值的属性、函数和方法</h2><p>首先创建一个带有NaN值的Series<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s = pd.Series([0, 1, 1, 2, 3, 4, 5, 6, 7, np.nan])</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">0    0.0</span><br><span class="line">1    1.0</span><br><span class="line">2    1.0</span><br><span class="line">3    2.0</span><br><span class="line">4    3.0</span><br><span class="line">5    4.0</span><br><span class="line">6    5.0</span><br><span class="line">7    6.0</span><br><span class="line">8    7.0</span><br><span class="line">9    NaN</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure></p>
+<h3 id="Series的长度"><a href="#Series的长度" class="headerlink" title="Series的长度"></a>Series的长度</h3><p>使用len()函数或size属性<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(len(s))</span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.size)</span><br></pre></td></tr></table></figure></p>
+<p>都将输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure></p>
+<h3 id="Series的尺寸"><a href="#Series的尺寸" class="headerlink" title="Series的尺寸"></a>Series的尺寸</h3><p>使用shape属性，会得到一个元组<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.shape)</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(10,)</span><br></pre></td></tr></table></figure></p>
+<h3 id="统计Series中非NaN的值的数量"><a href="#统计Series中非NaN的值的数量" class="headerlink" title="统计Series中非NaN的值的数量"></a>统计Series中非NaN的值的数量</h3><p>使用count()方法<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.count())</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure></p>
+<h3 id="获取Series中的所有的唯一值"><a href="#获取Series中的所有的唯一值" class="headerlink" title="获取Series中的所有的唯一值"></a>获取Series中的所有的唯一值</h3><p>使用unique()方法<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.unique())</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[ 0.  1.  2.  3.  4.  5.  6.  7. nan]</span><br></pre></td></tr></table></figure></p>
+<h2 id="预览数据的一部分"><a href="#预览数据的一部分" class="headerlink" title="预览数据的一部分"></a>预览数据的一部分</h2><h3 id="预览数据的开头部分"><a href="#预览数据的开头部分" class="headerlink" title="预览数据的开头部分"></a>预览数据的开头部分</h3><p>使用head()函数，可选参数<code>n</code>：需要预览的行数<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.head(3))</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">0    0.0</span><br><span class="line">1    1.0</span><br><span class="line">2    1.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure></p>
+<h3 id="预览数据的结尾部分"><a href="#预览数据的结尾部分" class="headerlink" title="预览数据的结尾部分"></a>预览数据的结尾部分</h3><p>使用tail()函数，可选参数<code>n</code>：需要预览的行数<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.tail(4))</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">6    5.0</span><br><span class="line">7    6.0</span><br><span class="line">8    7.0</span><br><span class="line">9    NaN</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure></p>
+<h3 id="预览数据的指定部分"><a href="#预览数据的指定部分" class="headerlink" title="预览数据的指定部分"></a>预览数据的指定部分</h3><p>使用take()函数，参数：索引组成的列表(list)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s.take([2, 3, 6]))</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2    1.0</span><br><span class="line">3    2.0</span><br><span class="line">6    5.0</span><br><span class="line">dtype: float64</span><br></pre></td></tr></table></figure></p>
+<h2 id="在Series中查找值"><a href="#在Series中查找值" class="headerlink" title="在Series中查找值"></a>在Series中查找值</h2><p>引用<code>s3</code>：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">a    1</span><br><span class="line">b    2</span><br><span class="line">c    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过索引名查找"><a href="#通过索引名查找" class="headerlink" title="通过索引名查找"></a>通过索引名查找</h3><p>索引名可为列表(list)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s3[&apos;a&apos;])</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<h3 id="通过位置-从0开始-查找"><a href="#通过位置-从0开始-查找" class="headerlink" title="通过位置(从0开始)查找"></a>通过位置(从0开始)查找</h3><p>位置可为列表(list)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s3[1])</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<h3 id="强行只通过索引名查找"><a href="#强行只通过索引名查找" class="headerlink" title="强行只通过索引名查找"></a>强行只通过索引名查找</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s5 = pd.Series([1, 2, 3], index=[10, 11, 12])</span><br></pre></td></tr></table></figure>
+<p><code>s5</code>结构如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">10    1</span><br><span class="line">11    2</span><br><span class="line">13    3</span><br><span class="line">dtype: int64</span><br></pre></td></tr></table></figure></p>
+<p>使用loc[]属性，列表类型，可传入列表(list)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s5.loc[12])</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure></p>
+<p>如果索引名不存在会返回NaN，且不能传入位置</p>
+<h3 id="强行只通过位置查找"><a href="#强行只通过位置查找" class="headerlink" title="强行只通过位置查找"></a>强行只通过位置查找</h3><p>使用iloc[]属性，列表类型，可传入列表(list)<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print(s5.iloc[1])</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p>
+<p>如果位置不存在会报错，且不能传入索引名</p>
+<h3 id="位置和索引名兼容查找-不推荐"><a href="#位置和索引名兼容查找-不推荐" class="headerlink" title="位置和索引名兼容查找(不推荐)"></a>位置和索引名兼容查找(不推荐)</h3><p>使用ix[]属性，列表类型，可传入列表(list)。</p>
+]]></content>
+      <categories>
+        <category>Python数据分析</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL语法</title>
     <url>/2019/10/12/MySQL%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; CREATE DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; DROP DATABASE &lt;数据库名&gt;;</span><br></pre></td></tr></table></figure><a id="more"></a>
@@ -165,8 +226,8 @@
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
