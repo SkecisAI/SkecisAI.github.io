@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Mr. Liu's Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="文献引用刘保中.我国城乡家庭教育投入状况的比较研究——基于CFPS(2014)数据的实证分析[J].中国青年研究,2017(12):45-52.">
+<meta name="keywords" content="Python,数据分析,CFPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CFPS数据分析案例">
+<meta property="og:url" content="http://www.skecis.top/2019/10/24/CFPS数据分析案例/index.html">
+<meta property="og:site_name" content="Mr. Liu&#39;s Blog">
+<meta property="og:description" content="文献引用刘保中.我国城乡家庭教育投入状况的比较研究——基于CFPS(2014)数据的实证分析[J].中国青年研究,2017(12):45-52.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_1.png">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_2.png">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_3.png">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_4.png">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_5.png">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_6.png">
+<meta property="og:updated_time" content="2019-10-24T15:14:12.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CFPS数据分析案例">
+<meta name="twitter:description" content="文献引用刘保中.我国城乡家庭教育投入状况的比较研究——基于CFPS(2014)数据的实证分析[J].中国青年研究,2017(12):45-52.">
+<meta name="twitter:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_1.png">
+  <link rel="canonical" href="http://www.skecis.top/2019/10/24/CFPS数据分析案例/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>CFPS数据分析案例 | Mr. Liu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr. Liu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">一个有梦想的人工智能爱好者</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/10/24/CFPS数据分析案例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkecisAI">
+      <meta itemprop="description" content="IT技术分享，学习机器学习，深度学习等AI技术">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr. Liu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">CFPS数据分析案例
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-24 20:24:49 / 修改时间：23:14:12" itemprop="dateCreated datePublished" datetime="2019-10-24T20:24:49+08:00">2019-10-24</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python数据分析/" itemprop="url" rel="index"><span itemprop="name">Python数据分析</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>7.4k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>13 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="文献引用"><a href="#文献引用" class="headerlink" title="文献引用"></a>文献引用</h2><p><a href="http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&amp;dbname=CJFDLAST2018&amp;filename=ZGQL201712007&amp;uid=WEEvREcwSlJHSldTTEYzU3EydDVHeHMyVC9Rc1FKVFNDOFJmRVM4alNqdz0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&amp;v=MDM1NzVUcldNMUZyQ1VSTE9lWitSckZDbm5WTC9CUHlyYVlyRzRIOWJOclk5Rlk0UjhlWDFMdXhZUzdEaDFUM3E=" target="_blank" rel="noopener"><strong>刘保中.我国城乡家庭教育投入状况的比较研究——基于CFPS(2014)数据的实证分析[J].中国青年研究,2017(12):45-52.</strong></a></p><a id="more"></a>
+<h2 id="文献简要"><a href="#文献简要" class="headerlink" title="文献简要"></a>文献简要</h2><p>使用<strong>CFPS2014</strong>年的数据，在<strong>教育期望、教育支出</strong>和<strong>教育参与</strong>三个维度上对当前我国城乡家庭教育投入状况进行了比较分析，详细摘要内容如下:<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_1.png" alt></p>
+<h2 id="数据处理-Python"><a href="#数据处理-Python" class="headerlink" title="数据处理(Python)"></a>数据处理(Python)</h2><h3 id="数据概要"><a href="#数据概要" class="headerlink" title="数据概要"></a>数据概要</h3><p>该文献使用的是cfps2014年的数据，且着重使用的是<strong>儿童数据</strong>，文献中的数据部分摘要如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_2.png" alt></p>
+<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><p>导入必要的包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import statsmodels.api as sm</span><br><span class="line">from pandas.io.stata import StataReader</span><br></pre></td></tr></table></figure></p>
+<h4 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h4><p>导入了儿童数据和家庭数据(均为stata文件)，使用StataReader函数读入该类型文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">child_stata = StataReader(&apos;cfps2014child.dta&apos;, convert_categoricals=False)</span><br><span class="line">famecon_stata = StataReader(&apos;cfps2014famecon.dta&apos;, convert_categoricals=False)</span><br></pre></td></tr></table></figure></p>
+<p>上述方式得到的是stata数据，接着将其转化为Pandas中的DataFrame格式，使用read函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">child_df = child_stata.read()</span><br><span class="line">fam_df = famecon_stata.read()</span><br></pre></td></tr></table></figure></p>
+<p>数据概览<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(child_df.head())</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">           pid  proxyrpt  ...  cfps2014eduy_im  releaseversion</span><br><span class="line">0  100453401.0       1.0  ...              0.0             2.0</span><br><span class="line">1  103924504.0       1.0  ...              0.0             2.0</span><br><span class="line">2  106561502.0       1.0  ...              0.0             2.0</span><br><span class="line">3  107624502.0       1.0  ...              0.0             2.0</span><br><span class="line">4  110011103.0       1.0  ...              8.0             2.0</span><br></pre></td></tr></table></figure></p>
+<h4 id="变量引入及预处理"><a href="#变量引入及预处理" class="headerlink" title="变量引入及预处理"></a>变量引入及预处理</h4><p>使用的变量及处理方式：父母对孩子的教育期望（分为高等教育期望和非高等教育期望，以及等价转化为教育年限）、家庭全年教育支出、家庭教育课外补习支出、家庭教育参与（共六个变量，程度从低到高划为1-5分）。控制变量：孩子户口（0-农业户口，1-非农业户口）、孩子性别（0-女，1-男），孩子年龄、孩子目前上学阶段（小学及以上）、家庭年收入（取对数）。文献中使用的变量详情（部分划线的变量未引入）：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_3.png" alt><br>特征变量详情列表如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">child_col = [&apos;fid14&apos;,  # 14年家庭编码</span><br><span class="line">             &apos;wd2&apos;,  # 家庭教育期望</span><br><span class="line">             &apos;wd503m&apos;, &apos;wd5ckp&apos;, &apos;wd5total_m&apos;, &apos;wd5total&apos;,  # 家庭教育支出： 课外辅导费用，是否确认教育支出，新教育支出，旧教育支出</span><br><span class="line">             &apos;wf601m&apos;, &apos;wf602m&apos;, &apos;wf603m&apos;, &apos;wf604m&apos;, &apos;wf605m&apos;, &apos;wf606m&apos;,  # 家庭教育参与： 频率从低到高（赋值1-5分）</span><br><span class="line">             &apos;wa4&apos;, &apos;cfps2014_age&apos;, &apos;cfps_gender&apos;,  # 控制变量： 户口(1:农, 3:非农)，年龄，性别</span><br><span class="line">             &apos;wf301m&apos;]  # 上哪级学校</span><br><span class="line">family_col = [&apos;fid14&apos;,</span><br><span class="line">              &apos;finc&apos;]  # 家庭年收入</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>使用家庭收入变量连接两表<br>为了在儿童数据中引入家庭数据的收入变量，需根据家庭编码链接两个表，使用join函数，键值设为家庭编码<code>fid14</code>。<strong>特别要注意的是，因为不是每一个儿童在家庭表中的都有年收入这个数据，故连接后无年收入数据的儿童该值将为空，此时抛弃空值。并抛弃不符合要求的数据（-1）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 获取家庭年收入变量</span><br><span class="line">child_df = child_df.join(fam_df.set_index(&apos;fid14&apos;), on=&apos;fid14&apos;)  # 根据家庭编码链接两个表</span><br><span class="line">child_df = child_df.dropna()</span><br><span class="line">child_df.drop(child_df[child_df[&apos;finc&apos;] &lt; 0].index, inplace=True)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理家庭收入变量<br>进行取对数处理，自定义函数<code>cal_finc</code>进行映射。<br>自定义函数<code>cal_finc</code>如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def cal_finc(finc):</span><br><span class="line">    # 家庭年收入取对数</span><br><span class="line">    if finc == 0:</span><br><span class="line">        return 0</span><br><span class="line">    else:</span><br><span class="line">        return np.log(finc)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将函数映射到数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child_df[&apos;finc&apos;] = child_df[&apos;finc&apos;].map(cal_finc)      # 处理家庭年收入</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>处理户口变量<br>将原来的数据中农业户口和非农业户口映射为0和1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">city_code = &#123;1: 0, 3: 1&#125;  # 户口重新编码</span><br><span class="line">child_df[&apos;wa4&apos;] = child_df[&apos;wa4&apos;].map(city_code)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删去不符合条件的数据<br>删去既不是农业户口或非农业户口的，再删去上学阶段不符合要求的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">drop_cond = (child_df[&apos;wa4&apos;] &lt; 1) | (child_df[&apos;wa4&apos;] &gt; 3)  # 删去户口不符合要求的</span><br><span class="line">child_df.drop(child_df[drop_cond].index, inplace=True)</span><br><span class="line">drop_cond1 = (child_df[&apos;wf301m&apos;] &lt;= 2)  # 删去上学阶段不符合要求的</span><br><span class="line">child_df.drop(child_df[drop_cond1].index, inplace=True)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="处理教育期望"><a href="#处理教育期望" class="headerlink" title="处理教育期望"></a>处理教育期望</h3><ol>
+<li><p>首先删去不符合要求的教育期望样本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop_cond2 = (child_df[&apos;wd2&apos;] &lt; 0)</span><br><span class="line">child_df.drop(child_df[drop_cond2].index, inplace=True)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>教育期望的分布以及样本量<br>打印出教育期望的分布及样本数量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(child_df[&apos;wd2&apos;].value_counts(), &apos;count: &apos;, child_df[&apos;wd2&apos;].count())</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">6.0    2394</span><br><span class="line">4.0     546</span><br><span class="line">8.0     296</span><br><span class="line">5.0     280</span><br><span class="line">7.0     145</span><br><span class="line">3.0      88</span><br><span class="line">2.0      18</span><br><span class="line">9.0       1</span><br><span class="line">Name: wd2, dtype: int64 count:  3768</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>将教育期望映射为两类：1-高等教育期望，0-非高等教育期望</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child_df[&apos;high_edu&apos;] = child_df.apply(lambda row: 1 if row[&apos;wd2&apos;] &gt;= 5 else 0, axis=1)  # 是否为高等教育期望</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将教育期望映射为教育年限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">edu_code = &#123;9: 0, 8: 23, 7: 19, 6: 16, 5: 15, 4: 12, 3: 9, 2: 6&#125;  # 教育期望重新编码</span><br><span class="line">child_df[&apos;wd2_years&apos;] = child_df[&apos;wd2&apos;].map(edu_code)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各个教育期望年限和高等教育期望的样本量、均值和百分比</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">village_df = child_df[child_df[&apos;wa4&apos;] == 0]  # 农业户口</span><br><span class="line">city_df = child_df[child_df[&apos;wa4&apos;] == 1]  # 非农业户口</span><br><span class="line">expect_total_mean = child_df[&apos;wd2_years&apos;].mean()</span><br><span class="line">village_expect_mean = village_df[&apos;wd2_years&apos;].mean()</span><br><span class="line">print(&apos;total   city   village&apos;)</span><br><span class="line">print(&apos;count: &apos;, child_df.shape[0], city_df.shape[0], village_df.shape[0])</span><br><span class="line">print(&apos;years_mean: &apos;, expect_total_mean, city_expect_mean, village_expect_mean)</span><br><span class="line">print(&apos;high_edu_percent: &apos;,</span><br><span class="line">      child_df[&apos;high_edu&apos;].value_counts(normalize=True).loc[1]*100,</span><br><span class="line">      city_df[&apos;high_edu&apos;].value_counts(normalize=True).loc[1]*100,</span><br><span class="line">      village_df[&apos;high_edu&apos;].value_counts(normalize=True).loc[1]*100)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">total   city   village</span><br><span class="line">count:  3768 808 2960</span><br><span class="line">years_mean:  15.795912951167729 16.521039603960396 15.597972972972974</span><br><span class="line">high_edu_percent:  82.6963906581741 93.6881188118812 79.69594594594595</span><br></pre></td></tr></table></figure></p>
+<p>原文中教育期望的数据分布如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_4.png" alt></p>
+<h3 id="处理教育支出"><a href="#处理教育支出" class="headerlink" title="处理教育支出"></a>处理教育支出</h3><p>课外辅导数据较为正常，不需要处理</p>
+<ol>
+<li><p>获取最终的全年教育支出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child_df[&apos;edu_expense&apos;] = child_df.apply(lambda row: row[&apos;wd5total_m&apos;] if (row[&apos;wd5ckp&apos;] == 1) | (row[&apos;wd5ckp&apos;] == 3) else row[&apos;wd5total&apos;], axis=1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删去不符合条件的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">child_df.drop(child_df[child_df[&apos;edu_expense&apos;] &lt; 0].index, inplace=True)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各个全年教育指出和课外辅导的样本量、均值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 教育支出: 课外辅导</span><br><span class="line">coach_total_mean = child_df[&apos;wd503m&apos;].mean()</span><br><span class="line">village_coach_mean = village_df[&apos;wd503m&apos;].mean()</span><br><span class="line">city_coach_mean = city_df[&apos;wd503m&apos;].mean()</span><br><span class="line"># 教育支出： 总支出</span><br><span class="line">expense_total_mean = child_df[&apos;edu_expense&apos;].mean()</span><br><span class="line">village_expense_mean = village_df[&apos;edu_expense&apos;].mean()</span><br><span class="line">city_expense_mean = city_df[&apos;edu_expense&apos;].mean()</span><br><span class="line">child_df.to_csv(&apos;2014child.csv&apos;, index=False)</span><br><span class="line">print(&apos;total   city   village&apos;)</span><br><span class="line">print(&apos;count: &apos;, child_df.shape[0], city_df.shape[0], village_df.shape[0])</span><br><span class="line">print(&apos;expense_mean: &apos;, expense_total_mean, city_expense_mean, village_expense_mean)</span><br><span class="line">print(&apos;coach_mean: &apos;, coach_total_mean, city_coach_mean, village_coach_mean)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">total   city   village</span><br><span class="line">count:  3774 808 2966</span><br><span class="line">expense_mean:  3179.1073131955486 5691.209158415842 2494.7585974376266</span><br><span class="line">coach_mean:  787.992315845257 2657.6992574257424 278.64531355360754</span><br></pre></td></tr></table></figure></p>
+<p>原文中教育支出的数据分布如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_5.png" alt></p>
+<h3 id="处理教育参与"><a href="#处理教育参与" class="headerlink" title="处理教育参与"></a>处理教育参与</h3><p>教育参与相关变量列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">li = [&apos;wf601m&apos;, &apos;wf602m&apos;, &apos;wf603m&apos;, &apos;wf604m&apos;, &apos;wf605m&apos;, &apos;wf606m&apos;]</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>删去不符合条件的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nan_cond = False</span><br><span class="line">for col in child_df.columns:</span><br><span class="line">    if col in li:</span><br><span class="line">        nan_cond = nan_cond | (child_df[col] == -8) | (child_df[col] == -1)</span><br><span class="line">child_df.drop(child_df[nan_cond].index, inplace=True)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据关心程度从大到小编码（5-1）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">care_code = &#123;1: 5, 2: 4, 3: 3, 4: 2, 5: 1&#125;  # 教育关心程度重新编码</span><br><span class="line">for col in child_df.columns:</span><br><span class="line">    if col in li:</span><br><span class="line">        child_df[col] = child_df[col].map(care_code)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关怀程度在2次以上的各个比例及样本量<br>首先将频次变量映射为0-1变量，满足条件的为1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 频次在两次以上，即&gt;=4</span><br><span class="line">for col in child_df.columns:</span><br><span class="line">    if col in li:</span><br><span class="line">        child_df[col] = child_df[col].map(lambda val: 1 if val &gt;= 4 else 0)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>进行统计<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print(&apos;total   city   village&apos;)</span><br><span class="line">print(&apos;count: &apos;, child_df.shape[0], city_df.shape[0], village_df.shape[0])</span><br><span class="line">for col in child_df.columns:</span><br><span class="line">    if col in li:</span><br><span class="line">        print(child_df[col].value_counts(normalize=True).loc[1]*100,</span><br><span class="line">              city_df[col].value_counts(normalize=True).loc[1]*100,</span><br><span class="line">              village_df[col].value_counts(normalize=True).loc[1]*100)</span><br></pre></td></tr></table></figure></p>
+<p>输出(顺序与原文一致)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">total   city   village</span><br><span class="line">count:  3746 802 2944</span><br><span class="line">72.61078483715964 79.30174563591022 70.78804347826086</span><br><span class="line">54.00427122263748 63.71571072319202 51.358695652173914</span><br><span class="line">87.26641751201282 88.5286783042394 86.9225543478261</span><br><span class="line">56.620395088093964 66.20947630922693 54.00815217391305</span><br><span class="line">65.02936465563268 66.08478802992519 64.74184782608695</span><br><span class="line">38.57447944474106 40.64837905236908 38.00951086956522</span><br></pre></td></tr></table></figure></p>
+<p>原文中教育参与的变量分布如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/cfps%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1_6.png" alt></p>
+<h4 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h4>
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>感谢你的支持，希望本文能助你一臂之力。</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat.png" alt="SkecisAI 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Python/" rel="tag"># Python</a>
+            
+              <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
+            
+              <a href="/tags/CFPS/" rel="tag"># CFPS</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/10/16/Pandas-Series2/" rel="next" title="Pandas数据结构-Series(二)">
+                  <i class="fa fa-chevron-left"></i> Pandas数据结构-Series(二)
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文献引用"><span class="nav-number">1.</span> <span class="nav-text">文献引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文献简要"><span class="nav-number">2.</span> <span class="nav-text">文献简要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理-Python"><span class="nav-number">3.</span> <span class="nav-text">数据处理(Python)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据概要"><span class="nav-number">3.1.</span> <span class="nav-text">数据概要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据清洗"><span class="nav-number">3.2.</span> <span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入数据"><span class="nav-number">3.2.1.</span> <span class="nav-text">导入数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量引入及预处理"><span class="nav-number">3.2.2.</span> <span class="nav-text">变量引入及预处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理教育期望"><span class="nav-number">3.3.</span> <span class="nav-text">处理教育期望</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理教育支出"><span class="nav-number">3.4.</span> <span class="nav-text">处理教育支出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理教育参与"><span class="nav-number">3.5.</span> <span class="nav-text">处理教育参与</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结束"><span class="nav-number">3.5.1.</span> <span class="nav-text">结束</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/head.jpg"
+      alt="SkecisAI">
+  <p class="site-author-name" itemprop="name">SkecisAI</p>
+  <div class="site-description" itemprop="description">IT技术分享，学习机器学习，深度学习等AI技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/SkecisAI" title="GitHub &rarr; https://github.com/SkecisAI" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:skecis@163.com" title="E-Mail &rarr; mailto:skecis@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SkecisAI</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">17k
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">31 分钟
+    </span>
+</div>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='255,255,255' opacity='0' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '6bcf9e51266c344a4ad2',
+      clientSecret: '7581236d30a3a81a524a2b840ed4ae7afda65941',
+      repo: 'skecisai.github.io',
+      owner: 'skecisai',
+      admin: ['skecis'],
+      id: '07a61acbedae7b7e00775271c4700466',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+    </div>
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
