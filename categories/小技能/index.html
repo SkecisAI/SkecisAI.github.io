@@ -54,6 +54,14 @@
     },
     sidebarPadding: 40
   };
+  (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
 </script>
 
   <meta name="description" content="IT技术分享，学习机器学习，深度学习等AI技术">

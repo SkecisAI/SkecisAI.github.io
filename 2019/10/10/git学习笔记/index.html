@@ -54,6 +54,14 @@
     },
     sidebarPadding: 40
   };
+  (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
 </script>
 
   <meta name="description" content="记录学习的一些Git常用命令git本地操作生成git仓库1$ git init从当前git仓库添加并提交文件">
