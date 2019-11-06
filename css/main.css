@@ -414,8 +414,8 @@ td {
 }
 pre,
 .highlight {
-  background: #fdf6e3;
-  color: #586e75;
+  background: #002b36;
+  color: #93a1a1;
   line-height: 1.6;
   margin: 0 auto 20px;
 }
@@ -437,13 +437,13 @@ pre {
 }
 pre code {
   background: none;
-  color: #586e75;
+  color: #93a1a1;
   font-size: 0.875em;
   padding: 0;
   text-shadow: none;
 }
 .highlight *::selection {
-  background: #eee8d5;
+  background: #073642;
 }
 .highlight pre {
   border: 0;
@@ -462,7 +462,7 @@ pre code {
 .highlight figcaption {
   background: #eee;
   border-bottom: 1px solid #e9e9e9;
-  color: #586e75;
+  color: #93a1a1;
   line-height: 1em;
   margin: 0;
   padding: 0.5em;
@@ -476,21 +476,21 @@ pre code {
   clear: both;
 }
 .highlight figcaption a {
-  color: #586e75;
+  color: #93a1a1;
   float: right;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #586e75;
+  border-bottom-color: #93a1a1;
 }
 .highlight .gutter pre {
-  background-color: #fdf6e3;
-  color: #93a1a1;
+  background-color: #002b36;
+  color: #586e75;
   padding-left: 10px;
   padding-right: 10px;
   text-align: right;
 }
 .highlight .code pre {
-  background-color: #fdf6e3;
+  background-color: #002b36;
   padding-left: 10px;
   width: 100%;
 }
@@ -520,7 +520,7 @@ pre .meta {
   user-select: none;
 }
 pre .comment {
-  color: #93a1a1;
+  color: #586e75;
 }
 pre .variable,
 pre .attribute,
@@ -1276,7 +1276,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #17815b;
+  background: #8ea888;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
