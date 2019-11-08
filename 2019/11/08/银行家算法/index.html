@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Mr. Liu's Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+  (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+  <meta name="description" content="引言银行家算法是一种避免进程发生死锁的算法。 死锁的定义：如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)在死锁避免方法中，把系统的状态分为安全状态和不安全状态。安全状态和不安全状态：是指系统能按某种进程推进顺序\left ( P_{1},P_{2}, ...,P_{n}\right ) 为每个进程P{i}分配其所需资源，直至满足每">
+<meta name="keywords" content="Java,进程死锁,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="银行家算法(java实现)">
+<meta property="og:url" content="http://www.skecis.top/2019/11/08/银行家算法/index.html">
+<meta property="og:site_name" content="Mr. Liu&#39;s Blog">
+<meta property="og:description" content="引言银行家算法是一种避免进程发生死锁的算法。 死锁的定义：如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)在死锁避免方法中，把系统的状态分为安全状态和不安全状态。安全状态和不安全状态：是指系统能按某种进程推进顺序\left ( P_{1},P_{2}, ...,P_{n}\right ) 为每个进程P{i}分配其所需资源，直至满足每">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/1.png">
+<meta property="og:updated_time" content="2019-11-08T08:43:31.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="银行家算法(java实现)">
+<meta name="twitter:description" content="引言银行家算法是一种避免进程发生死锁的算法。 死锁的定义：如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)在死锁避免方法中，把系统的状态分为安全状态和不安全状态。安全状态和不安全状态：是指系统能按某种进程推进顺序\left ( P_{1},P_{2}, ...,P_{n}\right ) 为每个进程P{i}分配其所需资源，直至满足每">
+<meta name="twitter:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/1.png">
+  <link rel="canonical" href="http://www.skecis.top/2019/11/08/银行家算法/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>银行家算法(java实现) | Mr. Liu's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr. Liu's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">一个有梦想的人工智能爱好者</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+        
+          <i class="fa fa-search fa-fw"></i>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/yourname" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/11/08/银行家算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkecisAI">
+      <meta itemprop="description" content="IT技术分享，学习机器学习，深度学习等AI技术">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr. Liu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">银行家算法(java实现)
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：16:43:31" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法与数据结构/" itemprop="url" rel="index"><span itemprop="name">算法与数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>6.1k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>11 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>银行家算法是一种避免进程发生<strong>死锁</strong>的算法。</p><blockquote>
+<p>死锁的定义：<br>如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)<br>在死锁避免方法中，把系统的状态分为<strong>安全状态</strong>和<strong>不安全状态</strong>。<br>安全状态和不安全状态：<br>是指系统能按某种进程推进顺序<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script> 为每个进程P<em>{i}分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。并称$$\left ( P</em>{1},P<em>{2}, …,P</em>{n}\right )$$为安全序列。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
+<h2 id="银行家算法中的数据结构"><a href="#银行家算法中的数据结构" class="headerlink" title="银行家算法中的数据结构"></a>银行家算法中的数据结构</h2><p>银行家算法中有四个数据结构：</p>
+<ul>
+<li>最大需求向量(Max)：是一个长度为m的数组，它定义了系统中每个进程对第m类资源的最大需求</li>
+<li>已分配向量(Allocation)：是一个长度为m的数组，它定义了系统中每个进程对每一类资源分配给进程的资源数量。</li>
+<li>需求向量(Need)：是一个长度为m的数组，用以表示进程还需要的各类资源数量</li>
+<li>可利用资源向量(Available)：是一个长度为m的数组，其中每一个值代表可以当前可利用的资源数目。<br>上述数据中有这样的关系：Need = Max - Allocation<h2 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h2>史上最详细的步骤^_^</li>
+<li>【步骤一】创建进程数组PCB[n] (代表n个进程)</li>
+<li>【步骤二】输入并初始化每个进程PCB[i]的Max数组、Allocation数组</li>
+<li>【步骤三】利用Max数组和Allocation数组计算出Need数组</li>
+<li>【步骤四】输入Available数组</li>
+<li>【步骤五】为每个PCB添加完成状态变量Finish(0-未完成，1-完成)，得到Finish数组(全部初始化为0)</li>
+<li>【步骤六】初始化表示安全状态变量Safe_Status = 0(0-不安全，1-安全)</li>
+<li>【步骤七】循环进行资源分配：</li>
+<li>WHILE(SUM(Finish) &lt; n):</li>
+<li>Safe_Status = 0</li>
+<li>FOR i =  1 TO n</li>
+<li>IF PCB[i]中Need的每个值 &lt;= Avaliable的每个值 AND PCB[i].Finish == 0</li>
+<li>PCB[i].Finish = 1</li>
+<li>将该进程PCB[i]加入安全序列队列</li>
+<li>Available = Available + PCB[i].Need</li>
+<li>Safe_Status = 1</li>
+<li>END IF</li>
+<li>END FOR</li>
+<li>IF Safe_Status == 0</li>
+<li>BREAK</li>
+<li>END IF</li>
+<li>END WHILE</li>
+<li>【步骤八】判断系统是否安全：</li>
+<li>IF (SUM(Finish == n))</li>
+<li>该系统安全</li>
+<li>END IF</li>
+<li>【步骤九】输出安全序列队列</li>
+</ul>
+</blockquote><a id="more"></a>
+
+<h2 id="用Java实现银行家算法"><a href="#用Java实现银行家算法" class="headerlink" title="用Java实现银行家算法"></a>用Java实现银行家算法</h2><h3 id="Proc-java"><a href="#Proc-java" class="headerlink" title="Proc.java"></a>Proc.java</h3><p>表示进程信息的进程类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class Proc &#123;</span><br><span class="line">	char name;</span><br><span class="line">	int max_res[];</span><br><span class="line">	int alloc_res[];</span><br><span class="line">	int need_res[];</span><br><span class="line">	boolean finish_status = false;</span><br><span class="line"></span><br><span class="line">	public Proc(char name , int max[], int alloc[], int need[]) &#123;</span><br><span class="line">		// TODO Auto-generated constructor stub</span><br><span class="line">		this.name = name;</span><br><span class="line">		this.max_res = max;</span><br><span class="line">		this.alloc_res = alloc;</span><br><span class="line">		this.need_res = need;</span><br><span class="line">		this.finish_status = false;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setName(char name) &#123;</span><br><span class="line">		this.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public char getName() &#123;</span><br><span class="line">		return name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setMax_res(int max_res[]) &#123;</span><br><span class="line">		this.max_res = max_res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int[] getMax_res() &#123;</span><br><span class="line">		return max_res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setAlloc_res(int alloc_res[]) &#123;</span><br><span class="line">		this.alloc_res = alloc_res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int[] getAlloc_res() &#123;</span><br><span class="line">		return alloc_res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setNeed_res(int need_res[]) &#123;</span><br><span class="line">		this.need_res = need_res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int[] getNeed_res() &#123;</span><br><span class="line">		return need_res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="BankRR-java"><a href="#BankRR-java" class="headerlink" title="BankRR.java"></a>BankRR.java</h3><p>银行家算法和程序入口所在的类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class BankRR</span><br><span class="line">&#123;</span><br><span class="line">	int pcb_nums;  // 进程数量</span><br><span class="line">	int res_nums;  // 资源种类数量</span><br><span class="line">	Proc pcbs[];   // 进程数组</span><br><span class="line">	int max[];     // 最大需求资源向量</span><br><span class="line">	int alloc[];   // 拥有资源数向量</span><br><span class="line">	int need[];    // 还需要资源数向量</span><br><span class="line">	int ava[];     // 可用资源数向量</span><br><span class="line">	char safe_seq[];  // 安全序列数组</span><br><span class="line">	boolean safe_stauts = false;  // 安全序列</span><br><span class="line"></span><br><span class="line">	public void bank_init()</span><br><span class="line">	&#123;</span><br><span class="line">		// A sample</span><br><span class="line">		/*   Max   Alloc  Need   Avai</span><br><span class="line">		 - a 7 5 3, 0 1 0, 7 4 3, 3 3 2</span><br><span class="line">		 - b 3 2 2, 2 0 0, 1 2 2</span><br><span class="line">		 - c 9 0 2, 3 0 2, 6 0 0</span><br><span class="line">		 - d 2 2 2, 2 1 1, 0 1 1</span><br><span class="line">		 - e 4 3 3, 0 0 2, 4 3 1</span><br><span class="line">		 */</span><br><span class="line">		@SuppressWarnings(&quot;resource&quot;)</span><br><span class="line">		Scanner in = new Scanner(System.in);</span><br><span class="line">		System.out.println(&quot;一共有几个进程：&quot;);</span><br><span class="line">		pcb_nums = in.nextInt();</span><br><span class="line">		System.out.println(&quot;一共有几个资源&quot;);</span><br><span class="line">		res_nums = in.nextInt();</span><br><span class="line">		pcbs = new Proc[pcb_nums];  // 创建进程数组</span><br><span class="line">		ava = new int[res_nums];     // 可用资源</span><br><span class="line">		safe_seq = new char[pcb_nums];  // 安全序列</span><br><span class="line">		for (int i = 0; i &lt; pcbs.length; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			max = new int[res_nums];     // 最大资源</span><br><span class="line">			alloc = new int[res_nums];   // 拥有资源</span><br><span class="line">			need = new int[res_nums];    // 需要资源</span><br><span class="line">			System.out.println(&quot;-----------------------&quot;);</span><br><span class="line">			System.out.println(&quot;输入第&quot; + (i+1) + &quot;个进程信息(名字-最大资源-拥有资源)&quot;);</span><br><span class="line">			System.out.println(&quot;名字：&quot;);</span><br><span class="line">			char name = in.next().charAt(0);</span><br><span class="line">			System.out.println(&quot;最大资源：&quot;);</span><br><span class="line">			for (int j = 0; j &lt; res_nums; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				max[j] = in.nextInt();</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(&quot;拥有资源：&quot;);</span><br><span class="line">			for (int j = 0; j &lt; res_nums; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				alloc[j] = in.nextInt();</span><br><span class="line">			&#125;</span><br><span class="line">			for (int j = 0; j &lt; res_nums; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				need[j] = max[j] - alloc[j];</span><br><span class="line">			&#125;</span><br><span class="line">			pcbs[i] = new Proc(name, max, alloc, need);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(&quot;---可用资源---：&quot;);</span><br><span class="line">		for (int j = 0; j &lt; res_nums; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			ava[j] = in.nextInt();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void algori()</span><br><span class="line">	&#123;</span><br><span class="line">		int safe_count = 0;</span><br><span class="line">		while(safe_count != pcb_nums)</span><br><span class="line">		&#123;</span><br><span class="line">			for (int i = 0; i &lt; pcb_nums; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				if (pcbs[i].finish_status == false) // 判断该pcb是否完成</span><br><span class="line">				&#123;</span><br><span class="line">					for (int j = 0; j &lt; res_nums; j++)</span><br><span class="line">					&#123;</span><br><span class="line">						int now_res = pcbs[i].getNeed_res()[j];</span><br><span class="line">						if (now_res &lt;= ava[j])</span><br><span class="line">						&#123;</span><br><span class="line">							pcbs[i].finish_status = true;</span><br><span class="line">						&#125;</span><br><span class="line">						else</span><br><span class="line">						&#123;</span><br><span class="line">							pcbs[i].finish_status = false;</span><br><span class="line">							break;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					if (pcbs[i].finish_status) // 如果该pcb可以完成，则完成后回收资源</span><br><span class="line">					&#123;</span><br><span class="line">						for (int j = 0; j &lt; res_nums; j++)</span><br><span class="line">						&#123;</span><br><span class="line">							ava[j] += pcbs[i].getNeed_res()[j];</span><br><span class="line">						&#125;</span><br><span class="line">						safe_seq[safe_count] = pcbs[i].getName();</span><br><span class="line">						safe_count++;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			for (int i = 0; i &lt; pcb_nums; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				if (pcbs[i].finish_status)</span><br><span class="line">				&#123;</span><br><span class="line">					safe_stauts = true;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				else</span><br><span class="line">				&#123;</span><br><span class="line">					safe_stauts = false;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (!safe_stauts) &#123;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (safe_stauts) &#123;</span><br><span class="line">			System.out.println(&quot;该系统安全，安全序列为：&quot;);</span><br><span class="line">			for (int i = 0; i &lt; pcb_nums; i++) &#123;</span><br><span class="line">				System.out.print(safe_seq[i]+&quot; &quot;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			System.out.println(&quot;该系统不安全&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void main(String[] args)</span><br><span class="line">	&#123;</span><br><span class="line">		BankRR test = new BankRR();</span><br><span class="line">		test.bank_init();</span><br><span class="line">		test.algori();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="运行示例"><a href="#运行示例" class="headerlink" title="运行示例"></a>运行示例</h2><p>进程样例如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/1.png" alt><br>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">一共有几个进程：</span><br><span class="line">5</span><br><span class="line">一共有几个资源</span><br><span class="line">3</span><br><span class="line">-----------------------</span><br><span class="line">输入第1个进程信息(名字-最大资源-拥有资源)</span><br><span class="line">名字：</span><br><span class="line">a</span><br><span class="line">最大资源：</span><br><span class="line">7 5 3</span><br><span class="line">拥有资源：</span><br><span class="line">0 1 0</span><br><span class="line">-----------------------</span><br><span class="line">输入第2个进程信息(名字-最大资源-拥有资源)</span><br><span class="line">名字：</span><br><span class="line">b</span><br><span class="line">最大资源：</span><br><span class="line">3 2 2</span><br><span class="line">拥有资源：</span><br><span class="line">2 0 0</span><br><span class="line">-----------------------</span><br><span class="line">输入第3个进程信息(名字-最大资源-拥有资源)</span><br><span class="line">名字：</span><br><span class="line">c</span><br><span class="line">最大资源：</span><br><span class="line">9 0 2</span><br><span class="line">拥有资源：</span><br><span class="line">3 0 2</span><br><span class="line">-----------------------</span><br><span class="line">输入第4个进程信息(名字-最大资源-拥有资源)</span><br><span class="line">名字：</span><br><span class="line">d</span><br><span class="line">最大资源：</span><br><span class="line">2 2 2</span><br><span class="line">拥有资源：</span><br><span class="line">2 1 1</span><br><span class="line">-----------------------</span><br><span class="line">输入第5个进程信息(名字-最大资源-拥有资源)</span><br><span class="line">名字：</span><br><span class="line">e</span><br><span class="line">最大资源：</span><br><span class="line">4 3 3</span><br><span class="line">拥有资源：</span><br><span class="line">0 0 2</span><br><span class="line">---可用资源---：</span><br><span class="line">3 3 2</span><br><span class="line">该系统安全，安全序列为：</span><br><span class="line">b d e a c</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>感谢你的支持，希望本文能助你一臂之力。</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechat.png" alt="SkecisAI 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Java/" rel="tag"># Java</a>
+            
+              <a href="/tags/进程死锁/" rel="tag"># 进程死锁</a>
+            
+              <a href="/tags/算法/" rel="tag"># 算法</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/08/python队列/" rel="next" title="用python实现链式队列">
+                  <i class="fa fa-chevron-left"></i> 用python实现链式队列
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#银行家算法中的数据结构"><span class="nav-number">2.</span> <span class="nav-text">银行家算法中的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#银行家算法"><span class="nav-number">3.</span> <span class="nav-text">银行家算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用Java实现银行家算法"><span class="nav-number">4.</span> <span class="nav-text">用Java实现银行家算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Proc-java"><span class="nav-number">4.1.</span> <span class="nav-text">Proc.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BankRR-java"><span class="nav-number">4.2.</span> <span class="nav-text">BankRR.java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行示例"><span class="nav-number">5.</span> <span class="nav-text">运行示例</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/head.jpg"
+      alt="SkecisAI">
+  <p class="site-author-name" itemprop="name">SkecisAI</p>
+  <div class="site-description" itemprop="description">IT技术分享，学习机器学习，深度学习等AI技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/SkecisAI" title="GitHub &rarr; https://github.com/SkecisAI" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:skecis@163.com" title="E-Mail &rarr; mailto:skecis@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SkecisAI</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">48k
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:28
+    </span>
+</div>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+    
+  
+  <script color='255,255,255' opacity='0' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+  <script pjax>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.1"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+
+  
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '6bcf9e51266c344a4ad2',
+      clientSecret: '7581236d30a3a81a524a2b840ed4ae7afda65941',
+      repo: 'skecisai.github.io',
+      owner: 'skecisai',
+      admin: ['skecis'],
+      id: 'cbccc538a8936458a11ad2dcb5a1c792',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+    </div>
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+  
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <script type="text/javascript" src="/js/src/social.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
