@@ -73,7 +73,7 @@
 <meta property="og:description" content="引言银行家算法是一种避免进程发生死锁的算法。 死锁的定义：如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)在死锁避免方法中，把系统的状态分为安全状态和不安全状态。安全状态和不安全状态：是指系统能按某种进程推进顺序\left ( P_{1},P_{2}, ...,P_{n}\right ) 为每个进程P_{i}分配其所需资源，直至满足">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/1.png">
-<meta property="og:updated_time" content="2019-11-08T08:57:28.634Z">
+<meta property="og:updated_time" content="2019-11-08T09:05:07.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="银行家算法(java实现)">
 <meta name="twitter:description" content="引言银行家算法是一种避免进程发生死锁的算法。 死锁的定义：如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)在死锁避免方法中，把系统的状态分为安全状态和不安全状态。安全状态和不安全状态：是指系统能按某种进程推进顺序\left ( P_{1},P_{2}, ...,P_{n}\right ) 为每个进程P_{i}分配其所需资源，直至满足">
@@ -299,7 +299,7 @@
                 
               
 
-              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：16:57:28" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：17:05:07" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
             </span>
           
             
@@ -363,7 +363,7 @@
 
       
         <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>银行家算法是一种避免进程发生<strong>死锁</strong>的算法。</p><blockquote>
-<p>死锁的定义：<br>如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)<br>在死锁避免方法中，把系统的状态分为<strong>安全状态</strong>和<strong>不安全状态</strong>。<br>安全状态和不安全状态：<br>是指系统能按某种进程推进顺序<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script> 为每个进程P_{i}分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。并称<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script>为安全序列。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
+<p>死锁的定义：<br>如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)<br>在死锁避免方法中，把系统的状态分为<strong>安全状态</strong>和<strong>不安全状态</strong>。<br>安全状态和不安全状态：<br>是指系统能按某种进程推进顺序<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script> 为每个进程<script type="math/tex">P_{i}</script>分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。并称<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script>为安全序列。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
 </blockquote><a id="more"></a>
 
 <h2 id="银行家算法中的数据结构"><a href="#银行家算法中的数据结构" class="headerlink" title="银行家算法中的数据结构"></a>银行家算法中的数据结构</h2><p>银行家算法中有四个数据结构：</p>
