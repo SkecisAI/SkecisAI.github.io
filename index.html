@@ -297,7 +297,7 @@
                 
               
 
-              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：16:51:46" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：16:57:28" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
             </span>
           
             
@@ -353,7 +353,7 @@
 
       
           <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>银行家算法是一种避免进程发生<strong>死锁</strong>的算法。</p><blockquote>
-<p>死锁的定义：<br>如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)<br>在死锁避免方法中，把系统的状态分为<strong>安全状态</strong>和<strong>不安全状态</strong>。<br>安全状态和不安全状态：<br>是指系统能按某种进程推进顺序<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script> 为每个进程P<em>{i}分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。并称$$\left ( P</em>{1},P<em>{2}, …,P</em>{n}\right )$$为安全序列。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
+<p>死锁的定义：<br>如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)<br>在死锁避免方法中，把系统的状态分为<strong>安全状态</strong>和<strong>不安全状态</strong>。<br>安全状态和不安全状态：<br>是指系统能按某种进程推进顺序<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script> 为每个进程P_{i}分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。并称<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script>为安全序列。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
 </blockquote>
           <!--noindex-->
           
@@ -1726,7 +1726,7 @@ window.addEventListener('pjax:success', () => {
   
     
       
-    
+        
       
     
       
@@ -1744,6 +1744,60 @@ window.addEventListener('pjax:success', () => {
       
     
       
+    
+      
+    
+  
+    
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
     
   
 
@@ -1759,6 +1813,23 @@ window.addEventListener('pjax:success', () => {
 
   
   <script type="text/javascript" src="/js/src/love.js"></script>
-  <script type="text/javascript" src="/js/src/social.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/social.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
