@@ -297,7 +297,7 @@
                 
               
 
-              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：16:43:31" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
+              <time title="创建时间：2019-11-08 14:45:02 / 修改时间：16:51:46" itemprop="dateCreated datePublished" datetime="2019-11-08T14:45:02+08:00">2019-11-08</time>
             </span>
           
             
@@ -354,39 +354,6 @@
       
           <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>银行家算法是一种避免进程发生<strong>死锁</strong>的算法。</p><blockquote>
 <p>死锁的定义：<br>如果一组进程中的每一个进程都在等待仅由该组进程中的其它进程才能引发的事件，那么改组进程是死锁的(Deadlock)<br>在死锁避免方法中，把系统的状态分为<strong>安全状态</strong>和<strong>不安全状态</strong>。<br>安全状态和不安全状态：<br>是指系统能按某种进程推进顺序<script type="math/tex">\left ( P_{1},P_{2}, ...,P_{n}\right )</script> 为每个进程P<em>{i}分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。并称$$\left ( P</em>{1},P<em>{2}, …,P</em>{n}\right )$$为安全序列。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
-<h2 id="银行家算法中的数据结构"><a href="#银行家算法中的数据结构" class="headerlink" title="银行家算法中的数据结构"></a>银行家算法中的数据结构</h2><p>银行家算法中有四个数据结构：</p>
-<ul>
-<li>最大需求向量(Max)：是一个长度为m的数组，它定义了系统中每个进程对第m类资源的最大需求</li>
-<li>已分配向量(Allocation)：是一个长度为m的数组，它定义了系统中每个进程对每一类资源分配给进程的资源数量。</li>
-<li>需求向量(Need)：是一个长度为m的数组，用以表示进程还需要的各类资源数量</li>
-<li>可利用资源向量(Available)：是一个长度为m的数组，其中每一个值代表可以当前可利用的资源数目。<br>上述数据中有这样的关系：Need = Max - Allocation<h2 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h2>史上最详细的步骤^_^</li>
-<li>【步骤一】创建进程数组PCB[n] (代表n个进程)</li>
-<li>【步骤二】输入并初始化每个进程PCB[i]的Max数组、Allocation数组</li>
-<li>【步骤三】利用Max数组和Allocation数组计算出Need数组</li>
-<li>【步骤四】输入Available数组</li>
-<li>【步骤五】为每个PCB添加完成状态变量Finish(0-未完成，1-完成)，得到Finish数组(全部初始化为0)</li>
-<li>【步骤六】初始化表示安全状态变量Safe_Status = 0(0-不安全，1-安全)</li>
-<li>【步骤七】循环进行资源分配：</li>
-<li>WHILE(SUM(Finish) &lt; n):</li>
-<li>Safe_Status = 0</li>
-<li>FOR i =  1 TO n</li>
-<li>IF PCB[i]中Need的每个值 &lt;= Avaliable的每个值 AND PCB[i].Finish == 0</li>
-<li>PCB[i].Finish = 1</li>
-<li>将该进程PCB[i]加入安全序列队列</li>
-<li>Available = Available + PCB[i].Need</li>
-<li>Safe_Status = 1</li>
-<li>END IF</li>
-<li>END FOR</li>
-<li>IF Safe_Status == 0</li>
-<li>BREAK</li>
-<li>END IF</li>
-<li>END WHILE</li>
-<li>【步骤八】判断系统是否安全：</li>
-<li>IF (SUM(Finish == n))</li>
-<li>该系统安全</li>
-<li>END IF</li>
-<li>【步骤九】输出安全序列队列</li>
-</ul>
 </blockquote>
           <!--noindex-->
           
