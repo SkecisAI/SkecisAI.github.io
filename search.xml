@@ -54,8 +54,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>算法</tag>
         <tag>内存分配</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -110,9 +110,9 @@
         <category>算法与数据结构</category>
       </categories>
       <tags>
+        <tag>算法</tag>
         <tag>Java</tag>
         <tag>进程死锁</tag>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
