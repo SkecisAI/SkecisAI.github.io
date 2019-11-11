@@ -76,7 +76,7 @@
 <meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/1_2.png">
 <meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/1_3.png">
 <meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/1_4.png">
-<meta property="og:updated_time" content="2019-11-10T14:01:32.500Z">
+<meta property="og:updated_time" content="2019-11-11T00:32:02.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统:存储管理算法(python实现)">
 <meta name="twitter:description" content="连续分配存储管理方式该分配方式为用户程序分配一个连续的内存空间，即程序中代码或数据的逻辑地址相邻，体现在内存空间分配是物理地址的相邻。连续分配方式可分为四类：">
@@ -302,11 +302,19 @@
                 
               
 
-              <time title="创建时间：2019-11-10 19:07:19 / 修改时间：22:01:32" itemprop="dateCreated datePublished" datetime="2019-11-10T19:07:19+08:00">2019-11-10</time>
+              <time title="创建时间：2019-11-10 19:07:19" itemprop="dateCreated datePublished" datetime="2019-11-10T19:07:19+08:00">2019-11-10</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-11 08:32:02" itemprop="dateModified" datetime="2019-11-11T08:32:02+08:00">2019-11-11</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -384,8 +392,8 @@
 <ul>
 <li>分配内存：系统利用某种<strong>分配算法</strong>，从空闲分区链中找到所需大小的分区。设请求的分区大小为apply.size，表中每个空闲分区的大小表示为part.size。若part.size - apply.size &lt;= min_size(min_size是事先规定的最小剩余)，说明多余的部分太小，可不分割，将整个分区分配个请求者。否则(即多余的部分超过min_size)，说明剩下了很多，便可从该分区中按请求的大小划分出一块内存空间出去，余下的部分仍留在空闲分区链(表)中。最后将分配区的 <strong>首址(address)</strong> 返回给调用者。流程如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/1_3.png" alt="分配内存"></li>
 <li>回收内存：当进程运行完毕释放内存时，系统根据回收区的首址，从空闲链(表)中找到相应的插入点，此时可能出现以下四种情况之一：  <ol>
-<li>回收区与插入点前一个空闲分区$F_{1}$相邻接。此时应将回收区与$F_{1}$合并。<strong>不必创建新表项</strong>，只需修改其前一分区$F_{1}$的大小。</li>
-<li>回收分区与插入点的后一空闲分区$F_{2}$相邻接。此时也将两分区合并。<strong>但回收区的首址作为新空闲区的首址</strong>。</li>
+<li>回收区与插入点前一个空闲分区<script type="math/tex">F_{1}</script>相邻接。此时应将回收区与<script type="math/tex">F_{1}</script>合并。<strong>不必创建新表项</strong>，只需修改其前一分区<script type="math/tex">F_{1}</script>的大小。</li>
+<li>回收分区与插入点的后一空闲分区<script type="math/tex">F_{2}</script>相邻接。此时也将两分区合并。<strong>但回收区的首址作为新空闲区的首址</strong>。</li>
 <li>回收区同时与插入点的前、后两个分区邻接。此时将三个分区合并，<strong>使用前一个分区的表项和首址，取消后一个分区的表项</strong>。</li>
 <li>回收区既与前后两个分区都不邻接。<strong>此时为回收区单独建立一个新表项</strong>，首址和大小分别为回收区的首址和大小。<br>内存回收的流程如下：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/1_4.png" alt="回收内存"></li>
 </ol>
