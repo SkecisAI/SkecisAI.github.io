@@ -64,22 +64,19 @@
     })();
 </script>
 
-  <meta name="description" content="线性链表概览单节点链表头指针和尾指针为同一节点，尾指针中的指针域为空(None)一般链表尾指针中的指针域为空(None)">
-<meta name="keywords" content="Python,链表">
+  <meta name="description" content="在介绍哈希表之前，先介绍一下查找表查找表(Search Table) 查找表是由同一类型的数据元素(或记录)构成的集合。由于“集合”中的数据元素之间存在着完全松散的关系，因此查找表是一种非常灵活的数据结构">
+<meta name="keywords" content="Python,数据结构,哈希表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用python实现线性链表">
-<meta property="og:url" content="http://www.skecis.top/2019/11/01/python链表/index.html">
+<meta property="og:title" content="数据结构--哈希表">
+<meta property="og:url" content="http://www.skecis.top/2019/11/14/哈希表/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="线性链表概览单节点链表头指针和尾指针为同一节点，尾指针中的指针域为空(None)一般链表尾指针中的指针域为空(None)">
+<meta property="og:description" content="在介绍哈希表之前，先介绍一下查找表查找表(Search Table) 查找表是由同一类型的数据元素(或记录)构成的集合。由于“集合”中的数据元素之间存在着完全松散的关系，因此查找表是一种非常灵活的数据结构">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/python%E9%93%BE%E8%A1%A8/1_1.png">
-<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/python%E9%93%BE%E8%A1%A8/1_2.png">
-<meta property="og:updated_time" content="2019-11-08T04:03:09.179Z">
+<meta property="og:updated_time" content="2019-11-14T10:30:55.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用python实现线性链表">
-<meta name="twitter:description" content="线性链表概览单节点链表头指针和尾指针为同一节点，尾指针中的指针域为空(None)一般链表尾指针中的指针域为空(None)">
-<meta name="twitter:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/python%E9%93%BE%E8%A1%A8/1_1.png">
-  <link rel="canonical" href="http://www.skecis.top/2019/11/01/python链表/">
+<meta name="twitter:title" content="数据结构--哈希表">
+<meta name="twitter:description" content="在介绍哈希表之前，先介绍一下查找表查找表(Search Table) 查找表是由同一类型的数据元素(或记录)构成的集合。由于“集合”中的数据元素之间存在着完全松散的关系，因此查找表是一种非常灵活的数据结构">
+  <link rel="canonical" href="http://www.skecis.top/2019/11/14/哈希表/">
 
 
 <script id="page-configurations">
@@ -93,7 +90,7 @@
   };
 </script>
 
-  <title>用python实现线性链表 | Mr. Liu's Blog</title>
+  <title>数据结构--哈希表 | Mr. Liu's Blog</title>
   
 
 
@@ -272,7 +269,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/11/01/python链表/">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/11/14/哈希表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SkecisAI">
@@ -284,7 +281,7 @@
       <meta itemprop="name" content="Mr. Liu's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">用python实现线性链表
+        <h1 class="post-title" itemprop="name headline">数据结构--哈希表
 
           
         </h1>
@@ -300,19 +297,11 @@
                 
               
 
-              <time title="创建时间：2019-11-01 18:48:26" itemprop="dateCreated datePublished" datetime="2019-11-01T18:48:26+08:00">2019-11-01</time>
+              <time title="创建时间：2019-11-14 09:45:14 / 修改时间：18:30:55" itemprop="dateCreated datePublished" datetime="2019-11-14T09:45:14+08:00">2019-11-14</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-08 12:03:09" itemprop="dateModified" datetime="2019-11-08T12:03:09+08:00">2019-11-08</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -346,7 +335,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.7k</span>
+              <span>3.8k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -371,38 +360,73 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="线性链表概览"><a href="#线性链表概览" class="headerlink" title="线性链表概览"></a>线性链表概览</h2><h3 id="单节点链表"><a href="#单节点链表" class="headerlink" title="单节点链表"></a>单节点链表</h3><p>头指针和尾指针为同一节点，<strong>尾指针中的指针域为空(None)</strong><br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/python%E9%93%BE%E8%A1%A8/1_1.png" alt></p><h3 id="一般链表"><a href="#一般链表" class="headerlink" title="一般链表"></a>一般链表</h3><p><strong>尾指针中的指针域为空(None)</strong><br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/python%E9%93%BE%E8%A1%A8/1_2.png" alt></p><a id="more"></a>
+        <p>在介绍哈希表之前，先介绍一下<strong>查找表</strong></p><h2 id="查找表-Search-Table"><a href="#查找表-Search-Table" class="headerlink" title="查找表(Search Table)"></a>查找表(Search Table)</h2><blockquote>
+<p>查找表是由同一类型的数据元素(或记录)构成的集合。由于“集合”中的数据元素之间存在着完全松散的关系，因此查找表是一种非常灵活的数据结构</p>
+</blockquote><a id="more"></a>
 
-<h2 id="链表基本数据结构"><a href="#链表基本数据结构" class="headerlink" title="链表基本数据结构"></a>链表基本数据结构</h2><h3 id="链表基本单元：节点-Node"><a href="#链表基本单元：节点-Node" class="headerlink" title="链表基本单元：节点(Node)"></a>链表基本单元：节点(Node)</h3><p>创建<code>Node</code>类</p>
+<h3 id="对表的操作"><a href="#对表的操作" class="headerlink" title="对表的操作"></a>对表的操作</h3><ol>
+<li>查询某个“特定的”的数据元素是否在查找表中。</li>
+<li>检索某个“特定的”数据元素的各种属性。</li>
+<li>在查找表中插入一个数据元素</li>
+<li>从查找表中删去某个元素。</li>
+</ol>
+<p>查找表根据其操作的不同又分为以下两种：</p>
 <ul>
-<li>值域</li>
-<li>指针域</li>
+<li>若对查找表只作前两种统称为“查找”的操作，则称此类查找表为<strong>静态查找表(Static Search Table)</strong>。</li>
+<li>若在查找过程中同时插入查找表中不存在的数据元素，或者从查找表中删除已存在的某个数据元素，则称此类表为<strong>动态查找表(Dynamic Search Table)</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    the basic element of a linked list</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self, val, pnext):</span><br><span class="line">        self.value = val</span><br><span class="line">        self.pnext = pnext</span><br></pre></td></tr></table></figure>
-<h3 id="链表类"><a href="#链表类" class="headerlink" title="链表类"></a>链表类</h3><p>创建<code>LinkedList</code>类</p>
+<h3 id="名词定义"><a href="#名词定义" class="headerlink" title="名词定义"></a>名词定义</h3><p>为了解释“特定的”，引入了<strong>关键字</strong>:</p>
+<blockquote>
+<p>关键字是数据元素(或记录)中某个数据项的值，用它可以标识一个数据元素(或记录)。</p>
+</blockquote>
+<p>接着定义<strong>查找</strong>:</p>
+<blockquote>
+<p>根据给定的某个值，在查找表中确定一个其关键字等于给定值的记录或数据元素。</p>
+</blockquote>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>查找的效率依赖于查找过程中所进行的比较次数。</p>
+<h3 id="哈希-Hash-函数"><a href="#哈希-Hash-函数" class="headerlink" title="哈希(Hash)函数"></a>哈希(Hash)函数</h3><blockquote>
+<p>理想的情况是希望不经过任何比较，一次存取便能得到所查记录，那就必须在记录的存储位置和它的关键字之间建立一个对应关系$f$，使每个关键字和结构中一个唯一的存储位置相对应。因而在查找时，只要根据这个对应关系$f$找到给定值$K$的像$f\left ( K \right )$。<strong>若结构中存在关键字和$K$相等的记录，则必定在$f\left ( K \right )$的存储位置上</strong>，由此，不需要进行比较便可直接取得所查记录。在此，我们称这个对应关系$f$为<strong>哈希函数</strong>，按这个思想建立的表为<strong>哈希表</strong>。</p>
+</blockquote>
+<h3 id="哈希函数的特征"><a href="#哈希函数的特征" class="headerlink" title="哈希函数的特征"></a>哈希函数的特征</h3><ol>
+<li>哈希函数是一个映像，因此哈希函数的设定很灵活，只要是的任何关键字由此所得的哈希函数值都落在表长允许的范围内即可。</li>
+<li>对不同的关键字可能得到同一哈希地址，即$key_{1}\neq key_{2}$，而$f\left ( key_{1} \right )= f\left ( key_{2} \right )$，这种现象称为<strong>冲突(collision)</strong>。</li>
+</ol>
+<h3 id="哈希表定义"><a href="#哈希表定义" class="headerlink" title="哈希表定义"></a>哈希表定义</h3><p>综上，可如下描述哈希表：</p>
+<blockquote>
+<p>根据设定的哈希函数$H\left ( key \right )$和处理冲突的方法将一组关键字映像到一个有限的连续的地址集上，并以关键字在地址集中的“像”作为记录在表中的存储位置，这种表便称为<strong>哈希表</strong>，这一映像过程称为哈希造表或<strong>散列</strong>，所得存储位置称<strong>哈希地址</strong>或<strong>散列地址</strong>。</p>
+</blockquote>
+<h2 id="哈希函数的构造方法"><a href="#哈希函数的构造方法" class="headerlink" title="哈希函数的构造方法"></a>哈希函数的构造方法</h2><p>若对于关键字集合中的任一个关键字，经哈希函数映像到地址集合中任何一个地址的概率是相等的，则称此类哈希函数为<strong>均匀的(Uniform)</strong>哈希函数。换句话说，就是使关键字经过哈希函数得到一个“随机的地址”，以便使一组关键字的哈希地址<strong>均匀分布</strong>在整个地址区间中，从而减少<strong>冲突</strong></p>
 <ul>
-<li>head: 头指针</li>
-<li>tail: 尾指针</li>
-<li>length: 链表长度</li>
+<li><strong>直接定址法</strong>：取关键字或关键字的某个线性函数值作为哈希地址。即：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class LinkedList:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    a linked list object</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.head = None</span><br><span class="line">        self.tail = self.head</span><br><span class="line">        self.length = 0</span><br></pre></td></tr></table></figure>
-<h2 id="链表操作函数"><a href="#链表操作函数" class="headerlink" title="链表操作函数"></a>链表操作函数</h2><p><code>self</code>参数为对象本身，类似于C++中的<code>this</code>指针</p>
-<h3 id="向链表中插入节点"><a href="#向链表中插入节点" class="headerlink" title="向链表中插入节点"></a>向链表中插入节点</h3><p>创建<code>insert_value</code>函数</p>
+<script type="math/tex; mode=display">H\left ( key \right )= key</script><script type="math/tex; mode=display">H\left ( key \right )= a\cdot key+b</script><ul>
+<li><strong>数字分析法</strong>：假设关键字是以$r$为基的数(如：以10为基的十进制数)，并且哈希表中可能出现的关键字都是事先知道的，则可以取关键字的若干数位组成哈希地址。</li>
+<li><strong>平方取中法</strong>：取关键字平方后的中间几位为哈希地址。</li>
+<li><strong>折叠法</strong>：将关键字分割成位数相同的几部分，然后取这几部分的叠加和作为哈希地址。</li>
+<li><strong>除留余数法</strong>：取关键字被某个不大于哈希表表长$m$的数$p$除后所得的余数为哈希地址。即:</li>
+</ul>
+<script type="math/tex; mode=display">H\left ( key \right )= key\left ( MOD \right )p, p\leq m</script><h2 id="处理冲突-collision"><a href="#处理冲突-collision" class="headerlink" title="处理冲突(collision)"></a>处理冲突(collision)</h2><p>上文提到的均匀的哈希函数可以减少冲突，但不能避免，因此如何处理冲突时哈希造表不可缺少的另一方面。通常用的处理方法如下：</p>
 <ul>
-<li>val: 节点值域</li>
-<li>loc: 节点位置，默认为None</li>
+<li><strong>开放地址法</strong><script type="math/tex; mode=display">H_{i}=\left ( H\left ( key \right )+d_{i} \right )MOD\left ( m \right ),i=1,2,...,k\left ( k\leq m-1 \right )</script>其中：$H\left ( key \right )$为哈希函数；$m$为哈希表表长；$d_{i}$为增量序列，有下列三种取法：<ol>
+<li>$d_{i}=1,2,3,…,m-1$称线性探测再散列；</li>
+<li>$d_{i}=1^{2},-1^{2},2^{2},-2^{2},3^{2},…,\pm k^{2},\left (k\leq m/2 \right)$称二次探测再散列；</li>
+<li>$d_{i}=伪随机数序列$，称伪随机探测再散列。</li>
+</ol>
+</li>
+<li><strong>再哈希法</strong><script type="math/tex; mode=display">H_{i}=RH_{i}\left (key \right), i=1,2,...,k</script>$RH_{i}$均是不同的哈希函数，即在同义词产生地址冲突时计算另一个哈希函数地址，直到冲突不在发生。这种方法不易产生“聚集”，但增加了计算的时间。</li>
+<li><strong>链地址法</strong><br>将所有关键字为同义词的记录存储在同一线性链表中。假设某哈希函数产生的哈希地址在区间$\left [ 0,m-1 \right ]$上，则设立一个指针型向量<script type="math/tex; mode=display">ChainHash\left [m \right]</script>其每个分量的初始状态都是空指针。凡哈希地址为$i$的记录都插入到头指针为$ChainHash\left [i \right]$的链表中。在链表中的插入位置可以在表头或表尾；也可在中间，以保持同义词在同一线性链表中按关键字有序。</li>
+<li><strong>建立公共溢出区</strong><br>假设哈希函数的值域为$\left [0,m-1 \right]$，则设向量$HashTable\left [0..m-1 \right]$为基本表，每个分量存放一个记录，另设立向量$OverTable\left [0..v \right]$为溢出表。所有关键字和基本表中关键字为同义词的记录，不管它们由哈希函数得到的哈希地址是什么，一旦发生冲突，都填入溢出表。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">def insert_value(self, val, loc=None):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    insert node to the list</span><br><span class="line">    :param val: insert value</span><br><span class="line">    :param loc: insert with index</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if self.list_empty():</span><br><span class="line">        # if the list is empty</span><br><span class="line">        self.head = Node(val, None)</span><br><span class="line">        self.tail = self.head</span><br><span class="line">        self.length = 1</span><br><span class="line">    else:</span><br><span class="line">        if (not loc) | (loc == self.length):</span><br><span class="line">            # if insert element without location or at the tail</span><br><span class="line">            new_node = Node(val, None)</span><br><span class="line">            self.tail.pnext = new_node</span><br><span class="line">            self.tail = new_node</span><br><span class="line">            self.length += 1</span><br><span class="line">        else:</span><br><span class="line">            new_node = Node(val, None)</span><br><span class="line">            last_node = self.head</span><br><span class="line">            for index in range(self.length):</span><br><span class="line">                if index == (loc - 1) - 1:</span><br><span class="line">                    break</span><br><span class="line">                else:</span><br><span class="line">                    last_node = last_node.pnext</span><br><span class="line">            next_node = last_node.pnext</span><br><span class="line">            last_node.pnext = new_node</span><br><span class="line">            new_node.pnext = next_node</span><br><span class="line">            self.length += 1</span><br></pre></td></tr></table></figure>
-<h3 id="删除链表中的节点"><a href="#删除链表中的节点" class="headerlink" title="删除链表中的节点"></a>删除链表中的节点</h3><p>创建<code>delete_value</code>函数</p>
-<ul>
-<li>loc: 删除的节点位置</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def delete_value(self, loc=None):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    delete value from list</span><br><span class="line">    :param loc: the location of list</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if not self.list_empty():</span><br><span class="line">        if loc:</span><br><span class="line">            last_node = self.head</span><br><span class="line">            for index in range(self.length):</span><br><span class="line">                if index == (loc - 1) - 1:</span><br><span class="line">                    break</span><br><span class="line">                else:</span><br><span class="line">                    last_node = last_node.pnext</span><br><span class="line">            next_node = last_node.pnext.pnext</span><br><span class="line">            last_node.pnext = next_node</span><br><span class="line">        else:</span><br><span class="line">            now_node = self.head</span><br><span class="line">            while now_node:</span><br><span class="line">                if now_node.pnext.pnext is None:</span><br><span class="line">                    now_node.pnext = None</span><br><span class="line">                    break</span><br><span class="line">                else:</span><br><span class="line">                    now_node = now_node.pnext</span><br><span class="line">        self.length -= 1</span><br></pre></td></tr></table></figure>
-<h3 id="判断链表是否为空"><a href="#判断链表是否为空" class="headerlink" title="判断链表是否为空"></a>判断链表是否为空</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def list_empty(self):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if the list is empty</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if self.head is None:</span><br><span class="line">        return True</span><br><span class="line">    else:</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
-<h3 id="打印链表内容"><a href="#打印链表内容" class="headerlink" title="打印链表内容"></a>打印链表内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def list_traverse(self):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    visit all elements of the list</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if not self.list_empty():</span><br><span class="line">        now_node = self.head</span><br><span class="line">        print(&apos;-&apos;*15)</span><br><span class="line">        while now_node:</span><br><span class="line">            print(&quot;value: &quot;, now_node.value)</span><br><span class="line">            now_node = now_node.pnext</span><br></pre></td></tr></table></figure>
-<h2 id="测试案例"><a href="#测试案例" class="headerlink" title="测试案例"></a>测试案例</h2><p>创建程序入口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    my_linkedlist = LinkedList()</span><br><span class="line">    for i in range(5):</span><br><span class="line">        my_linkedlist.insert_value(i)</span><br><span class="line">    my_linkedlist.list_traverse()</span><br><span class="line">    my_linkedlist.insert_value([&apos;this&apos;, &apos;is&apos;, &apos;a&apos;, &apos;list&apos;], 3)</span><br><span class="line">    my_linkedlist.list_traverse()</span><br><span class="line">    my_linkedlist.delete_value(2)</span><br><span class="line">    my_linkedlist.list_traverse()</span><br></pre></td></tr></table></figure></p>
-<p>运行结果如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">---------------</span><br><span class="line">value:  0</span><br><span class="line">value:  1</span><br><span class="line">value:  2</span><br><span class="line">value:  3</span><br><span class="line">value:  4</span><br><span class="line">---------------</span><br><span class="line">value:  0</span><br><span class="line">value:  1</span><br><span class="line">value:  [&apos;this&apos;, &apos;is&apos;, &apos;a&apos;, &apos;list&apos;]</span><br><span class="line">value:  2</span><br><span class="line">value:  3</span><br><span class="line">value:  4</span><br><span class="line">---------------</span><br><span class="line">value:  0</span><br><span class="line">value:  [&apos;this&apos;, &apos;is&apos;, &apos;a&apos;, &apos;list&apos;]</span><br><span class="line">value:  2</span><br><span class="line">value:  3</span><br><span class="line">value:  4</span><br></pre></td></tr></table></figure></p>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="https://github.com/SkecisAI/python-DS/blob/master/linked_list.py" target="_blank" rel="noopener">点击此处访问</a></p>
+<h2 id="哈希表应用算法案例"><a href="#哈希表应用算法案例" class="headerlink" title="哈希表应用算法案例"></a>哈希表应用算法案例</h2><h3 id="两数之和-2-Sum"><a href="#两数之和-2-Sum" class="headerlink" title="两数之和(2 Sum)"></a>两数之和(2 Sum)</h3><p><strong>问题描述</strong>：</p>
+<blockquote>
+<p>输入一个数组<code>nums</code>和一个数<code>target</code>，返回数组<code>nums</code>中两个数的和为<code>target</code>的这两个数的下标(index),下标从1开始。例子：<br><code>nums = [2, 7, 11, 15]</code>, <code>target = [9]</code><br>返回<code>[1, 2]</code></p>
+</blockquote>
+<p><strong>问题分析</strong>：<br>有两个输入：<code>nums</code>和<code>target</code>，一个输出：<code>两个下标</code>，目的是找到两个数之和等于<code>target</code>。显而易见的一种方法是写两个for循环嵌套：外部循环从数组的第一个元素开始向后遍历作为第一个数<code>nums[i]</code>，内部循环从第一个数的下一个数<code>nums[i+1]</code>开始向后遍历，判断两个数之和是否等于<code>target</code>，找到后返回两个下标即可。不过这样做有明显的缺点：两个循环的算法时间复杂度为$O\left (n*(n-1)\right)$，那么如果<code>nums</code>中有9个元素，最多会遍历9x8=72次，对于更大的<code>nums</code>遍历次数将更多。所以我们来“算算”怎么简化算法。</p>
+<p><strong>解决方案</strong>：<br>我们设找到的两个数中第一个为$x_{i}$，第二个数为$x_{j}$，进行运算：</p>
+<script type="math/tex; mode=display">x_{i}+x_{j}=target\tag{1}</script><script type="math/tex; mode=display">x_{j}=target-x_{i}\tag{2}</script><p>进行上述的运算后可以发现等式(1)中的左边部分有两个未知数，而等式右边只有一个未知数，于是我们可以得到一个下标$i$到$j$的映射：$f\left (i\right)=j$，从而我们可以利用等式(2)来重新构造我们的for循环，即使用一次for循环。<br><strong>程序实现</strong>：<br>用python来实现这个算法，其中python中的字典可以作为很好的哈希映射。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two_num</span><span class="params">(nums, target)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    solve the problem 2 sum</span></span><br><span class="line"><span class="string">    :param nums: the set of some numbers</span></span><br><span class="line"><span class="string">    :param target: the sum of two numbers</span></span><br><span class="line"><span class="string">    :return: the index of two numbers</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    hash_map = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> ind, val <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">        <span class="keyword">if</span> (target - val) <span class="keyword">in</span> hash_map:</span><br><span class="line">            <span class="keyword">return</span> hash_map[target - val]+<span class="number">1</span>, ind+<span class="number">1</span></span><br><span class="line">        hash_map[val] = ind</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = two_num([<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], <span class="number">9</span>)</span><br><span class="line">print(ans)</span><br></pre></td></tr></table></figure>
+<p>输出：<code>(1, 2)</code><br><strong>代码分析</strong>：<br>分析代码可知，首先创建一个空的字典，该字典用来实现哈希映射，接着我们对数组的每一个元素进行迭代，获取元素的下标和元素值，接着进行判断：如果另一个元素在字典中，则返回另一个元素在字典中的值和当前元素的下标。<br>否则，更新字典，把元素作为字典的键（这样就不必担心重复的元素），把元素的下标作为值，然后继续循环。回过头来可以发现我们最终返回的就是两个数的下标值。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>由上述案例可知哈希思想作为数据结构的应用带来的算法效能提升，在平时的算法编写中应考虑到时间和空间上的条件，利用数据结构的知识来不断优化算法。</p>
 
     </div>
 
@@ -437,7 +461,9 @@
             
               <a href="/tags/Python/" rel="tag"># Python</a>
             
-              <a href="/tags/链表/" rel="tag"># 链表</a>
+              <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+            
+              <a href="/tags/哈希表/" rel="tag"># 哈希表</a>
             
           </div>
         
@@ -447,8 +473,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/10/24/CFPS数据分析案例/" rel="next" title="CFPS数据分析案例">
-                  <i class="fa fa-chevron-left"></i> CFPS数据分析案例
+                <a href="/2019/11/10/memory-alloc/" rel="next" title="操作系统:存储管理算法(python实现)">
+                  <i class="fa fa-chevron-left"></i> 操作系统:存储管理算法(python实现)
                 </a>
               
             </div>
@@ -456,10 +482,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/02/python爬虫教程/" rel="prev" title="python爬虫实践:下载壁纸">
-                  python爬虫实践:下载壁纸 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -508,7 +530,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性链表概览"><span class="nav-number">1.</span> <span class="nav-text">线性链表概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单节点链表"><span class="nav-number">1.1.</span> <span class="nav-text">单节点链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般链表"><span class="nav-number">1.2.</span> <span class="nav-text">一般链表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表基本数据结构"><span class="nav-number">2.</span> <span class="nav-text">链表基本数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链表基本单元：节点-Node"><span class="nav-number">2.1.</span> <span class="nav-text">链表基本单元：节点(Node)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链表类"><span class="nav-number">2.2.</span> <span class="nav-text">链表类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表操作函数"><span class="nav-number">3.</span> <span class="nav-text">链表操作函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向链表中插入节点"><span class="nav-number">3.1.</span> <span class="nav-text">向链表中插入节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除链表中的节点"><span class="nav-number">3.2.</span> <span class="nav-text">删除链表中的节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断链表是否为空"><span class="nav-number">3.3.</span> <span class="nav-text">判断链表是否为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打印链表内容"><span class="nav-number">3.4.</span> <span class="nav-text">打印链表内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试案例"><span class="nav-number">4.</span> <span class="nav-text">测试案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">5.</span> <span class="nav-text">源码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找表-Search-Table"><span class="nav-number">1.</span> <span class="nav-text">查找表(Search Table)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对表的操作"><span class="nav-number">1.1.</span> <span class="nav-text">对表的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名词定义"><span class="nav-number">1.2.</span> <span class="nav-text">名词定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表"><span class="nav-number">2.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希-Hash-函数"><span class="nav-number">2.1.</span> <span class="nav-text">哈希(Hash)函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希函数的特征"><span class="nav-number">2.2.</span> <span class="nav-text">哈希函数的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希表定义"><span class="nav-number">2.3.</span> <span class="nav-text">哈希表定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希函数的构造方法"><span class="nav-number">3.</span> <span class="nav-text">哈希函数的构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理冲突-collision"><span class="nav-number">4.</span> <span class="nav-text">处理冲突(collision)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表应用算法案例"><span class="nav-number">5.</span> <span class="nav-text">哈希表应用算法案例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两数之和-2-Sum"><span class="nav-number">5.1.</span> <span class="nav-text">两数之和(2 Sum)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -770,6 +792,58 @@ window.addEventListener('pjax:success', () => {
   
 
   
+    
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
 
   
 
@@ -785,7 +859,7 @@ window.addEventListener('pjax:success', () => {
       repo: 'skecisai.github.io',
       owner: 'skecisai',
       admin: ['skecis'],
-      id: '24c9e7036f030ee542014b61ba826dda',
+      id: 'e46daef9e218315dc2d5dad922a7f28b',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'

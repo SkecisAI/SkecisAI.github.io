@@ -1,6 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数据结构--哈希表</title>
+    <url>/2019/11/14/%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
+    <content><![CDATA[<p>在介绍哈希表之前，先介绍一下<strong>查找表</strong></p><h2 id="查找表-Search-Table"><a href="#查找表-Search-Table" class="headerlink" title="查找表(Search Table)"></a>查找表(Search Table)</h2><blockquote>
+<p>查找表是由同一类型的数据元素(或记录)构成的集合。由于“集合”中的数据元素之间存在着完全松散的关系，因此查找表是一种非常灵活的数据结构</p>
+</blockquote><a id="more"></a>
+
+<h3 id="对表的操作"><a href="#对表的操作" class="headerlink" title="对表的操作"></a>对表的操作</h3><ol>
+<li>查询某个“特定的”的数据元素是否在查找表中。</li>
+<li>检索某个“特定的”数据元素的各种属性。</li>
+<li>在查找表中插入一个数据元素</li>
+<li>从查找表中删去某个元素。</li>
+</ol>
+<p>查找表根据其操作的不同又分为以下两种：</p>
+<ul>
+<li>若对查找表只作前两种统称为“查找”的操作，则称此类查找表为<strong>静态查找表(Static Search Table)</strong>。</li>
+<li>若在查找过程中同时插入查找表中不存在的数据元素，或者从查找表中删除已存在的某个数据元素，则称此类表为<strong>动态查找表(Dynamic Search Table)</strong></li>
+</ul>
+<h3 id="名词定义"><a href="#名词定义" class="headerlink" title="名词定义"></a>名词定义</h3><p>为了解释“特定的”，引入了<strong>关键字</strong>:</p>
+<blockquote>
+<p>关键字是数据元素(或记录)中某个数据项的值，用它可以标识一个数据元素(或记录)。</p>
+</blockquote>
+<p>接着定义<strong>查找</strong>:</p>
+<blockquote>
+<p>根据给定的某个值，在查找表中确定一个其关键字等于给定值的记录或数据元素。</p>
+</blockquote>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>查找的效率依赖于查找过程中所进行的比较次数。</p>
+<h3 id="哈希-Hash-函数"><a href="#哈希-Hash-函数" class="headerlink" title="哈希(Hash)函数"></a>哈希(Hash)函数</h3><blockquote>
+<p>理想的情况是希望不经过任何比较，一次存取便能得到所查记录，那就必须在记录的存储位置和它的关键字之间建立一个对应关系$f$，使每个关键字和结构中一个唯一的存储位置相对应。因而在查找时，只要根据这个对应关系$f$找到给定值$K$的像$f\left ( K \right )$。<strong>若结构中存在关键字和$K$相等的记录，则必定在$f\left ( K \right )$的存储位置上</strong>，由此，不需要进行比较便可直接取得所查记录。在此，我们称这个对应关系$f$为<strong>哈希函数</strong>，按这个思想建立的表为<strong>哈希表</strong>。</p>
+</blockquote>
+<h3 id="哈希函数的特征"><a href="#哈希函数的特征" class="headerlink" title="哈希函数的特征"></a>哈希函数的特征</h3><ol>
+<li>哈希函数是一个映像，因此哈希函数的设定很灵活，只要是的任何关键字由此所得的哈希函数值都落在表长允许的范围内即可。</li>
+<li>对不同的关键字可能得到同一哈希地址，即$key_{1}\neq key_{2}$，而$f\left ( key_{1} \right )= f\left ( key_{2} \right )$，这种现象称为<strong>冲突(collision)</strong>。</li>
+</ol>
+<h3 id="哈希表定义"><a href="#哈希表定义" class="headerlink" title="哈希表定义"></a>哈希表定义</h3><p>综上，可如下描述哈希表：</p>
+<blockquote>
+<p>根据设定的哈希函数$H\left ( key \right )$和处理冲突的方法将一组关键字映像到一个有限的连续的地址集上，并以关键字在地址集中的“像”作为记录在表中的存储位置，这种表便称为<strong>哈希表</strong>，这一映像过程称为哈希造表或<strong>散列</strong>，所得存储位置称<strong>哈希地址</strong>或<strong>散列地址</strong>。</p>
+</blockquote>
+<h2 id="哈希函数的构造方法"><a href="#哈希函数的构造方法" class="headerlink" title="哈希函数的构造方法"></a>哈希函数的构造方法</h2><p>若对于关键字集合中的任一个关键字，经哈希函数映像到地址集合中任何一个地址的概率是相等的，则称此类哈希函数为<strong>均匀的(Uniform)</strong>哈希函数。换句话说，就是使关键字经过哈希函数得到一个“随机的地址”，以便使一组关键字的哈希地址<strong>均匀分布</strong>在整个地址区间中，从而减少<strong>冲突</strong></p>
+<ul>
+<li><strong>直接定址法</strong>：取关键字或关键字的某个线性函数值作为哈希地址。即：</li>
+</ul>
+<script type="math/tex; mode=display">H\left ( key \right )= key</script><script type="math/tex; mode=display">H\left ( key \right )= a\cdot key+b</script><ul>
+<li><strong>数字分析法</strong>：假设关键字是以$r$为基的数(如：以10为基的十进制数)，并且哈希表中可能出现的关键字都是事先知道的，则可以取关键字的若干数位组成哈希地址。</li>
+<li><strong>平方取中法</strong>：取关键字平方后的中间几位为哈希地址。</li>
+<li><strong>折叠法</strong>：将关键字分割成位数相同的几部分，然后取这几部分的叠加和作为哈希地址。</li>
+<li><strong>除留余数法</strong>：取关键字被某个不大于哈希表表长$m$的数$p$除后所得的余数为哈希地址。即:</li>
+</ul>
+<script type="math/tex; mode=display">H\left ( key \right )= key\left ( MOD \right )p, p\leq m</script><h2 id="处理冲突-collision"><a href="#处理冲突-collision" class="headerlink" title="处理冲突(collision)"></a>处理冲突(collision)</h2><p>上文提到的均匀的哈希函数可以减少冲突，但不能避免，因此如何处理冲突时哈希造表不可缺少的另一方面。通常用的处理方法如下：</p>
+<ul>
+<li><strong>开放地址法</strong><script type="math/tex; mode=display">H_{i}=\left ( H\left ( key \right )+d_{i} \right )MOD\left ( m \right ),i=1,2,...,k\left ( k\leq m-1 \right )</script>其中：$H\left ( key \right )$为哈希函数；$m$为哈希表表长；$d_{i}$为增量序列，有下列三种取法：<ol>
+<li>$d_{i}=1,2,3,…,m-1$称线性探测再散列；</li>
+<li>$d_{i}=1^{2},-1^{2},2^{2},-2^{2},3^{2},…,\pm k^{2},\left (k\leq m/2 \right)$称二次探测再散列；</li>
+<li>$d_{i}=伪随机数序列$，称伪随机探测再散列。</li>
+</ol>
+</li>
+<li><strong>再哈希法</strong><script type="math/tex; mode=display">H_{i}=RH_{i}\left (key \right), i=1,2,...,k</script>$RH_{i}$均是不同的哈希函数，即在同义词产生地址冲突时计算另一个哈希函数地址，直到冲突不在发生。这种方法不易产生“聚集”，但增加了计算的时间。</li>
+<li><strong>链地址法</strong><br>将所有关键字为同义词的记录存储在同一线性链表中。假设某哈希函数产生的哈希地址在区间$\left [ 0,m-1 \right ]$上，则设立一个指针型向量<script type="math/tex; mode=display">ChainHash\left [m \right]</script>其每个分量的初始状态都是空指针。凡哈希地址为$i$的记录都插入到头指针为$ChainHash\left [i \right]$的链表中。在链表中的插入位置可以在表头或表尾；也可在中间，以保持同义词在同一线性链表中按关键字有序。</li>
+<li><strong>建立公共溢出区</strong><br>假设哈希函数的值域为$\left [0,m-1 \right]$，则设向量$HashTable\left [0..m-1 \right]$为基本表，每个分量存放一个记录，另设立向量$OverTable\left [0..v \right]$为溢出表。所有关键字和基本表中关键字为同义词的记录，不管它们由哈希函数得到的哈希地址是什么，一旦发生冲突，都填入溢出表。</li>
+</ul>
+<h2 id="哈希表应用算法案例"><a href="#哈希表应用算法案例" class="headerlink" title="哈希表应用算法案例"></a>哈希表应用算法案例</h2><h3 id="两数之和-2-Sum"><a href="#两数之和-2-Sum" class="headerlink" title="两数之和(2 Sum)"></a>两数之和(2 Sum)</h3><p><strong>问题描述</strong>：</p>
+<blockquote>
+<p>输入一个数组<code>nums</code>和一个数<code>target</code>，返回数组<code>nums</code>中两个数的和为<code>target</code>的这两个数的下标(index),下标从1开始。例子：<br><code>nums = [2, 7, 11, 15]</code>, <code>target = [9]</code><br>返回<code>[1, 2]</code></p>
+</blockquote>
+<p><strong>问题分析</strong>：<br>有两个输入：<code>nums</code>和<code>target</code>，一个输出：<code>两个下标</code>，目的是找到两个数之和等于<code>target</code>。显而易见的一种方法是写两个for循环嵌套：外部循环从数组的第一个元素开始向后遍历作为第一个数<code>nums[i]</code>，内部循环从第一个数的下一个数<code>nums[i+1]</code>开始向后遍历，判断两个数之和是否等于<code>target</code>，找到后返回两个下标即可。不过这样做有明显的缺点：两个循环的算法时间复杂度为$O\left (n*(n-1)\right)$，那么如果<code>nums</code>中有9个元素，最多会遍历9x8=72次，对于更大的<code>nums</code>遍历次数将更多。所以我们来“算算”怎么简化算法。</p>
+<p><strong>解决方案</strong>：<br>我们设找到的两个数中第一个为$x_{i}$，第二个数为$x_{j}$，进行运算：</p>
+<script type="math/tex; mode=display">x_{i}+x_{j}=target\tag{1}</script><script type="math/tex; mode=display">x_{j}=target-x_{i}\tag{2}</script><p>进行上述的运算后可以发现等式(1)中的左边部分有两个未知数，而等式右边只有一个未知数，于是我们可以得到一个下标$i$到$j$的映射：$f\left (i\right)=j$，从而我们可以利用等式(2)来重新构造我们的for循环，即使用一次for循环。<br><strong>程序实现</strong>：<br>用python来实现这个算法，其中python中的字典可以作为很好的哈希映射。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two_num</span><span class="params">(nums, target)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    solve the problem 2 sum</span></span><br><span class="line"><span class="string">    :param nums: the set of some numbers</span></span><br><span class="line"><span class="string">    :param target: the sum of two numbers</span></span><br><span class="line"><span class="string">    :return: the index of two numbers</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    hash_map = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> ind, val <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">        <span class="keyword">if</span> (target - val) <span class="keyword">in</span> hash_map:</span><br><span class="line">            <span class="keyword">return</span> hash_map[target - val]+<span class="number">1</span>, ind+<span class="number">1</span></span><br><span class="line">        hash_map[val] = ind</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = two_num([<span class="number">2</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>], <span class="number">9</span>)</span><br><span class="line">print(ans)</span><br></pre></td></tr></table></figure>
+<p>输出：<code>(1, 2)</code><br><strong>代码分析</strong>：<br>分析代码可知，首先创建一个空的字典，该字典用来实现哈希映射，接着我们对数组的每一个元素进行迭代，获取元素的下标和元素值，接着进行判断：如果另一个元素在字典中，则返回另一个元素在字典中的值和当前元素的下标。<br>否则，更新字典，把元素作为字典的键（这样就不必担心重复的元素），把元素的下标作为值，然后继续循环。回过头来可以发现我们最终返回的就是两个数的下标值。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>由上述案例可知哈希思想作为数据结构的应用带来的算法效能提升，在平时的算法编写中应考虑到时间和空间上的条件，利用数据结构的知识来不断优化算法。</p>
+]]></content>
+      <categories>
+        <category>算法与数据结构</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>数据结构</tag>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>操作系统:存储管理算法(python实现)</title>
     <url>/2019/11/10/memory-alloc/</url>
     <content><![CDATA[<h2 id="连续分配存储管理方式"><a href="#连续分配存储管理方式" class="headerlink" title="连续分配存储管理方式"></a>连续分配存储管理方式</h2><p>该分配方式为用户程序分配一个连续的内存空间，即程序中代码或数据的逻辑地址<strong>相邻</strong>，体现在内存空间分配是物理地址的<strong>相邻</strong>。连续分配方式可分为四类：</p><a id="more"></a>
@@ -54,8 +134,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>内存分配</tag>
         <tag>算法</tag>
+        <tag>内存分配</tag>
       </tags>
   </entry>
   <entry>
@@ -110,9 +190,9 @@
         <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Java</tag>
         <tag>进程死锁</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
