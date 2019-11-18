@@ -1,5 +1,5 @@
+http://www.skecis.top/2019/11/18/二叉查找树/
 http://www.skecis.top/2019/11/18/knn算法/
 http://www.skecis.top/2019/11/14/哈希表/
 http://www.skecis.top/2019/11/10/memory-alloc/
 http://www.skecis.top/2019/11/08/银行家算法/
-http://www.skecis.top/2019/11/08/python队列/
