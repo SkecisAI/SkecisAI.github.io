@@ -64,19 +64,19 @@
     })();
 </script>
 
-  <meta name="description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。改算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
+  <meta name="description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
 <meta name="keywords" content="机器学习,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KNN算法-python实现">
 <meta property="og:url" content="http://www.skecis.top/2019/11/18/knn算法/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。改算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
+<meta property="og:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png">
-<meta property="og:updated_time" content="2019-11-18T08:57:07.604Z">
+<meta property="og:updated_time" content="2019-11-18T09:00:40.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KNN算法-python实现">
-<meta name="twitter:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。改算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
+<meta name="twitter:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
 <meta name="twitter:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png">
   <link rel="canonical" href="http://www.skecis.top/2019/11/18/knn算法/">
 
@@ -299,7 +299,7 @@
                 
               
 
-              <time title="创建时间：2019-11-18 15:47:21 / 修改时间：16:57:07" itemprop="dateCreated datePublished" datetime="2019-11-18T15:47:21+08:00">2019-11-18</time>
+              <time title="创建时间：2019-11-18 15:47:21 / 修改时间：17:00:40" itemprop="dateCreated datePublished" datetime="2019-11-18T15:47:21+08:00">2019-11-18</time>
             </span>
           
             
@@ -362,7 +362,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="$k$近邻算法"></a>$k$近邻算法</h2><p>$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。改算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png" alt="knn示例"><br>可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本思路可知，未知样本应标记为<strong>红色</strong>。</p><a id="more"></a>
+        <h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="$k$近邻算法"></a>$k$近邻算法</h2><p>$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png" alt="knn示例"><br>可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本思路可知，未知样本应标记为<strong>红色</strong>。</p><a id="more"></a>
 <h2 id="距离的度量"><a href="#距离的度量" class="headerlink" title="距离的度量"></a>距离的度量</h2><p>$x$和$y$分别为两个样本，$n$为特征总数。一般用到的是以下两种距离：</p>
 <ul>
 <li><strong>欧式距离</strong>：<script type="math/tex; mode=display">d\left ( x,y \right )=\sqrt{\sum_{k=1}^{n}\left ( x_{k}-y_{k} \right )^{2}}</script></li>
