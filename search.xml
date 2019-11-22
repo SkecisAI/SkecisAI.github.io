@@ -4,14 +4,14 @@
     <title>排序之道</title>
     <url>/2019/11/22/python%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>本文使用python实现了一些常用的排序方法。文章结构如下如下：</p><ol>
-<li><a href="###直接插入排序">直接插入排序</a></li>
-<li><a href="###希尔排序">希尔排序</a></li>
-<li><a href="###冒泡排序">冒泡排序</a></li>
-<li><a href="###快速排序">快速排序</a></li>
-<li><a href="###简单选择排序">简单选择排序</a></li>
-<li><a href="###堆排序">堆排序</a></li>
-<li><a href="###归并排序">归并排序</a></li>
-<li><a href="###基数排序">基数排序</a>)</li>
+<li><a href="#直接插入排序">直接插入排序</a></li>
+<li><a href="#希尔排序">希尔排序</a></li>
+<li><a href="#冒泡排序">冒泡排序</a></li>
+<li><a href="#快速排序">快速排序</a></li>
+<li><a href="#简单选择排序">简单选择排序</a></li>
+<li><a href="#堆排序">堆排序</a></li>
+<li><a href="#归并排序">归并排序</a></li>
+<li><a href="#基数排序">基数排序</a>)</li>
 </ol><a id="more"></a>
 
 <p><strong>上述所有的排序均写在一个python自定义类中，作为成员函数。</strong></p>
@@ -295,8 +295,8 @@ k_{i}\geq k_{2i+1}
         <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Python</tag>
+        <tag>算法</tag>
         <tag>内存分配</tag>
       </tags>
   </entry>
@@ -955,8 +955,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
