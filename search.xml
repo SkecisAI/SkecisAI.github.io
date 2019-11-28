@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>python爬虫豆瓣短评</title>
+    <title>python爬虫：豆瓣短评</title>
     <url>/2019/11/28/python%E7%88%AC%E8%99%AB%E8%B1%86%E7%93%A3%E7%9F%AD%E8%AF%84/</url>
     <content><![CDATA[<h2 id="导入必要的包-package"><a href="#导入必要的包-package" class="headerlink" title="导入必要的包(package)"></a>导入必要的包(package)</h2><p>若没有下列的包，可使用<code>pip install 包名</code>命令安装</p><ul>
 <li>re: 使用正则表达式</li>
