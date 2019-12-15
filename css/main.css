@@ -1276,7 +1276,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #4b16d4;
+  background: #da4e69;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2779,7 +2779,7 @@ ul.breadcrumb li + li:last-child {
   padding: 0;
 }
 body {
-  background: url("/images/glare.jpg");
+  background: url("/images/rose.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
