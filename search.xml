@@ -66,7 +66,7 @@
 <li><a href="#简单选择排序">简单选择排序</a></li>
 <li><a href="#堆排序">堆排序</a></li>
 <li><a href="#归并排序">归并排序</a></li>
-<li><a href="#基数排序">基数排序</a>)</li>
+<li><a href="#基数排序">基数排序</a></li>
 </ol><a id="more"></a>
 
 <p><strong>上述所有的排序均写在一个python自定义类中，作为成员函数。</strong></p>
