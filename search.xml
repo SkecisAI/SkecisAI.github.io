@@ -21,9 +21,9 @@
 <li>迭代器：可迭代对象皆为迭代器，用户自定义对象通过实现iter方法和next方法实现迭代器。</li>
 <li>生成器：特殊的迭代器，更节省内存（call for need）</li>
 </ul>
-<h2 id="args和-kwargs"><a href="#args和-kwargs" class="headerlink" title="args和*kwargs"></a><em>args和*</em>kwargs</h2><ul>
-<li><em>args：表示多个<em>*无名参数</em></em>，返回其组成的tuple</li>
-<li>*<em>kwargs：表示<em>*key=value关键字型参数</em></em>，返回一个dict</li>
+<h2 id="args和-kwargs"><a href="#args和-kwargs" class="headerlink" title="*args和**kwargs"></a>*args和**kwargs</h2><ul>
+<li>*args：表示多个<strong>无名参数</strong>，返回其组成的tuple</li>
+<li>**kwargs：表示<strong>key=value关键字型参数</strong>，返回一个dict</li>
 </ul>
 <h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><ol>
 <li><p>普通装饰器：</p>
@@ -423,8 +423,8 @@ k_{i}\geq k_{2i+1}
         <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Python</tag>
+        <tag>算法</tag>
         <tag>内存分配</tag>
       </tags>
   </entry>
@@ -1083,8 +1083,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
