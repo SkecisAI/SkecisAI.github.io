@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.skecis.top/"/>
-  <updated>2019-12-15T08:09:25.584Z</updated>
+  <updated>2020-04-27T01:46:12.673Z</updated>
   <id>http://www.skecis.top/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python进阶</title>
+    <link href="http://www.skecis.top/2020/04/27/python%E8%BF%9B%E9%98%B6/"/>
+    <id>http://www.skecis.top/2020/04/27/python进阶/</id>
+    <published>2020-04-27T01:43:11.000Z</published>
+    <updated>2020-04-27T01:46:12.673Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="python类特殊方法"><a href="#python类特殊方法" class="headerlink" title="python类特殊方法"></a>python类特殊方法</h2><ol><li><p>__init__ 和 __new__</p><p>init方法<strong>不是类的构造方法，其作用是返回实例</strong>，new方法才是<strong>类的构造方法</strong>，通过继承<strong>object</strong>类重写改方法</p></li><li><p>__enter__ 和 __exit__</p><p>enter作用是<strong>初始化后返回实例</strong>，exit作用是<strong>退出with语句后做处理，例如清理内存，关闭文件，删除冗余等</strong></p></li><li><p>__str__ 和 __repr__</p><p>str方法是用于<strong>将实例的信息以字符串的形式输出</strong>，repr方法与str作用相同，不同在于<strong>repr方法用于交互式环境调试</strong></p></li><li><p>__setattr__ 、__getattr__、__getattribute__ 、__delattr__</p><p>setattr用于<strong>设置属性</strong>，getattr用于<strong>获取不存在的属性</strong>，getattribute用于<strong>访问存在的属性</strong>，delattr用于<strong>删除属性</strong></p></li></ol><a id="more"></a><h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><ul><li>迭代器：可迭代对象皆为迭代器，用户自定义对象通过实现iter方法和next方法实现迭代器。</li><li>生成器：特殊的迭代器，更节省内存（call for need）</li></ul><h2 id="args和-kwargs"><a href="#args和-kwargs" class="headerlink" title="args和*kwargs"></a><em>args和*</em>kwargs</h2><ul><li><em>args：表示多个<em>*无名参数</em></em>，返回其组成的tuple</li><li>*<em>kwargs：表示<em>*key=value关键字型参数</em></em>，返回一个dict</li></ul><h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><ol><li><p>普通装饰器：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decoration</span><span class="params">(func)</span>:</span>  <span class="comment"># 装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">"&#123;&#125; is running."</span>.format(func__name__))</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)  <span class="comment"># 返回被包装函数</span></span><br><span class="line">    <span class="keyword">return</span> wrapper  <span class="comment"># 返回包装函数</span></span><br></pre></td></tr></table></figure></li><li><p>带参数的装饰器：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_param</span><span class="params">(level)</span>:</span>  <span class="comment"># 带参数的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">my_decoration</span><span class="params">(func)</span>:</span>  <span class="comment"># 内部装饰器</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            print(<span class="string">"&#123;&#125; is running."</span>.format(func.__name__))</span><br><span class="line">            print(<span class="string">"this level is &#123;&#125;"</span>.format(level))</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)  <span class="comment"># 返回被包装函数</span></span><br><span class="line">        <span class="keyword">return</span> wrapper  <span class="comment"># 返回包装函数</span></span><br><span class="line">    <span class="keyword">return</span> my_decoration  <span class="comment"># 返回装饰器</span></span><br></pre></td></tr></table></figure></li><li><p>类装饰器：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span>  <span class="comment"># 类装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func)</span>:</span></span><br><span class="line">        self._func = func</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"this is class decorator."</span>)</span><br><span class="line">        self._func()</span><br><span class="line">        print(<span class="string">"ending..."</span>)</span><br></pre></td></tr></table></figure></li><li><p>functools.wraps:</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decoration</span><span class="params">(func)</span>:</span></span><br><span class="line"><span class="meta">    @wraps(func)  # 负责保护原函数的doc和name的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure></li><li><p>装饰器的执行顺序：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@d1</span></span><br><span class="line"><span class="meta">@d2</span></span><br><span class="line"><span class="meta">@d3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure><p>等价于<code>func = d1(d2(d3(func)))</code></p></li><li><p>内部装饰器</p><ul><li>@staticmethod: 将类中函数修饰为静态方法不需要额外的参数（self等），<strong>不能访问类中的参数</strong></li><li>@classmethod: 函数必须包含一个类参数<strong>cls</strong>，返回一个实例，<strong>可访问类中的成员</strong></li><li>@property: <strong>将函数作为类的属性</strong>，进而使函数拥有setter方法和deletter方法，其本身是getter方法</li></ul></li><li><p>协程、多线程、多进程</p><ul><li>async</li><li>threading</li><li>multiprocessing</li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;python类特殊方法&quot;&gt;&lt;a href=&quot;#python类特殊方法&quot; class=&quot;headerlink&quot; title=&quot;python类特殊方法&quot;&gt;&lt;/a&gt;python类特殊方法&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;__init__ 和 __new__&lt;/p&gt;
+&lt;p&gt;init方法&lt;strong&gt;不是类的构造方法，其作用是返回实例&lt;/strong&gt;，new方法才是&lt;strong&gt;类的构造方法&lt;/strong&gt;，通过继承&lt;strong&gt;object&lt;/strong&gt;类重写改方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;__enter__ 和 __exit__&lt;/p&gt;
+&lt;p&gt;enter作用是&lt;strong&gt;初始化后返回实例&lt;/strong&gt;，exit作用是&lt;strong&gt;退出with语句后做处理，例如清理内存，关闭文件，删除冗余等&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;__str__ 和 __repr__&lt;/p&gt;
+&lt;p&gt;str方法是用于&lt;strong&gt;将实例的信息以字符串的形式输出&lt;/strong&gt;，repr方法与str作用相同，不同在于&lt;strong&gt;repr方法用于交互式环境调试&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;__setattr__ 、__getattr__、__getattribute__ 、__delattr__&lt;/p&gt;
+&lt;p&gt;setattr用于&lt;strong&gt;设置属性&lt;/strong&gt;，getattr用于&lt;strong&gt;获取不存在的属性&lt;/strong&gt;，getattribute用于&lt;strong&gt;访问存在的属性&lt;/strong&gt;，delattr用于&lt;strong&gt;删除属性&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="程序语言" scheme="http://www.skecis.top/categories/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="Python" scheme="http://www.skecis.top/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>python爬虫：豆瓣短评</title>
@@ -515,43 +551,6 @@
     
     
       <category term="get小技能" scheme="http://www.skecis.top/tags/get%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器学习-模型实现</title>
-    <link href="http://www.skecis.top/2019/09/15/%E8%A5%BF%E7%93%9C%E4%B9%A6%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
-    <id>http://www.skecis.top/2019/09/15/西瓜书学习之旅/</id>
-    <published>2019-09-15T11:12:45.000Z</published>
-    <updated>2019-10-14T00:39:43.088Z</updated>
-    
-    <content type="html"><![CDATA[<p>基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码</p><h2 id="一-模型清单"><a href="#一-模型清单" class="headerlink" title="一. 模型清单"></a>一. 模型清单</h2><ul><li><strong>逻辑回归</strong></li><li><strong>线性判别分析</strong></li><li><strong>决策树</strong><ol><li>划分选择<ol><li>基于信息增益</li><li>基于基尼指数</li></ol></li><li>剪枝<ol><li>预剪枝</li><li>后剪枝 <a id="more"></a></li></ol></li></ol></li><li><strong>神经网络</strong><ol><li>标准BP算法</li></ol></li><li><strong>（待续）</strong><h2 id="二-代码清单"><a href="#二-代码清单" class="headerlink" title="二. 代码清单"></a>二. 代码清单</h2>代码中重要的部分都配有蹩脚的英文注释（T.T苦学英语ing），具体使用的数据集内容请参考代码引用和数据集清单。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/logistic_regression.py" target="_blank" rel="noopener">logistic_regression</a>: 逻辑回归实现。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/linear_discriminant_analysis.py" target="_blank" rel="noopener">linear_discriminant_analysis</a>: 线性判别分析实现。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/decision_tree.py" target="_blank" rel="noopener">decision_tree</a>: 决策树实现，集成各个思想，包含划分方式有<code>信息增益</code>、<code>基尼指数</code>，连续值的处理方式有<code>平均值法</code>、<code>二分法</code>，以及剪枝方法有<code>预剪枝</code>、<code>后剪枝</code>。</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/neural_network.py" target="_blank" rel="noopener">neural_network</a>: 神经网络实现，标准BP算法。</li><li>（待续）<h2 id="三-数据集清单"><a href="#三-数据集清单" class="headerlink" title="三. 数据集清单"></a>三. 数据集清单</h2>均为csv文件，内容如下</li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon.csv" target="_blank" rel="noopener">西瓜数据集3.0alpha</a></li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon4.csv" target="_blank" rel="noopener">西瓜数据集2.0</a></li><li><a href="https://github.com/SkecisAI/ML-Practice/blob/master/watermelon3.csv" target="_blank" rel="noopener">西瓜数据集3.0</a></li></ul><p><em>才疏学浅，以上资料仅供参考，交流。</em></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;基于周志华西瓜书中的数据集和各个机器学习模型的算法原理，采用python编写代码&lt;/p&gt;
-&lt;h2 id=&quot;一-模型清单&quot;&gt;&lt;a href=&quot;#一-模型清单&quot; class=&quot;headerlink&quot; title=&quot;一. 模型清单&quot;&gt;&lt;/a&gt;一. 模型清单&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;逻辑回归&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;线性判别分析&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;决策树&lt;/strong&gt;&lt;ol&gt;
-&lt;li&gt;划分选择&lt;ol&gt;
-&lt;li&gt;基于信息增益&lt;/li&gt;
-&lt;li&gt;基于基尼指数&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;剪枝&lt;ol&gt;
-&lt;li&gt;预剪枝&lt;/li&gt;
-&lt;li&gt;后剪枝
-    
-    </summary>
-    
-    
-      <category term="机器学习" scheme="http://www.skecis.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="机器学习" scheme="http://www.skecis.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="Python" scheme="http://www.skecis.top/tags/Python/"/>
     
   </entry>
   

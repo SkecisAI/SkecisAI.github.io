@@ -65,21 +65,19 @@
     })();
 </script>
 
-  <meta name="description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
-<meta name="keywords" content="机器学习,算法">
+  <meta name="description" content="python类特殊方法 __init__ 和 __new__ init方法不是类的构造方法，其作用是返回实例，new方法才是类的构造方法，通过继承object类重写改方法  __enter__ 和 __exit__ enter作用是初始化后返回实例，exit作用是退出with语句后做处理，例如清理内存，关闭文件，删除冗余等  __str__ 和 __repr__ str方法是用于将实例的信息以字符">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KNN算法-python实现">
-<meta property="og:url" content="http://www.skecis.top/2019/11/18/knn算法/index.html">
+<meta property="og:title" content="Python进阶">
+<meta property="og:url" content="http://www.skecis.top/2020/04/27/python进阶/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
+<meta property="og:description" content="python类特殊方法 __init__ 和 __new__ init方法不是类的构造方法，其作用是返回实例，new方法才是类的构造方法，通过继承object类重写改方法  __enter__ 和 __exit__ enter作用是初始化后返回实例，exit作用是退出with语句后做处理，例如清理内存，关闭文件，删除冗余等  __str__ 和 __repr__ str方法是用于将实例的信息以字符">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png">
-<meta property="og:updated_time" content="2019-12-15T08:28:34.706Z">
+<meta property="og:updated_time" content="2020-04-27T01:46:12.673Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KNN算法-python实现">
-<meta name="twitter:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
-<meta name="twitter:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png">
-  <link rel="canonical" href="http://www.skecis.top/2019/11/18/knn算法/">
+<meta name="twitter:title" content="Python进阶">
+<meta name="twitter:description" content="python类特殊方法 __init__ 和 __new__ init方法不是类的构造方法，其作用是返回实例，new方法才是类的构造方法，通过继承object类重写改方法  __enter__ 和 __exit__ enter作用是初始化后返回实例，exit作用是退出with语句后做处理，例如清理内存，关闭文件，删除冗余等  __str__ 和 __repr__ str方法是用于将实例的信息以字符">
+  <link rel="canonical" href="http://www.skecis.top/2020/04/27/python进阶/">
 
 
 <script id="page-configurations">
@@ -93,7 +91,7 @@
   };
 </script>
 
-  <title>KNN算法-python实现 | Mr. Liu's Blog</title>
+  <title>Python进阶 | Mr. Liu's Blog</title>
   
 
 
@@ -272,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/11/18/knn算法/">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/04/27/python进阶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SkecisAI">
@@ -284,7 +282,7 @@
       <meta itemprop="name" content="Mr. Liu's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">KNN算法-python实现
+        <h1 class="post-title" itemprop="name headline">Python进阶
 
           
         </h1>
@@ -300,19 +298,11 @@
                 
               
 
-              <time title="创建时间：2019-11-18 15:47:21" itemprop="dateCreated datePublished" datetime="2019-11-18T15:47:21+08:00">2019-11-18</time>
+              <time title="创建时间：2020-04-27 09:43:11 / 修改时间：09:46:12" itemprop="dateCreated datePublished" datetime="2020-04-27T09:43:11+08:00">2020-04-27</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-15 16:28:34" itemprop="dateModified" datetime="2019-12-15T16:28:34+08:00">2019-12-15</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -321,7 +311,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/程序语言/" itemprop="url" rel="index"><span itemprop="name">程序语言</span></a></span>
 
                 
                 
@@ -346,7 +336,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.3k</span>
+              <span>1.8k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -356,7 +346,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>4 分钟</span>
+              <span>3 分钟</span>
             </span>
           
 
@@ -371,27 +361,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="$k$近邻算法"></a>$k$近邻算法</h2><p>$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png" alt="knn示例"><br>可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本思路可知，未知样本应标记为<strong>红色</strong>。</p><a id="more"></a>
-<h2 id="距离的度量"><a href="#距离的度量" class="headerlink" title="距离的度量"></a>距离的度量</h2><p>$x$和$y$分别为两个样本，$n$为特征总数。一般用到的是以下两种距离：</p>
-<ul>
-<li><strong>欧式距离</strong>：<script type="math/tex; mode=display">d\left ( x,y \right )=\sqrt{\sum_{k=1}^{n}\left ( x_{k}-y_{k} \right )^{2}}</script></li>
-<li><strong>曼哈顿距离</strong>：<script type="math/tex; mode=display">d\left ( x,y \right )=\sqrt{\sum_{k=1}^{n}\left | x_{k}-y_{k} \right |}</script></li>
+        <h2 id="python类特殊方法"><a href="#python类特殊方法" class="headerlink" title="python类特殊方法"></a>python类特殊方法</h2><ol>
+<li><p>__init__ 和 __new__</p>
+<p>init方法<strong>不是类的构造方法，其作用是返回实例</strong>，new方法才是<strong>类的构造方法</strong>，通过继承<strong>object</strong>类重写改方法</p>
+</li>
+<li><p>__enter__ 和 __exit__</p>
+<p>enter作用是<strong>初始化后返回实例</strong>，exit作用是<strong>退出with语句后做处理，例如清理内存，关闭文件，删除冗余等</strong></p>
+</li>
+<li><p>__str__ 和 __repr__</p>
+<p>str方法是用于<strong>将实例的信息以字符串的形式输出</strong>，repr方法与str作用相同，不同在于<strong>repr方法用于交互式环境调试</strong></p>
+</li>
+<li><p>__setattr__ 、__getattr__、__getattribute__ 、__delattr__</p>
+<p>setattr用于<strong>设置属性</strong>，getattr用于<strong>获取不存在的属性</strong>，getattribute用于<strong>访问存在的属性</strong>，delattr用于<strong>删除属性</strong></p>
+</li>
+</ol><a id="more"></a>
+<h2 id="迭代器和生成器"><a href="#迭代器和生成器" class="headerlink" title="迭代器和生成器"></a>迭代器和生成器</h2><ul>
+<li>迭代器：可迭代对象皆为迭代器，用户自定义对象通过实现iter方法和next方法实现迭代器。</li>
+<li>生成器：特殊的迭代器，更节省内存（call for need）</li>
 </ul>
-<p>无论用那种距离，目的都是为了刻画已知样本和未知样本的<strong>相似度</strong>，从而描述预知样本的特征。</p>
-<h2 id="用python实现算法"><a href="#用python实现算法" class="headerlink" title="用python实现算法"></a>用python实现算法</h2><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><blockquote>
-<p>初始化：已知类别标签的样本集$X_{n}$和最多近邻数$k$，<br>输入：未知样本$x$<br>步骤：</p>
-<ol>
-<li>对于每个样本集中的样本$X_{i}$和未知样本$x$计算距离$d_{i}$。得到距离集$D_{n}$。</li>
-<li>将距离集$D_{n}$中的数从小到大排序，选择前$k$个距离数据。</li>
-<li>根据步骤2的$k$距离数据中的样本下标，得到对应的类别标签集$C_{k}$</li>
-<li>选择$C_{k}$中数量最多的类别标签$c_{max}$作为未知样本$x$的类别标签$c$</li>
+<h2 id="args和-kwargs"><a href="#args和-kwargs" class="headerlink" title="args和*kwargs"></a><em>args和*</em>kwargs</h2><ul>
+<li><em>args：表示多个<em>*无名参数</em></em>，返回其组成的tuple</li>
+<li>*<em>kwargs：表示<em>*key=value关键字型参数</em></em>，返回一个dict</li>
+</ul>
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><ol>
+<li><p>普通装饰器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decoration</span><span class="params">(func)</span>:</span>  <span class="comment"># 装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        print(<span class="string">"&#123;&#125; is running."</span>.format(func__name__))</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)  <span class="comment"># 返回被包装函数</span></span><br><span class="line">    <span class="keyword">return</span> wrapper  <span class="comment"># 返回包装函数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>带参数的装饰器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_param</span><span class="params">(level)</span>:</span>  <span class="comment"># 带参数的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">my_decoration</span><span class="params">(func)</span>:</span>  <span class="comment"># 内部装饰器</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            print(<span class="string">"&#123;&#125; is running."</span>.format(func.__name__))</span><br><span class="line">            print(<span class="string">"this level is &#123;&#125;"</span>.format(level))</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kwargs)  <span class="comment"># 返回被包装函数</span></span><br><span class="line">        <span class="keyword">return</span> wrapper  <span class="comment"># 返回包装函数</span></span><br><span class="line">    <span class="keyword">return</span> my_decoration  <span class="comment"># 返回装饰器</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类装饰器：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span>:</span>  <span class="comment"># 类装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, func)</span>:</span></span><br><span class="line">        self._func = func</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"this is class decorator."</span>)</span><br><span class="line">        self._func()</span><br><span class="line">        print(<span class="string">"ending..."</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>functools.wraps:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> wraps</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decoration</span><span class="params">(func)</span>:</span></span><br><span class="line"><span class="meta">    @wraps(func)  # 负责保护原函数的doc和name的装饰器</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>装饰器的执行顺序：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@d1</span></span><br><span class="line"><span class="meta">@d2</span></span><br><span class="line"><span class="meta">@d3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">()</span>:</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>等价于<code>func = d1(d2(d3(func)))</code></p>
+</li>
+<li><p>内部装饰器</p>
+<ul>
+<li>@staticmethod: 将类中函数修饰为静态方法不需要额外的参数（self等），<strong>不能访问类中的参数</strong></li>
+<li>@classmethod: 函数必须包含一个类参数<strong>cls</strong>，返回一个实例，<strong>可访问类中的成员</strong></li>
+<li>@property: <strong>将函数作为类的属性</strong>，进而使函数拥有setter方法和deletter方法，其本身是getter方法</li>
+</ul>
+</li>
+<li><p>协程、多线程、多进程</p>
+<ul>
+<li>async</li>
+<li>threading</li>
+<li>multiprocessing</li>
+</ul>
+</li>
 </ol>
-</blockquote>
-<h3 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h3><p>python实现knn算法的代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KNN</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        the k of KNN</span></span><br><span class="line"><span class="string">        :param k: </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.k = k</span><br><span class="line">        self.samples_nums = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, x_train, y_train, test)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        predict the categorie of test sample</span></span><br><span class="line"><span class="string">        :param x_train: the set of train sample</span></span><br><span class="line"><span class="string">        :param y_train: the label set of train sample</span></span><br><span class="line"><span class="string">        :param test: </span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        x_train = np.array(x_train)</span><br><span class="line">        self.samples_nums = x_train.shape[<span class="number">0</span>]</span><br><span class="line">        y_train = np.array(y_train)</span><br><span class="line">        sorted_k_v = self.__cal_dist(x_train, test)</span><br><span class="line">        lab_dict = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind <span class="keyword">in</span> range(self.k):</span><br><span class="line">            s = sorted_k_v[ind]</span><br><span class="line">            <span class="keyword">if</span> y_train[s[<span class="number">0</span>]] <span class="keyword">not</span> <span class="keyword">in</span> lab_dict.keys():</span><br><span class="line">                lab_dict[y_train[s[<span class="number">0</span>]]] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                lab_dict[y_train[s[<span class="number">0</span>]]] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max(lab_dict, key=lab_dict.get)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__cal_dist</span><span class="params">(self, x_train, x_test)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        calculate the distance between train set and test sample</span></span><br><span class="line"><span class="string">        :param x_train: </span></span><br><span class="line"><span class="string">        :param x_test: </span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind <span class="keyword">in</span> range(self.samples_nums):</span><br><span class="line">            d[ind] = np.sqrt(sum(np.power(x_train[ind, :] - x_test, <span class="number">2</span>)))</span><br><span class="line">        sort_list = sorted(d.items(), key=<span class="keyword">lambda</span> itm: itm[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> sort_list</span><br></pre></td></tr></table></figure>
-<p>测试案例如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    my_knn = KNN(<span class="number">3</span>)</span><br><span class="line">    x = [[<span class="number">0.1</span>, <span class="number">0.2</span>], [<span class="number">-1.5</span>, <span class="number">-1.1</span>], [<span class="number">0.7</span>, <span class="number">1.9</span>], [<span class="number">-0.3</span>, <span class="number">1.0</span>]]</span><br><span class="line">    y = [<span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>]</span><br><span class="line">    print(my_knn.predict(x, y, [<span class="number">1</span>, <span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-<p>输出：<code>b</code></p>
 
     </div>
 
@@ -407,12 +430,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>KNN算法-python实现</a></p>
+  <p><span>本文标题:</span>Python进阶</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
-  <p><span>发布时间:</span>2019年11月18日 - 15:47:21</p>
-  <p><span>最后更新:</span>2019年12月15日 - 16:28:34</p>
-  <p><span>原始链接:</span><a href="/2019/11/18/knn算法/" title="KNN算法-python实现">http://www.skecis.top/2019/11/18/knn算法/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2019/11/18/knn算法/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年04月27日 - 09:43:11</p>
+  <p><span>最后更新:</span>2020年04月27日 - 09:46:12</p>
+  <p><span>原始链接:</span><a href="/2020/04/27/python进阶/" title="Python进阶">http://www.skecis.top/2020/04/27/python进阶/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/04/27/python进阶/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -457,9 +480,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-            
-              <a href="/tags/算法/" rel="tag"># 算法</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
             
           </div>
         
@@ -469,8 +490,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/14/哈希表/" rel="next" title="数据结构--哈希表">
-                  <i class="fa fa-chevron-left"></i> 数据结构--哈希表
+                <a href="/2019/11/28/python爬虫豆瓣短评/" rel="next" title="python爬虫：豆瓣短评">
+                  <i class="fa fa-chevron-left"></i> python爬虫：豆瓣短评
                 </a>
               
             </div>
@@ -478,10 +499,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/11/18/二叉查找树/" rel="prev" title="二叉排序树(BST)">
-                  二叉排序树(BST) <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -530,7 +547,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#k-近邻算法"><span class="nav-number">1.</span> <span class="nav-text">$k$近邻算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#距离的度量"><span class="nav-number">2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用python实现算法"><span class="nav-number">3.</span> <span class="nav-text">用python实现算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法思路"><span class="nav-number">3.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python实现"><span class="nav-number">3.2.</span> <span class="nav-text">python实现</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#python类特殊方法"><span class="nav-number">1.</span> <span class="nav-text">python类特殊方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器和生成器"><span class="nav-number">2.</span> <span class="nav-text">迭代器和生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#args和-kwargs"><span class="nav-number">3.</span> <span class="nav-text">args和*kwargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">4.</span> <span class="nav-text">装饰器</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -794,58 +811,6 @@ window.addEventListener('pjax:success', () => {
   
 
   
-    
-      
-<script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        extensions: ['[mhchem]/mhchem.js'],
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
-  
 
   
 
@@ -861,7 +826,7 @@ window.addEventListener('pjax:success', () => {
       repo: 'skecisai.github.io',
       owner: 'skecisai',
       admin: ['skecis'],
-      id: 'c5a7943376d1a3ed583f1b845bdd69a0',
+      id: '9b68cfcd5ffc1957008fbb69bd0c572e',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'
