@@ -73,7 +73,7 @@
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
 <meta property="og:description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-01T08:11:33.846Z">
+<meta property="og:updated_time" content="2020-06-01T08:45:12.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归">
 <meta name="twitter:description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
@@ -298,7 +298,7 @@
                 
               
 
-              <time title="创建时间：2020-06-01 10:05:21 / 修改时间：16:11:33" itemprop="dateCreated datePublished" datetime="2020-06-01T10:05:21+08:00">2020-06-01</time>
+              <time title="创建时间：2020-06-01 10:05:21 / 修改时间：16:45:12" itemprop="dateCreated datePublished" datetime="2020-06-01T10:05:21+08:00">2020-06-01</time>
             </span>
           
             
@@ -366,12 +366,12 @@
 <script type="math/tex; mode=display">
 f(x_{i})=wx_{i}+b,使得f(x_{i})渐进等于y_{i}</script><p>为了求得$w$和$b$，则需使用均方误差作为性能度量，并使均方误差最小化：</p>
 <script type="math/tex; mode=display">
-(w, b) = \arg\limits_{(w, b)}\min\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}</script><p>令$E(w,b)=\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}$<br>分别对$w$和$b$求偏导：</p>
+(w, b) = \arg\limits_{(w, b)}\min\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}</script><p>令$E(w,b)=\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}$分别对$w$和$b$求偏导：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E(w,b)}{\partial w}&=2\cdot x_{i}\cdot \sum_{i=1}^{m}(wx_{i}+b-y_{i})
-\\&=2\sum_{i=1}^{m}(wx_{i}^{2}+bx_{i}-x_{i}y_{i})
-\\&=2(\sum_{i=1}^{m}wx_{i}^{2}+\sum_{i=1}^{m}x_{i}(b-y_{i})) \tag{1}
+\\ &=2\sum_{i=1}^{m}(wx_{i}^{2}+bx_{i}-x_{i}y_{i})
+\\ &=2(\sum_{i=1}^{m}wx_{i}^{2}+\sum_{i=1}^{m}x_{i}(b-y_{i}))
 \end{aligned}</script><p>对$b$:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
@@ -450,7 +450,7 @@ y = g^{-1}(w^{T}x+b)</script>
   <p><span>本文标题:</span>线性回归</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 10:05:21</p>
-  <p><span>最后更新:</span>2020年06月01日 - 16:11:33</p>
+  <p><span>最后更新:</span>2020年06月01日 - 16:45:12</p>
   <p><span>原始链接:</span><a href="/2020/06/01/linear-reg/" title="线性回归">http://www.skecis.top/2020/06/01/linear-reg/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/06/01/linear-reg/"  aria-label="复制成功！"></i></span>
   </p>

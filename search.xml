@@ -8,12 +8,12 @@
 <script type="math/tex; mode=display">
 f(x_{i})=wx_{i}+b,使得f(x_{i})渐进等于y_{i}</script><p>为了求得$w$和$b$，则需使用均方误差作为性能度量，并使均方误差最小化：</p>
 <script type="math/tex; mode=display">
-(w, b) = \arg\limits_{(w, b)}\min\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}</script><p>令$E(w,b)=\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}$<br>分别对$w$和$b$求偏导：</p>
+(w, b) = \arg\limits_{(w, b)}\min\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}</script><p>令$E(w,b)=\sum_{i=1}^{m}\left(wx_{i}+b-y_{i} \right)^{2}$分别对$w$和$b$求偏导：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E(w,b)}{\partial w}&=2\cdot x_{i}\cdot \sum_{i=1}^{m}(wx_{i}+b-y_{i})
-\\&=2\sum_{i=1}^{m}(wx_{i}^{2}+bx_{i}-x_{i}y_{i})
-\\&=2(\sum_{i=1}^{m}wx_{i}^{2}+\sum_{i=1}^{m}x_{i}(b-y_{i})) \tag{1}
+\\ &=2\sum_{i=1}^{m}(wx_{i}^{2}+bx_{i}-x_{i}y_{i})
+\\ &=2(\sum_{i=1}^{m}wx_{i}^{2}+\sum_{i=1}^{m}x_{i}(b-y_{i}))
 \end{aligned}</script><p>对$b$:</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
