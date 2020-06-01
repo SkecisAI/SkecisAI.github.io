@@ -66,14 +66,14 @@
 </script>
 
   <meta name="description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
-<meta name="keywords" content="linear regression,算法">
+<meta name="keywords" content="算法,linear regression">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归">
 <meta property="og:url" content="http://www.skecis.top/2020/06/01/linear-reg/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
 <meta property="og:description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-01T07:42:14.895Z">
+<meta property="og:updated_time" content="2020-06-01T07:45:30.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归">
 <meta name="twitter:description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
@@ -298,7 +298,7 @@
                 
               
 
-              <time title="创建时间：2020-06-01 10:05:21 / 修改时间：15:42:14" itemprop="dateCreated datePublished" datetime="2020-06-01T10:05:21+08:00">2020-06-01</time>
+              <time title="创建时间：2020-06-01 10:05:21 / 修改时间：15:45:30" itemprop="dateCreated datePublished" datetime="2020-06-01T10:05:21+08:00">2020-06-01</time>
             </span>
           
             
@@ -445,7 +445,7 @@ y = g^{-1}(w^{T}x+b)</script>
   <p><span>本文标题:</span>线性回归</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 10:05:21</p>
-  <p><span>最后更新:</span>2020年06月01日 - 15:42:14</p>
+  <p><span>最后更新:</span>2020年06月01日 - 15:45:30</p>
   <p><span>原始链接:</span><a href="/2020/06/01/linear-reg/" title="线性回归">http://www.skecis.top/2020/06/01/linear-reg/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/06/01/linear-reg/"  aria-label="复制成功！"></i></span>
   </p>
@@ -492,9 +492,9 @@ y = g^{-1}(w^{T}x+b)</script>
           
           <div class="post-tags">
             
-              <a href="/tags/linear-regression/" rel="tag"># linear regression</a>
-            
               <a href="/tags/算法/" rel="tag"># 算法</a>
+            
+              <a href="/tags/linear-regression/" rel="tag"># linear regression</a>
             
           </div>
         
@@ -824,6 +824,58 @@ window.addEventListener('pjax:success', () => {
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['[mhchem]/mhchem.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   
