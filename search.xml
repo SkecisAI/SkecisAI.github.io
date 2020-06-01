@@ -12,7 +12,8 @@ f(x_{i})=wx_{i}+b,使得f(x_{i})渐进等于y_{i}</script><p>为了求得$w$和$
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E(w,b)}{\partial w}&=2\cdot x_{i}\cdot \sum_{i=1}^{m}(wx_{i}+b-y_{i})\\&=2\sum_{i=1}^{m}(wx_{i}^{2}+bx_{i}-x_{i}y_{i}) \\&=2(\sum_{i=1}^{m}wx_{i}^{2}+\sum_{i=1}^{m}x_{i}(b-y_{i})) \tag{1}
-\end{aligned}</script><script type="math/tex; mode=display">
+\end{aligned}</script><p>对$b$</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E(w,b)}{\partial b}&=2\cdot \sum_{i=1}^{m}(wx_{i}+b-y_{i})\\&=2(\sum_{i=1}^{m}wx_{i}+\sum_{i=1}^{m}b-\sum_{i=1}^{m}y_{i})\\&=2(\sum_{i=1}^{m}wx_{i}+mb-\sum_{i=1}^{m}y_{i})\tag{2}
 \end{aligned}</script><p>从以上$w$和$b$的导函数中可以看出相关变量的系数$\sum_{i=1}^{m}x_{i}^{2}$与$m$d都为<strong>正数</strong>，故对应的导函数都为<strong>增函数</strong>，故当导函数值取0时对应的极值为。令$(1)$式和$(2)$式为值为0，可推导出$w$和$b$的表达式。$先令x的均值\bar{x}=\frac{1}{m}\sum_{i=1}^{m}x_{i}$，先推导$b$的表达式：</p>
@@ -45,7 +46,7 @@ X=\begin{Bmatrix}
 \mathbf{x}_{m}^{T} &1
 \end{pmatrix}</script><p>再把目标值也写成向量的形式：$\mathbf{y}=\begin{pmatrix}<br>y_{1}\\<br>y_{2}\\<br>…\\<br>y_{m}<br>\end{pmatrix}$，则类似有：</p>
 <script type="math/tex; mode=display">
-\hat{w}=\argmin(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})</script><p>令$E_{\hat{w}}=(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})$,对$\hat{w}$求导得：</p>
+\hat{w}=\arg\min(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})</script><p>令$E_{\hat{w}}=(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})$,对$\hat{w}$求导得：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E_{\hat{w}}}{\partial \hat{w}}&=\triangledown_{\hat{w}}(\mathbf{y}^{T}-\hat{w}^{T}X^{T})(\mathbf{y}-X\hat{w})

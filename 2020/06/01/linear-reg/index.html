@@ -73,7 +73,7 @@
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
 <meta property="og:description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-01T07:45:30.314Z">
+<meta property="og:updated_time" content="2020-06-01T07:50:29.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归">
 <meta name="twitter:description" content="线性模型的推导(参考自西瓜书)原问题：假设有$m$个样本$D=\left\{(\mathbf{x}_{1},y_{1}),(\mathbf{x}_{2},y_{2}),…,(\mathbf{x}_{m},y_{m}) \right\}$，每个样本$\mathbf{x}_{i}=\left ( x_{1},x_{2},…,x_{d} \right )$有$d$个特征，一个目标值$y_{i}=y$">
@@ -298,7 +298,7 @@
                 
               
 
-              <time title="创建时间：2020-06-01 10:05:21 / 修改时间：15:45:30" itemprop="dateCreated datePublished" datetime="2020-06-01T10:05:21+08:00">2020-06-01</time>
+              <time title="创建时间：2020-06-01 10:05:21 / 修改时间：15:50:29" itemprop="dateCreated datePublished" datetime="2020-06-01T10:05:21+08:00">2020-06-01</time>
             </span>
           
             
@@ -370,7 +370,8 @@ f(x_{i})=wx_{i}+b,使得f(x_{i})渐进等于y_{i}</script><p>为了求得$w$和$
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E(w,b)}{\partial w}&=2\cdot x_{i}\cdot \sum_{i=1}^{m}(wx_{i}+b-y_{i})\\&=2\sum_{i=1}^{m}(wx_{i}^{2}+bx_{i}-x_{i}y_{i}) \\&=2(\sum_{i=1}^{m}wx_{i}^{2}+\sum_{i=1}^{m}x_{i}(b-y_{i})) \tag{1}
-\end{aligned}</script><script type="math/tex; mode=display">
+\end{aligned}</script><p>对$b$</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E(w,b)}{\partial b}&=2\cdot \sum_{i=1}^{m}(wx_{i}+b-y_{i})\\&=2(\sum_{i=1}^{m}wx_{i}+\sum_{i=1}^{m}b-\sum_{i=1}^{m}y_{i})\\&=2(\sum_{i=1}^{m}wx_{i}+mb-\sum_{i=1}^{m}y_{i})\tag{2}
 \end{aligned}</script><p>从以上$w$和$b$的导函数中可以看出相关变量的系数$\sum_{i=1}^{m}x_{i}^{2}$与$m$d都为<strong>正数</strong>，故对应的导函数都为<strong>增函数</strong>，故当导函数值取0时对应的极值为。令$(1)$式和$(2)$式为值为0，可推导出$w$和$b$的表达式。$先令x的均值\bar{x}=\frac{1}{m}\sum_{i=1}^{m}x_{i}$，先推导$b$的表达式：</p>
@@ -403,7 +404,7 @@ X=\begin{Bmatrix}
 \mathbf{x}_{m}^{T} &1
 \end{pmatrix}</script><p>再把目标值也写成向量的形式：$\mathbf{y}=\begin{pmatrix}<br>y_{1}\\<br>y_{2}\\<br>…\\<br>y_{m}<br>\end{pmatrix}$，则类似有：</p>
 <script type="math/tex; mode=display">
-\hat{w}=\argmin(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})</script><p>令$E_{\hat{w}}=(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})$,对$\hat{w}$求导得：</p>
+\hat{w}=\arg\min(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})</script><p>令$E_{\hat{w}}=(\mathbf{y}-X\hat{w})^{T}(\mathbf{y}-X\hat{w})$,对$\hat{w}$求导得：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \frac{\partial E_{\hat{w}}}{\partial \hat{w}}&=\triangledown_{\hat{w}}(\mathbf{y}^{T}-\hat{w}^{T}X^{T})(\mathbf{y}-X\hat{w})
@@ -445,7 +446,7 @@ y = g^{-1}(w^{T}x+b)</script>
   <p><span>本文标题:</span>线性回归</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2020年06月01日 - 10:05:21</p>
-  <p><span>最后更新:</span>2020年06月01日 - 15:45:30</p>
+  <p><span>最后更新:</span>2020年06月01日 - 15:50:29</p>
   <p><span>原始链接:</span><a href="/2020/06/01/linear-reg/" title="线性回归">http://www.skecis.top/2020/06/01/linear-reg/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/06/01/linear-reg/"  aria-label="复制成功！"></i></span>
   </p>
