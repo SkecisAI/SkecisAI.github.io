@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.skecis.top/"/>
-  <updated>2020-06-01T08:53:11.936Z</updated>
+  <updated>2020-06-02T09:23:42.749Z</updated>
   <id>http://www.skecis.top/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>概率论一：随机事件与概率</title>
+    <link href="http://www.skecis.top/2020/06/02/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%80/"/>
+    <id>http://www.skecis.top/2020/06/02/概率论一/</id>
+    <published>2020-06-02T08:00:01.000Z</published>
+    <updated>2020-06-02T09:23:42.749Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="随机事件"><a href="#随机事件" class="headerlink" title="随机事件"></a>随机事件</h2><h3 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h3><p>随机事件：</p><ul><li>随机现象的一切可能基本结果组成的集合称为<strong>样本空间</strong>，记为$\Omega=\left\{ \omega \right\}$，其中$\omega$为基本结果，又称为<strong>样本点</strong>。</li><li>随机现象的某些样本点组成的集合称为<strong>随机事件</strong>，常用大写字母$A,B,C,…$表示。由样本空间$\Omega$中的单个元素组成的子集称为<strong>基本事件</strong>。</li><li>如果$A$与$B$没有相同的样本点，则称$A$与$B$</li><li>事件$A$的<strong>对立事件</strong>$\bar{A}$，由在$\Omega$中而不在$A$中的样本点组成的新事件。</li><li>德摩根律：$\bar{A\cup B}=\bar{A}\cap\bar{B}$</li></ul><a id="more"></a><p>概率的性质：</p><ul><li>若$A\supset B$，则<script type="math/tex; mode=display">P(A-B)=P(A)-P(B)</script></li><li>对任意两个事件$A,B$，有<script type="math/tex; mode=display">P(A-B)=P(A)-P(AB)</script></li><li>条件概率：在$B$发生下$A$的条件概率：<script type="math/tex; mode=display">P(A|B)=\frac{P(AB)}{P(B)},其中AB是事件A和B的交</script> <strong>可以理解为：在事件B发生的所有现象中A也同时发生的现象</strong></li><li><strong>乘法公式：</strong><script type="math/tex; mode=display">\begin{aligned}P(A|B)P(B)=P(AB)\end{aligned}\tag{1}</script>若$P(A_{1}A_{2}…A_{n-1})&gt;0$<script type="math/tex; mode=display">\begin{aligned}P(A_{1}A_{2}...A_{n})&=P(A_{1})\cdot \frac{P(A_{1}A_{2})}{P(A_{1})}\cdot \frac{P(A_{1}A_{2}A_{3})}{P(A_{1}A_{2})}\cdot\cdots\cdot \frac{P(A_{1}A_{2}...A_{n})}{P(A_{1}A_{2}...A_{n-1})}\\&=P(A_{1})\cdot P(A_{2}|A_{1})\cdot P(A_{3}|A_{1}A_{2})\cdot\cdots\cdot P(A_{n}|P(A_{1}A_{2}...A_{n-1}))\end{aligned}\tag{2}</script></li><li><strong>全概率公式</strong>：设$B_{1},B_{2},…,B_{n}$为样本空间$\Omega$的一个<strong>分割</strong>，如果$P(B_{i})&gt;0$，则对任意事件$A$有<script type="math/tex; mode=display">\begin{aligned}P(A)&=\sum_{i=1}^{n}P(B_{i})P(A|B_{i})\\&=\sum_{i=1}^{n}P(AB_{i})\end{aligned}</script><strong>可以理解为：$P(事件A)=\sum P(事件A与样本空间中每个不相容事件B_{i}的交)$</strong></li><li><strong>贝叶斯公式</strong>：设$B_{1},B_{2},…,B_{n}$为样本空间$\Omega$的一个<strong>分割</strong>，如果$P(B_{i})&gt;0,P(A)&gt;0$，则<script type="math/tex; mode=display">\begin{aligned}P(B_{i}|A)&=\frac{P(AB_{i})}{P(A)}\\&=\frac{P(A|B_{i})P(B_{i})}{\sum_{i=1}^{n}P(AB_{i})}\\&=\frac{P(A|B_{i})P(B_{i})}{\sum_{j=1}^{n}P(A|B_{j})P(B_{j})}\end{aligned}</script><strong>可以理解为：每个被分割的不相容事件$B_{i}$在任意事件$A$发生的条件下的概率可以由每个事件$B_{i}$的概率和事件$A$在分割事件发生的条件下的概率$P(A|B_{i})$所求得</strong></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;随机事件&quot;&gt;&lt;a href=&quot;#随机事件&quot; class=&quot;headerlink&quot; title=&quot;随机事件&quot;&gt;&lt;/a&gt;随机事件&lt;/h2&gt;&lt;h3 id=&quot;基本定义&quot;&gt;&lt;a href=&quot;#基本定义&quot; class=&quot;headerlink&quot; title=&quot;基本定义&quot;&gt;&lt;/a&gt;基本定义&lt;/h3&gt;&lt;p&gt;随机事件：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;随机现象的一切可能基本结果组成的集合称为&lt;strong&gt;样本空间&lt;/strong&gt;，记为$\Omega=\left\{ \omega \right\}$，其中$\omega$为基本结果，又称为&lt;strong&gt;样本点&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;随机现象的某些样本点组成的集合称为&lt;strong&gt;随机事件&lt;/strong&gt;，常用大写字母$A,B,C,…$表示。由样本空间$\Omega$中的单个元素组成的子集称为&lt;strong&gt;基本事件&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;如果$A$与$B$没有相同的样本点，则称$A$与$B$&lt;/li&gt;
+&lt;li&gt;事件$A$的&lt;strong&gt;对立事件&lt;/strong&gt;$\bar{A}$，由在$\Omega$中而不在$A$中的样本点组成的新事件。&lt;/li&gt;
+&lt;li&gt;德摩根律：$\bar{A\cup B}=\bar{A}\cap\bar{B}$&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="http://www.skecis.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="条件概率" scheme="http://www.skecis.top/tags/%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87/"/>
+    
+  </entry>
   
   <entry>
     <title>线性回归</title>
@@ -35,9 +64,9 @@
       <category term="机器学习" scheme="http://www.skecis.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="linear regression" scheme="http://www.skecis.top/tags/linear-regression/"/>
-    
       <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="linear regression" scheme="http://www.skecis.top/tags/linear-regression/"/>
     
   </entry>
   
@@ -189,9 +218,9 @@
       <category term="机器学习" scheme="http://www.skecis.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="机器学习" scheme="http://www.skecis.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -243,9 +272,9 @@
       <category term="算法与数据结构" scheme="http://www.skecis.top/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
     
-      <category term="Python" scheme="http://www.skecis.top/tags/Python/"/>
-    
       <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Python" scheme="http://www.skecis.top/tags/Python/"/>
     
       <category term="内存分配" scheme="http://www.skecis.top/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
     
@@ -530,29 +559,6 @@
     
     
       <category term="数据库" scheme="http://www.skecis.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>世界那么大-出去看看</title>
-    <link href="http://www.skecis.top/2019/10/11/science-internet/"/>
-    <id>http://www.skecis.top/2019/10/11/science-internet/</id>
-    <published>2019-10-11T04:41:33.000Z</published>
-    <updated>2019-10-12T10:19:55.331Z</updated>
-    
-    <content type="html"><![CDATA[<p>知识不分边界，在这广袤的土地上寻求知识吧</p><h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><h3 id="购买一台VPS服务器"><a href="#购买一台VPS服务器" class="headerlink" title="购买一台VPS服务器"></a>购买一台VPS服务器</h3><p><a href="https://bwh88.net/index.php" target="_blank" rel="noopener">BanWaGong</a>挺不错</p><h3 id="远程登录服务器"><a href="#远程登录服务器" class="headerlink" title="远程登录服务器"></a>远程登录服务器</h3><a id="more"></a><p>Windows可用<a href="https://xshell.en.softonic.com/" target="_blank" rel="noopener">Xshell</a>等远程工具</p><h3 id="为服务器部署linux系统，最合适的系统为Centos-6-x86-64-bbr"><a href="#为服务器部署linux系统，最合适的系统为Centos-6-x86-64-bbr" class="headerlink" title="为服务器部署linux系统，最合适的系统为Centos 6 x86_64-bbr"></a>为服务器部署linux系统，最合适的系统为<code>Centos 6 x86_64-bbr</code></h3><h2 id="二、开始"><a href="#二、开始" class="headerlink" title="二、开始"></a>二、开始</h2><h3 id="安装基本工具"><a href="#安装基本工具" class="headerlink" title="安装基本工具"></a>安装基本工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install wget</span><br></pre></td></tr></table></figure><h3 id="安装核心工具SS"><a href="#安装核心工具SS" class="headerlink" title="安装核心工具SS"></a>安装核心工具SS</h3><p>下载工具SS，在服务器终端以root身份执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget — no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br></pre></td></tr></table></figure></p><h3 id="修改执行权限"><a href="#修改执行权限" class="headerlink" title="修改执行权限"></a>修改执行权限</h3><p>执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chmod +x shadowsocks.sh</span><br></pre></td></tr></table></figure></p><h3 id="运行安装"><a href="#运行安装" class="headerlink" title="运行安装"></a>运行安装</h3><p>执行命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure></p><h3 id="安装过程中"><a href="#安装过程中" class="headerlink" title="安装过程中"></a>安装过程中</h3><p>执行刚刚的命令后，开始安装SS，安装过程中会有修改端口、密码等提示，可修改也可遵从默认，接着会选择加密方式，这里选择<code>aes-256-cfb</code></p><h3 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h3><p>完成安装后，会显示你的所有配置信息:端口，密码，加密方式等以供记忆。</p><h2 id="三、写在后面"><a href="#三、写在后面" class="headerlink" title="三、写在后面"></a>三、写在后面</h2><p>请合理使用SS工具，学习自己所需要的知识，毕竟工具开发原作者曾被请去喝茶，之后便不再维护了。</p><h4 id="爱祖国，爱社会"><a href="#爱祖国，爱社会" class="headerlink" title="爱祖国，爱社会"></a>爱祖国，爱社会</h4>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;知识不分边界，在这广袤的土地上寻求知识吧&lt;/p&gt;&lt;h2 id=&quot;一、准备&quot;&gt;&lt;a href=&quot;#一、准备&quot; class=&quot;headerlink&quot; title=&quot;一、准备&quot;&gt;&lt;/a&gt;一、准备&lt;/h2&gt;&lt;h3 id=&quot;购买一台VPS服务器&quot;&gt;&lt;a href=&quot;#购买一台VPS服务器&quot; class=&quot;headerlink&quot; title=&quot;购买一台VPS服务器&quot;&gt;&lt;/a&gt;购买一台VPS服务器&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://bwh88.net/index.php&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;BanWaGong&lt;/a&gt;挺不错&lt;/p&gt;&lt;h3 id=&quot;远程登录服务器&quot;&gt;&lt;a href=&quot;#远程登录服务器&quot; class=&quot;headerlink&quot; title=&quot;远程登录服务器&quot;&gt;&lt;/a&gt;远程登录服务器&lt;/h3&gt;
-    
-    </summary>
-    
-    
-      <category term="小技能" scheme="http://www.skecis.top/categories/%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
-    
-    
-      <category term="get小技能" scheme="http://www.skecis.top/tags/get%E5%B0%8F%E6%8A%80%E8%83%BD/"/>
     
   </entry>
   
