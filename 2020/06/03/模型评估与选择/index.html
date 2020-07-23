@@ -65,21 +65,19 @@
     })();
 </script>
 
-  <meta name="description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
-<meta name="keywords" content="机器学习,算法">
+  <meta name="description" content="经验误差与过拟合 错误率：如果在$m$个样本中有$a$个样本分类错误，则错误率$E=\frac{a}{m}$ 精度(accuracy)：$1-\frac{a}{m}$，即“精度=1-错误率” 误差：学习器的实际预测输出与样本的真实输出之间的差异。 训练误差：学习器在训练集上的误差。 泛化误差：学习器在新样本上的误差。 过拟合(overfitting)与欠拟合(underfitting)">
+<meta name="keywords" content="模型评估">
 <meta property="og:type" content="article">
-<meta property="og:title" content="KNN算法-python实现">
-<meta property="og:url" content="http://www.skecis.top/2019/11/18/knn算法/index.html">
+<meta property="og:title" content="模型评估与选择（参考自西瓜书）">
+<meta property="og:url" content="http://www.skecis.top/2020/06/03/模型评估与选择/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
+<meta property="og:description" content="经验误差与过拟合 错误率：如果在$m$个样本中有$a$个样本分类错误，则错误率$E=\frac{a}{m}$ 精度(accuracy)：$1-\frac{a}{m}$，即“精度=1-错误率” 误差：学习器的实际预测输出与样本的真实输出之间的差异。 训练误差：学习器在训练集上的误差。 泛化误差：学习器在新样本上的误差。 过拟合(overfitting)与欠拟合(underfitting)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png">
-<meta property="og:updated_time" content="2019-12-15T08:28:34.706Z">
+<meta property="og:updated_time" content="2020-06-07T06:47:52.748Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KNN算法-python实现">
-<meta name="twitter:description" content="$k$近邻算法$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本">
-<meta name="twitter:image" content="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png">
-  <link rel="canonical" href="http://www.skecis.top/2019/11/18/knn算法/">
+<meta name="twitter:title" content="模型评估与选择（参考自西瓜书）">
+<meta name="twitter:description" content="经验误差与过拟合 错误率：如果在$m$个样本中有$a$个样本分类错误，则错误率$E=\frac{a}{m}$ 精度(accuracy)：$1-\frac{a}{m}$，即“精度=1-错误率” 误差：学习器的实际预测输出与样本的真实输出之间的差异。 训练误差：学习器在训练集上的误差。 泛化误差：学习器在新样本上的误差。 过拟合(overfitting)与欠拟合(underfitting)">
+  <link rel="canonical" href="http://www.skecis.top/2020/06/03/模型评估与选择/">
 
 
 <script id="page-configurations">
@@ -93,7 +91,7 @@
   };
 </script>
 
-  <title>KNN算法-python实现 | Mr. Liu's Blog</title>
+  <title>模型评估与选择（参考自西瓜书） | Mr. Liu's Blog</title>
   
 
 
@@ -272,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/11/18/knn算法/">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/06/03/模型评估与选择/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SkecisAI">
@@ -284,7 +282,7 @@
       <meta itemprop="name" content="Mr. Liu's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">KNN算法-python实现
+        <h1 class="post-title" itemprop="name headline">模型评估与选择（参考自西瓜书）
 
           
         </h1>
@@ -300,7 +298,7 @@
                 
               
 
-              <time title="创建时间：2019-11-18 15:47:21" itemprop="dateCreated datePublished" datetime="2019-11-18T15:47:21+08:00">2019-11-18</time>
+              <time title="创建时间：2020-06-03 14:36:48" itemprop="dateCreated datePublished" datetime="2020-06-03T14:36:48+08:00">2020-06-03</time>
             </span>
           
             
@@ -311,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-15 16:28:34" itemprop="dateModified" datetime="2019-12-15T16:28:34+08:00">2019-12-15</time>
+                <time title="修改时间：2020-06-07 14:47:52" itemprop="dateModified" datetime="2020-06-07T14:47:52+08:00">2020-06-07</time>
               </span>
             
           
@@ -346,7 +344,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.3k</span>
+              <span>2k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -371,27 +369,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="$k$近邻算法"></a>$k$近邻算法</h2><p>$k$近邻(k-Nearest Neighbor, KNN)分类算法，是机器学习中最简单的算法之一。该算法的基本思路是：在一个未知的样本附近选取k个距离最短的已知样本（有类别标签），将这k个已知样本中数量最多的类别（标签）作为未知样本的类别（标签）。直观一点，如下图所示：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/knn%E7%AE%97%E6%B3%95/1.png" alt="knn示例"><br>可以看到上图选取了$k=5$个距离未知样本最近的已知样本，5个已知样本中有三个红色矩形和两个蓝色矩形，由算法的基本思路可知，未知样本应标记为<strong>红色</strong>。</p><a id="more"></a>
-<h2 id="距离的度量"><a href="#距离的度量" class="headerlink" title="距离的度量"></a>距离的度量</h2><p>$x$和$y$分别为两个样本，$n$为特征总数。一般用到的是以下两种距离：</p>
-<ul>
-<li><strong>欧式距离</strong>：<script type="math/tex; mode=display">d\left ( x,y \right )=\sqrt{\sum_{k=1}^{n}\left ( x_{k}-y_{k} \right )^{2}}</script></li>
-<li><strong>曼哈顿距离</strong>：<script type="math/tex; mode=display">d\left ( x,y \right )=\sqrt{\sum_{k=1}^{n}\left | x_{k}-y_{k} \right |}</script></li>
-</ul>
-<p>无论用那种距离，目的都是为了刻画已知样本和未知样本的<strong>相似度</strong>，从而描述预知样本的特征。</p>
-<h2 id="用python实现算法"><a href="#用python实现算法" class="headerlink" title="用python实现算法"></a>用python实现算法</h2><h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><blockquote>
-<p>初始化：已知类别标签的样本集$X_{n}$和最多近邻数$k$，<br>输入：未知样本$x$<br>步骤：</p>
-<ol>
-<li>对于每个样本集中的样本$X_{i}$和未知样本$x$计算距离$d_{i}$。得到距离集$D_{n}$。</li>
-<li>将距离集$D_{n}$中的数从小到大排序，选择前$k$个距离数据。</li>
-<li>根据步骤2的$k$距离数据中的样本下标，得到对应的类别标签集$C_{k}$</li>
-<li>选择$C_{k}$中数量最多的类别标签$c_{max}$作为未知样本$x$的类别标签$c$</li>
+        <h2 id="经验误差与过拟合"><a href="#经验误差与过拟合" class="headerlink" title="经验误差与过拟合"></a>经验误差与过拟合</h2><ul>
+<li><strong>错误率</strong>：如果在$m$个样本中有$a$个样本分类错误，则错误率$E=\frac{a}{m}$</li>
+<li><strong>精度(accuracy)</strong>：$1-\frac{a}{m}$，即“精度=1-错误率”</li>
+<li><strong>误差：学习器的实际预测输出与样本的真实输出之间的差异</strong>。</li>
+<li><strong>训练误差：学习器在训练集上的误差。</strong></li>
+<li><strong>泛化误差：学习器在新样本上的误差。</strong></li>
+<li><strong>过拟合(overfitting)</strong>与<strong>欠拟合(underfitting)</strong></li>
+</ul><a id="more"></a>
+<h2 id="评估方法"><a href="#评估方法" class="headerlink" title="评估方法"></a>评估方法</h2><h3 id="数据集的划分"><a href="#数据集的划分" class="headerlink" title="数据集的划分"></a>数据集的划分</h3><ol>
+<li>留出法：直接将数据集$D$划分为两个互斥的集合，其中一个作为训练集$S$，另一个作为测试集$T$，即$D=S\cup T, S\cap T=\phi$。为了保证划分后数据分布的一致性。通常采用“分层抽样”(stratified sampling)的方法。</li>
+<li>交叉验证法：将数据集$D$划分为$k$个大小相似的互斥子集，即$D=D_{1}\cup D_{2}\cup…\cup D_{k},D_{i}\cap D_{j}=\phi(i\neq j)$，每个子集$D_{i}$都尽可能保证数据分布的一致性，即来自分层抽样。<strong>然后每次用$k-1$个子集的并集作为训练集，剩下的那个子集作为测试集</strong>，这样就得到$k$组 训练/测试集，<strong>从而可以进行$k$次训练和测试，最终返回的是这$k$个测试结果的均值，称为“$k$折交叉验证”(k-fold cross validation)</strong></li>
+<li>自助法(bootstrapping)：给定包含$m$个样本的数据集$D$，我们对它进行采样产生数据集$D’$：<strong>每次随机从$D$中挑选一个样本，将其拷贝放入$D’$，然后再将该样本放入$D$中，使得该样本在下次采样时任有可能被采到；重复这个过程$m$次后，我们就得到了含有$m$个样本的数据集$D’$</strong>。做一个简单的估计，样本每次采样不被采到的概率为$1-\frac{1}{m}$，则$m$次不被猜到的概率为$(1-\frac{1}{m})^m$，当$m$足够大时有：<script type="math/tex; mode=display">
+\lim_{m\to\infty}(1-\frac{1}{m})^m\mapsto\frac{1}{e}\approx0.368</script>即通过自助采样，初始数据集$D$中大约有$36.8\%$的样本没有出现在$D’$中。适用于数据集较小，难以划分的数据集。</li>
 </ol>
-</blockquote>
-<h3 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h3><p>python实现knn算法的代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KNN</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        the k of KNN</span></span><br><span class="line"><span class="string">        :param k: </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.k = k</span><br><span class="line">        self.samples_nums = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, x_train, y_train, test)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        predict the categorie of test sample</span></span><br><span class="line"><span class="string">        :param x_train: the set of train sample</span></span><br><span class="line"><span class="string">        :param y_train: the label set of train sample</span></span><br><span class="line"><span class="string">        :param test: </span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        x_train = np.array(x_train)</span><br><span class="line">        self.samples_nums = x_train.shape[<span class="number">0</span>]</span><br><span class="line">        y_train = np.array(y_train)</span><br><span class="line">        sorted_k_v = self.__cal_dist(x_train, test)</span><br><span class="line">        lab_dict = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind <span class="keyword">in</span> range(self.k):</span><br><span class="line">            s = sorted_k_v[ind]</span><br><span class="line">            <span class="keyword">if</span> y_train[s[<span class="number">0</span>]] <span class="keyword">not</span> <span class="keyword">in</span> lab_dict.keys():</span><br><span class="line">                lab_dict[y_train[s[<span class="number">0</span>]]] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                lab_dict[y_train[s[<span class="number">0</span>]]] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max(lab_dict, key=lab_dict.get)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__cal_dist</span><span class="params">(self, x_train, x_test)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        calculate the distance between train set and test sample</span></span><br><span class="line"><span class="string">        :param x_train: </span></span><br><span class="line"><span class="string">        :param x_test: </span></span><br><span class="line"><span class="string">        :return: </span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> ind <span class="keyword">in</span> range(self.samples_nums):</span><br><span class="line">            d[ind] = np.sqrt(sum(np.power(x_train[ind, :] - x_test, <span class="number">2</span>)))</span><br><span class="line">        sort_list = sorted(d.items(), key=<span class="keyword">lambda</span> itm: itm[<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> sort_list</span><br></pre></td></tr></table></figure>
-<p>测试案例如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    my_knn = KNN(<span class="number">3</span>)</span><br><span class="line">    x = [[<span class="number">0.1</span>, <span class="number">0.2</span>], [<span class="number">-1.5</span>, <span class="number">-1.1</span>], [<span class="number">0.7</span>, <span class="number">1.9</span>], [<span class="number">-0.3</span>, <span class="number">1.0</span>]]</span><br><span class="line">    y = [<span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>]</span><br><span class="line">    print(my_knn.predict(x, y, [<span class="number">1</span>, <span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
-<p>输出：<code>b</code></p>
+<h3 id="调参与最终模型"><a href="#调参与最终模型" class="headerlink" title="调参与最终模型"></a>调参与最终模型</h3><h2 id="性能度量"><a href="#性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><p>回归任务中常用的<strong>均方误差</strong>：</p>
+<script type="math/tex; mode=display">
+E(f;D)=\frac{1}{m}\sum_{i=1}^m(f(\mathbf{x}_{i})-y_{i})^2</script><p>更一般的，对于数据分布$\mathfrak{D}$和概率密度函数$p(\cdot)$，均方误差可描述为</p>
+<script type="math/tex; mode=display">
+E(F;\mathfrak{D})=\int_{x\sim\mathfrak{D}}(f(\mathbf{x}_{i}-y)^2)p(\mathbf{x})dx</script><h3 id="查准率、查全率与-F1"><a href="#查准率、查全率与-F1" class="headerlink" title="查准率、查全率与$F1$"></a>查准率、查全率与$F1$</h3><p>对于二分类问题，可将样例的真实类别与学习器的预测类别的组合划分为：</p>
+<ul>
+<li>真正例(true positive)：预测的正例实际上就是正例</li>
+<li>假正例(false positive)：预测的正例实际上是反例</li>
+<li>真反例(true negative)：预测的反例实际上就是负例</li>
+<li>假反例(false negative)：预测的反例实际上是正例</li>
+</ul>
+<p>由以上的概念可以得出，$真实的正例=TP+FN,真实的反例=TN+FP,预测的正例=TP+FP,预测的反例=TN+FN$，可组成混淆矩阵（confusion matrix）。</p>
+<ul>
+<li>查准率：$P=\frac{TP}{TP+FP}=\frac{预测正确的正例}{预测的正例数}$，即考量预测正例的准确率</li>
+<li>查全率：$R=\frac{TP}{TP+FN}=\frac{预测正确的正例}{真实的正例数}$，即考量预测正例的完整率</li>
+<li>P-R曲线与平衡点（Break-Event Point，简称BEP，它是查准率=查全率时的取值）</li>
+<li>$F1$度量比平衡点更常用：<script type="math/tex; mode=display">F1=\frac{2\times P\times R}{P+R}=\frac{2\times TP}{样例总数+TP-TN}</script></li>
+<li>对查全率与查准率的重视程度不同，定义$\beta&gt;0$度量了查全率对查准率的相对重要性：<script type="math/tex; mode=display">
+F_{\beta}=\frac{(1+\beta^2)\times P\times R}{(\beta^2\times P)+R}</script></li>
+<li>很多时候会多次的训练/测试，得到多个混淆矩阵。从而使用各种指标的<strong>均值</strong>来进行考量</li>
+</ul>
+<h3 id="ROC与AUC"><a href="#ROC与AUC" class="headerlink" title="ROC与AUC"></a>ROC与AUC</h3><p>ROC(Reveiver Operating Characteristic)全称是“受试者工作特征”，它考察“真正例率”(TPR)与“假正例率”(FPR):</p>
+<script type="math/tex; mode=display">
+TPR=\frac{TP}{TP+FN}=\frac{预测正确的正例}{真实的正例数}
+\\ FPR=\frac{FP}{FP+TN}=\frac{预测错误的正例}{真实的反例数}</script><p>AUC即ROC曲线下的面积</p>
 
     </div>
 
@@ -407,12 +423,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>KNN算法-python实现</a></p>
+  <p><span>本文标题:</span>模型评估与选择（参考自西瓜书）</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
-  <p><span>发布时间:</span>2019年11月18日 - 15:47:21</p>
-  <p><span>最后更新:</span>2019年12月15日 - 16:28:34</p>
-  <p><span>原始链接:</span><a href="/2019/11/18/knn算法/" title="KNN算法-python实现">http://www.skecis.top/2019/11/18/knn算法/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2019/11/18/knn算法/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年06月03日 - 14:36:48</p>
+  <p><span>最后更新:</span>2020年06月07日 - 14:47:52</p>
+  <p><span>原始链接:</span><a href="/2020/06/03/模型评估与选择/" title="模型评估与选择（参考自西瓜书）">http://www.skecis.top/2020/06/03/模型评估与选择/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/06/03/模型评估与选择/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -457,9 +473,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
-            
-              <a href="/tags/算法/" rel="tag"># 算法</a>
+              <a href="/tags/模型评估/" rel="tag"># 模型评估</a>
             
           </div>
         
@@ -469,8 +483,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/11/14/哈希表/" rel="next" title="数据结构--哈希表">
-                  <i class="fa fa-chevron-left"></i> 数据结构--哈希表
+                <a href="/2020/06/02/概率论一/" rel="next" title="概率论一：随机事件与概率">
+                  <i class="fa fa-chevron-left"></i> 概率论一：随机事件与概率
                 </a>
               
             </div>
@@ -479,8 +493,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/11/18/二叉查找树/" rel="prev" title="二叉排序树(BST)">
-                  二叉排序树(BST) <i class="fa fa-chevron-right"></i>
+                <a href="/2020/07/23/java学习笔记/" rel="prev" title="java学习笔记">
+                  java学习笔记 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -530,7 +544,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#k-近邻算法"><span class="nav-number">1.</span> <span class="nav-text">$k$近邻算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#距离的度量"><span class="nav-number">2.</span> <span class="nav-text">距离的度量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用python实现算法"><span class="nav-number">3.</span> <span class="nav-text">用python实现算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法思路"><span class="nav-number">3.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python实现"><span class="nav-number">3.2.</span> <span class="nav-text">python实现</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#经验误差与过拟合"><span class="nav-number">1.</span> <span class="nav-text">经验误差与过拟合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评估方法"><span class="nav-number">2.</span> <span class="nav-text">评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据集的划分"><span class="nav-number">2.1.</span> <span class="nav-text">数据集的划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调参与最终模型"><span class="nav-number">2.2.</span> <span class="nav-text">调参与最终模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能度量"><span class="nav-number">3.</span> <span class="nav-text">性能度量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查准率、查全率与-F1"><span class="nav-number">3.1.</span> <span class="nav-text">查准率、查全率与$F1$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC与AUC"><span class="nav-number">3.2.</span> <span class="nav-text">ROC与AUC</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -861,7 +875,7 @@ window.addEventListener('pjax:success', () => {
       repo: 'skecisai.github.io',
       owner: 'skecisai',
       admin: ['skecis'],
-      id: 'c5a7943376d1a3ed583f1b845bdd69a0',
+      id: 'f24c8de2f41a4dc6ffab2f258363178f',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'
