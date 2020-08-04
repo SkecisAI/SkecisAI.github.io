@@ -338,6 +338,90 @@
 <li>死亡</li>
 </ul>
 <p>线程状态转换图：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/cpu%E7%8A%B6%E6%80%81.png" alt="线程的生命周期"></p>
+<h3 id="线程的同步"><a href="#线程的同步" class="headerlink" title="线程的同步"></a>线程的同步</h3><p>问题：</p>
+<ol>
+<li>当线程之间存在共享数据时，就会存在安全问题</li>
+<li>共享数据成为<strong>临界资源</strong>，访问临界资源的代码称为<strong>临界区</strong></li>
+</ol>
+<p>如何解决：</p>
+<ol>
+<li>对线程的访问的资源进行<strong>加锁</strong>，加锁后其他进程不能访问</li>
+</ol>
+<p>java的解决方式：</p>
+<ul>
+<li><p><code>synchronized</code>关键字：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 同步代码块</span></span><br><span class="line"><span class="keyword">synchronized</span>(同步监视器)&#123;</span><br><span class="line">    <span class="comment">// 临界区</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步方法：Runnable实现类-this为同步监视器</span></span><br><span class="line">权限修饰符 <span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 临界区</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 同步方法：Thread子类-ClassName.class为调用者，且只有一个</span></span><br><span class="line">权限修饰符 <span class="function"><span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 临界区</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同步监视器：锁-<strong>任何一个对象都可以作为锁</strong>；要求-<strong>多个线程必须共用一把锁</strong></p>
+</li>
+<li>this作为锁：适用于实现Runnable接口的类的对象，因为只创建了一个对象</li>
+<li>ClassName.class作为锁：该对象只会加载一次</li>
+<li>在Runnable实现类中考虑使用this为锁，在Thread的子类中考虑使用ClassName.class作为锁</li>
+</ul>
+<p>同步的缺点：</p>
+<ol>
+<li>使用了线程同步相当于，线程的串行执行，速度慢</li>
+</ol>
+<h3 id="线程安全的单例模式"><a href="#线程安全的单例模式" class="headerlink" title="线程安全的单例模式"></a>线程安全的单例模式</h3><ul>
+<li><p>懒汉式：线程安全</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingleton s = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="keyword">null</span>)&#123;</span><br><span class="line">            s = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>懒汉式：双重校验锁</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> LazySingleton s = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingle</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(LazySingleton.class)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    s = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>  不同的线程分别占用对方的资源不放弃，都在等待对方去释放自己需要的同步资源，就形成了死锁。可见申请资源的方向称为一个<strong>环状结构</strong></p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 线程A</span></span><br><span class="line"><span class="keyword">new</span> Thread(&#123;</span><br><span class="line">    LockA&#123;</span><br><span class="line">        <span class="comment">// 抢占A锁，等待B锁</span></span><br><span class="line">        LockB&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start()</span><br><span class="line"><span class="comment">// 线程B</span></span><br><span class="line"><span class="keyword">new</span> Thread(&#123;</span><br><span class="line">    LockB&#123;</span><br><span class="line">        <span class="comment">// 抢占B锁，等待A锁</span></span><br><span class="line">        LockA&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="Lock锁"><a href="#Lock锁" class="headerlink" title="Lock锁"></a>Lock锁</h3><ul>
+<li>Lock对象：JDK5.0+，作为同步锁</li>
+<li><code>java.util.concurrent.locks.Lock</code>接口</li>
+<li>ReentrantLock类实现了Lock接口</li>
+</ul>
+<p>synchronized与lock的不同：</p>
+<ol>
+<li>synchronized相当于自动锁，自动加锁，自动释放锁；lock手动启动锁，手动释放锁</li>
+<li>优先使用顺序：lock锁-&gt;同步代码块-&gt;同步方法</li>
+</ol>
+<h3 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h3><ul>
+<li>wait方法：阻塞当前线程，<strong>并释放锁</strong></li>
+<li>notify方法：唤醒用wait阻塞的线程</li>
+<li>notifyAll方法：唤醒所有wait阻塞的线程</li>
+<li><strong>方法的调用者必须是同步代码块或同步方法的同步监视器</strong>，否则出现异常<code>IllegalMonitorStateException</code></li>
+<li><strong>3个方法都来自Object</strong>，因为同步监视器可以是任何对象，他们的共同父类是Object</li>
+</ul>
+<p>生产者消费者问题：使用wait与notify让生产者与消费者之间产生交互</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> ind.MultiProcess;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生产者与消费者的问题</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerAndProducerProblem</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        StoreManagement store = <span class="keyword">new</span> StoreManagement();</span><br><span class="line">        store.openStore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> stocks_num = <span class="number">20</span>;</span><br><span class="line">    <span class="keyword">int</span> stocks_now = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Store store;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(Store store)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.store = store;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            produceItem(Thread.currentThread().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">produceItem</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">synchronized</span> (store) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (store.stocks_now &lt; store.stocks_num) &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                        store.stocks_now++;</span><br><span class="line">                        store.notify();   <span class="comment">// 唤醒消费者</span></span><br><span class="line">                        System.out.println(name + <span class="string">": 当前货量-"</span> + store.stocks_now);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        store.wait();    <span class="comment">//  货满，生产者等待</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Store store;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(Store store)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.store = store;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            consumeItem(Thread.currentThread().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">consumeItem</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (store) &#123;</span><br><span class="line">                <span class="keyword">if</span> (store.stocks_now &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                    store.stocks_now--;</span><br><span class="line">                    store.notify();   <span class="comment">// 唤醒生产者</span></span><br><span class="line">                    System.out.println(name + <span class="string">" 消费后剩余"</span> + store.stocks_now);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    store.wait();   <span class="comment">// 货架为空，消费者等待</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StoreManagement</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Store store = <span class="keyword">new</span> Store();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Producer producer = <span class="keyword">new</span> Producer(store);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Consumer consumer = <span class="keyword">new</span> Consumer(store);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">openStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        initProducers();      <span class="comment">// 开启生产者</span></span><br><span class="line">        initConsumers();      <span class="comment">// 开启消费者</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initProducers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Thread[] producers = <span class="keyword">new</span> Thread[<span class="number">5</span>];   <span class="comment">// 5个生产者</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; producers.length; i++) &#123;</span><br><span class="line">            producers[i] = <span class="keyword">new</span> Thread(producer);</span><br><span class="line">            producers[i].setName(<span class="string">"生产者"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Thread thread : producers) &#123;</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initConsumers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = (<span class="keyword">int</span>) (<span class="number">3</span> + Math.random() * <span class="number">5</span>);</span><br><span class="line">        System.out.println(n + <span class="string">"个消费者"</span>);</span><br><span class="line">        System.out.println(<span class="string">"5个生产者"</span>);</span><br><span class="line">        <span class="keyword">final</span> Thread[] consumers = <span class="keyword">new</span> Thread[n];   <span class="comment">// 3-8个消费者</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; consumers.length; i++) &#123;</span><br><span class="line">            consumers[i] = <span class="keyword">new</span> Thread(consumer);</span><br><span class="line">            consumers[i].setName(<span class="string">"消费者"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Thread thread : consumers) &#123;</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JDK5-0-新增方式"><a href="#JDK5-0-新增方式" class="headerlink" title="JDK5.0+新增方式"></a>JDK5.0+新增方式</h3><ul>
+<li>实现Callable接口</li>
+<li>使用线程池</li>
+</ul>
+<p>Callable接口：</p>
+<ul>
+<li>创建Callable接口的实现类</li>
+<li>借助FutureTask类创建对象，FutureTask类实现了Runnable接口</li>
+<li>用FutureTask类的get方法获取线程执行call的返回值</li>
+<li>同样将FutureTask类的对象来构造Thread，来启动线程</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        CallThread t = <span class="keyword">new</span> CallThread();     <span class="comment">// Callable接口的实现类</span></span><br><span class="line">        FutureTask ft = <span class="keyword">new</span> FutureTask(t);   <span class="comment">// 继承过Runnable接口</span></span><br><span class="line">        <span class="keyword">new</span> Thread(ft).start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Object o = ft.get();</span><br><span class="line">            System.out.println(o);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CallThread</span> <span class="keyword">implements</span> <span class="title">Callable</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">                sum += <span class="number">2</span>;</span><br><span class="line">                System.out.println(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优点：</p>
+<ul>
+<li>有返回值</li>
+<li>可以抛出异常</li>
+<li>支持泛型</li>
+</ul>
+<p>使用线程池：</p>
+<ul>
+<li>提高响应速度</li>
+<li>降低资源消耗</li>
+<li>便于线程管理</li>
+</ul>
+<ol>
+<li><p>ExecutorService：线程池接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ExecutorService service = <span class="keyword">new</span> ExecutorService(<span class="number">10</span>);  <span class="comment">// 创建10个线程的线程池</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">(Runnable command)</span>: 执行任务，Runnable接口的实现类</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span>: 关闭连接池</span></span><br><span class="line"><span class="function"></span>=========================</span><br><span class="line">corePoolSize: 核心池的大小</span><br><span class="line">maximumPoolSize：最大线程数</span><br><span class="line">keepAliveTime：线程没有任务时，最多保持多少时间后会终止</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Executors：线程池的工厂类、工具类。静态方法</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>程序语言</category>
@@ -523,8 +607,8 @@ y = g^{-1}(w^{T}x+b)</script>]]></content>
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>linear regression</tag>
         <tag>算法</tag>
+        <tag>linear regression</tag>
       </tags>
   </entry>
   <entry>
@@ -813,8 +897,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>机器学习</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -950,8 +1034,8 @@ k_{i}\geq k_{2i+1}
         <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Python</tag>
+        <tag>算法</tag>
         <tag>内存分配</tag>
       </tags>
   </entry>
