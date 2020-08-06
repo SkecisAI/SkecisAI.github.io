@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>java学习笔记</title>
+    <title>Java学习笔记</title>
     <url>/2020/07/23/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="java基础"><a href="#java基础" class="headerlink" title="java基础"></a>java基础</h2><h3 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h3><ul>
 <li>基本类型：<code>byte, short, int, long, float, double, boolean, char</code></li>
@@ -422,7 +422,138 @@
 <li><p>Executors：线程池的工厂类、工具类。静态方法</p>
 </li>
 </ol>
-]]></content>
+<h2 id="Java常用类"><a href="#Java常用类" class="headerlink" title="Java常用类"></a>Java常用类</h2><h3 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h3><ul>
+<li>final类</li>
+<li>实现了<code>java.io.Serializable, Comparable&lt;String&gt;, CharSequence</code>三个接口<ol>
+<li><code>Serializable</code>接口：表示支持序列化</li>
+<li><code>Compareable&lt;String&gt;</code>接口：比较大小</li>
+</ol>
+</li>
+<li><code>final char[]</code>：用于存储字符串数据</li>
+<li><p><strong>不可变的字符序列</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String s1 = <span class="string">"123"</span>;  <span class="comment">// 字面量，字符串值存储在字符串常量池中，其中不会存储相同的常量字符串</span></span><br><span class="line">String s2 = <span class="string">"123"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> Stirng(<span class="string">"123"</span>)  <span class="comment">// 存储在堆中</span></span><br><span class="line"></span><br><span class="line">sysout(s1 == s2)   <span class="comment">// true</span></span><br><span class="line">sysout(s1 == s3)   <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">Person p1 = <span class="keyword">new</span> Person(<span class="string">"Jack"</span>, <span class="number">12</span>)</span><br><span class="line">Person p2 = <span class="keyword">new</span> Person(<span class="string">"Jack"</span>, <span class="number">113</span>)</span><br><span class="line">sysout(p1.name == p2.name)   <span class="comment">// true 因为"Jack"为字面量，存储在常量池中</span></span><br><span class="line"></span><br><span class="line">String s1 = <span class="string">"javaEE"</span>;</span><br><span class="line">String s2 = <span class="string">"hadoop"</span>;</span><br><span class="line"></span><br><span class="line">String s3 = <span class="string">"javaEEhadoop"</span>;</span><br><span class="line">String s4 = <span class="string">"javaEE"</span> + <span class="string">"hadoop"</span>;</span><br><span class="line">String s5 = s1 + <span class="string">"hadoop"</span>;</span><br><span class="line">String s6 = <span class="string">"javaEE"</span> + s2;</span><br><span class="line">System.out.println(s3 == s4);  <span class="comment">// true，常量与常量的拼接都在常量池中</span></span><br><span class="line">System.out.println(s3 == s5);  <span class="comment">// false</span></span><br><span class="line">System.out.println(s3 == s6);  <span class="comment">// false</span></span><br><span class="line">System.out.println(s5 == s6);  <span class="comment">// false</span></span><br><span class="line"><span class="comment">// 只要其中一个是变量，结果就在堆当中</span></span><br><span class="line"></span><br><span class="line">String s7 = s5.intern()  <span class="comment">// 返回在常量池中的字符串</span></span><br><span class="line">sysout(s3 == s7)  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>注意事项：</p>
+<ol>
+<li>拼接操作会产生新的字符串常量</li>
+<li>replace操作也会产生新的字符串常量</li>
+</ol>
+</li>
+</ul>
+<p>JVM内存结构：<br><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/jvm%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84.png" alt="JVM内存结构"></p>
+<h3 id="String常用方法"><a href="#String常用方法" class="headerlink" title="String常用方法"></a>String常用方法</h3><ul>
+<li>int length()：返回字符串长度</li>
+<li>char charAt(int index)：返回某索引处的字符</li>
+<li>boolean isEmpty()：判断字符串是否为空</li>
+<li>String toLowerCase()</li>
+<li>String toUpperCase()</li>
+<li>String trim()：返回字符串的副本，忽略前后空格</li>
+<li>boolean equals(Object obj)：比较字符串的内容是否相同</li>
+<li>String concat(String str)：等价于“+”</li>
+<li>int CompareTo(String anotherString)：比较字符串中每个字符的Ascii大小</li>
+</ul>
+<hr>
+<ul>
+<li>String substring(int beginIndex)</li>
+<li>boolean startWith(String suffix)</li>
+<li>boolean endWith(String prifix)</li>
+<li>boolean contains(CharSequence s)</li>
+<li>int indexOf(String str)</li>
+<li>int lastIndexOf(String str)</li>
+</ul>
+<hr>
+<ul>
+<li>String replace(String oldStr, String newStr)</li>
+<li>String replaceAll(String regex, String replacement)</li>
+<li>String replaceFirst(String regex, String replacement)</li>
+<li>boolean matches(String regex)</li>
+<li>String split(String regex)</li>
+<li>String转其他类型：parseXxx(String str)</li>
+<li>其他类型转String：String.valueOf(Xxx)</li>
+<li>String转为char数组：str.toCharArray()</li>
+<li>char数组转为String：调用String的构造器</li>
+<li>String转为byte数组：str.getBytes(String charset)，使用默认字符集</li>
+<li>byte数组转为String：调用String的构造器，使用编辑器默认字符集，<strong>或者利用参数指定字符集</strong></li>
+</ul>
+<h3 id="StringBuffer（效率低）与StringBuilder（效率最高）"><a href="#StringBuffer（效率低）与StringBuilder（效率最高）" class="headerlink" title="StringBuffer（效率低）与StringBuilder（效率最高）"></a>StringBuffer（效率低）与StringBuilder（效率最高）</h3><ul>
+<li>String：<strong>不可变的字符序列</strong>；使用char数组存储数据</li>
+<li><p>StringBuffer：<strong>可变的字符序列</strong>，<strong>线程安全的</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();  <span class="comment">// 底层创建一个长度为16的char数组</span></span><br><span class="line">sb.append(<span class="string">"hello"</span>)   <span class="comment">// 数组的扩容</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  底层是将 原字符串的长度*2+2 作为新字符串的长度，同时赋给新的数组copyof</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// overflow-conscious code</span></span><br><span class="line">      <span class="keyword">if</span> (minimumCapacity - value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          value = Arrays.copyOf(value,</span><br><span class="line">                  newCapacity(minimumCapacity));</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">newCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// overflow-conscious code</span></span><br><span class="line">      <span class="keyword">int</span> newCapacity = (value.length &lt;&lt; <span class="number">1</span>) + <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">          newCapacity = minCapacity;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> (newCapacity &lt;= <span class="number">0</span> || MAX_ARRAY_SIZE - newCapacity &lt; <span class="number">0</span>)</span><br><span class="line">          ? hugeCapacity(minCapacity)</span><br><span class="line">          : newCapacity;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>StringBuilder：<strong>可变的字符序列</strong>，线程不安全的。jdk5.0+；底层原理同StringBuffer，两者继承自同一父类。</p>
+</li>
+</ul>
+<p>常用方法：</p>
+<ol>
+<li>append</li>
+<li>replace</li>
+<li>insert</li>
+<li>reverse</li>
+<li>setCharAt</li>
+<li>delete</li>
+</ol>
+<h2 id="日期和时间"><a href="#日期和时间" class="headerlink" title="日期和时间"></a>日期和时间</h2><h3 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h3><ul>
+<li>System类中的<code>currentTimeMillis()</code>:返回当前的时间戳毫秒数，返回long型</li>
+</ul>
+<h3 id="日期"><a href="#日期" class="headerlink" title="日期"></a>日期</h3><ul>
+<li>java.util.Date</li>
+<li>java.sql.Date:继承自前者</li>
+</ul>
+<p>转换：<strong>利用时间戳来相互转换</strong></p>
+<h3 id="SimpleDateFormat格式化日期"><a href="#SimpleDateFormat格式化日期" class="headerlink" title="SimpleDateFormat格式化日期"></a>SimpleDateFormat格式化日期</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Date date = <span class="keyword">new</span> Date();</span><br><span class="line">SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat();</span><br><span class="line">String s = sdf.format(date)   <span class="comment">// 日期----&gt;字符串  format</span></span><br><span class="line"></span><br><span class="line">SimpleDateFormat sdf1 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm"</span>);</span><br><span class="line">String s1 = <span class="string">"2000-12-1 23:22"</span>;</span><br><span class="line">Date date1 = sdf1.parse(s1);   <span class="comment">// 字符串-----&gt;日期 parse</span></span><br></pre></td></tr></table></figure>
+<h3 id="Calender抽象类的使用-JDK8-0"><a href="#Calender抽象类的使用-JDK8-0" class="headerlink" title="Calender抽象类的使用 JDK8.0-"></a>Calender抽象类的使用 JDK8.0-</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Calendar calendar = Calendar.getInstance();</span><br><span class="line">System.out.println(calendar.getClass());   <span class="comment">// class java.util.GregorianCalendar</span></span><br><span class="line">System.out.println(calendar.get(Calendar.HOUR));  <span class="comment">// get</span></span><br><span class="line">calendar.set(Calendar.MONTH, <span class="number">9</span>);   <span class="comment">// set</span></span><br><span class="line">calendar.add(Calendar.MONTH, -<span class="number">2</span>);  <span class="comment">// add</span></span><br></pre></td></tr></table></figure>
+<h3 id="JDK8-0-时间API"><a href="#JDK8-0-时间API" class="headerlink" title="JDK8.0+ 时间API"></a>JDK8.0+ 时间API</h3><p>常用类(没有偏移量了；<strong>不可变性</strong>)：</p>
+<ul>
+<li>LocalDate</li>
+<li>LocalTime</li>
+<li>LocalDateTime</li>
+<li>Instant</li>
+<li>DateTimeFomatter</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>withxxx()：返回带有指定值的新的日期对象</li>
+<li>plusxxx()</li>
+<li>minusxxx()</li>
+</ul>
+<h2 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h2><p>两个接口</p>
+<ul>
+<li>Compareable：实现类需重写<code>compareTo</code>方法</li>
+<li>Comparator：<strong>定制排序</strong>，重写<code>compare</code>方法</li>
+</ul>
+<h2 id="System、Math、BigInteger、BigDecimal"><a href="#System、Math、BigInteger、BigDecimal" class="headerlink" title="System、Math、BigInteger、BigDecimal"></a>System、Math、BigInteger、BigDecimal</h2><ul>
+<li>System：有关系统的</li>
+<li>Math：有关数学运算的</li>
+<li>BigInteger：表示不可变的任意精度的整数</li>
+<li>BigDecimal：表示不可变的、任意精度的有符号十进制<strong>定点数</strong>。精度较高。</li>
+</ul>
+<h2 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h2><p>有限个、确定的值的类。（JDK5-自定义，JDK5+引入enum关键字）</p>
+<h3 id="自定义枚举类"><a href="#自定义枚举类" class="headerlink" title="自定义枚举类"></a>自定义枚举类</h3><ol>
+<li>私有化每个枚举值</li>
+<li>私有化构造器</li>
+<li>创建全局枚举对象</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Season</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String season;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Season</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.season = name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season SPRING = <span class="keyword">new</span> Season(<span class="string">"春天"</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season SUMMER = <span class="keyword">new</span> Season(<span class="string">"夏天"</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season AUTUMN = <span class="keyword">new</span> Season(<span class="string">"秋天"</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Season WINTER = <span class="keyword">new</span> Season(<span class="string">"冬天"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSeason</span><span class="params">()</span> </span>&#123;   <span class="comment">// 获取枚举变量的值</span></span><br><span class="line">        <span class="keyword">return</span> season;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Season&#123;"</span> +</span><br><span class="line">                <span class="string">"season='"</span> + season + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用enum关键字"><a href="#使用enum关键字" class="headerlink" title="使用enum关键字"></a>使用enum关键字</h3><ul>
+<li>继承自java.lang.Enum</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> SeasonStatus&#123;</span><br><span class="line">    <span class="comment">// objName</span></span><br><span class="line">    SPRING(<span class="string">"春天"</span>),   <span class="comment">// 逗号隔开</span></span><br><span class="line">    SUMMER(<span class="string">"夏天"</span>),</span><br><span class="line">    AUTUMN(<span class="string">"秋天"</span>),</span><br><span class="line">    WINTER(<span class="string">"冬天"</span>);   <span class="comment">// 分号结束</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String name;</span><br><span class="line">    SeasonStatus(String name)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>枚举类的方法：</p>
+<ul>
+<li>values()</li>
+<li>valueOf(String objName)</li>
+</ul>
+<p>枚举类实现接口：</p>
+<ul>
+<li>同类一样实现接口方法</li>
+<li><strong>每个对象可以不同地实现接口方法</strong></li>
+</ul>
+<h2 id="注解（Annotation）JDK5-0"><a href="#注解（Annotation）JDK5-0" class="headerlink" title="注解（Annotation）JDK5.0+"></a>注解（Annotation）JDK5.0+</h2><ul>
+<li>@override：限定重写父类的方法</li>
+<li>@Deprecated：过时的</li>
+<li>@SuppressWarnings：抑制编译器警告</li>
+</ul>
+<p>自定义注解：参照@SuppressWarnings；有成员value，或无成员</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SuppressWarnings &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The set of warnings that are to be suppressed by the compiler in the</span></span><br><span class="line"><span class="comment">     * annotated element.  Duplicate names are permitted.  The second and</span></span><br><span class="line"><span class="comment">     * successive occurrences of a name are ignored.  The presence of</span></span><br><span class="line"><span class="comment">     * unrecognized warning names is &lt;i&gt;not&lt;/i&gt; an error: Compilers must</span></span><br><span class="line"><span class="comment">     * ignore any warning names they do not recognize.  They are, however,</span></span><br><span class="line"><span class="comment">     * free to emit a warning if an annotation contains an unrecognized</span></span><br><span class="line"><span class="comment">     * warning name.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;p&gt; The string &#123;<span class="doctag">@code</span> "unchecked"&#125; is used to suppress</span></span><br><span class="line"><span class="comment">     * unchecked warnings. Compiler vendors should document the</span></span><br><span class="line"><span class="comment">     * additional warning names they support in conjunction with this</span></span><br><span class="line"><span class="comment">     * annotation type. They are encouraged to cooperate to ensure</span></span><br><span class="line"><span class="comment">     * that the same names work across multiple compilers.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the set of warnings to be suppressed</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>程序语言</category>
       </categories>
