@@ -517,8 +517,8 @@
 </ul>
 <h2 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h2><p>两个接口</p>
 <ul>
-<li>Compareable：实现类需重写<code>compareTo</code>方法</li>
-<li>Comparator：<strong>定制排序</strong>，重写<code>compare</code>方法</li>
+<li>Compareable（内比较器）：实现类需重写<code>compareTo</code>方法</li>
+<li>Comparator（外比较器）：<strong>定制排序</strong>，重写<code>compare</code>方法</li>
 </ul>
 <h2 id="System、Math、BigInteger、BigDecimal"><a href="#System、Math、BigInteger、BigDecimal" class="headerlink" title="System、Math、BigInteger、BigDecimal"></a>System、Math、BigInteger、BigDecimal</h2><ul>
 <li>System：有关系统的</li>
@@ -553,7 +553,123 @@
 <li>@SuppressWarnings：抑制编译器警告</li>
 </ul>
 <p>自定义注解：参照@SuppressWarnings；有成员value，或无成员</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SuppressWarnings &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The set of warnings that are to be suppressed by the compiler in the</span></span><br><span class="line"><span class="comment">     * annotated element.  Duplicate names are permitted.  The second and</span></span><br><span class="line"><span class="comment">     * successive occurrences of a name are ignored.  The presence of</span></span><br><span class="line"><span class="comment">     * unrecognized warning names is &lt;i&gt;not&lt;/i&gt; an error: Compilers must</span></span><br><span class="line"><span class="comment">     * ignore any warning names they do not recognize.  They are, however,</span></span><br><span class="line"><span class="comment">     * free to emit a warning if an annotation contains an unrecognized</span></span><br><span class="line"><span class="comment">     * warning name.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;p&gt; The string &#123;<span class="doctag">@code</span> "unchecked"&#125; is used to suppress</span></span><br><span class="line"><span class="comment">     * unchecked warnings. Compiler vendors should document the</span></span><br><span class="line"><span class="comment">     * additional warning names they support in conjunction with this</span></span><br><span class="line"><span class="comment">     * annotation type. They are encouraged to cooperate to ensure</span></span><br><span class="line"><span class="comment">     * that the same names work across multiple compilers.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the set of warnings to be suppressed</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> SuppressWarnings &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The set of warnings that are to be suppressed by the compiler in the</span></span><br><span class="line"><span class="comment">     * annotated element.  Duplicate names are permitted.  The second and</span></span><br><span class="line"><span class="comment">     * successive occurrences of a name are ignored.  The presence of</span></span><br><span class="line"><span class="comment">     * unrecognized warning names is &lt;i&gt;not&lt;/i&gt; an error: Compilers must</span></span><br><span class="line"><span class="comment">     * ignore any warning names they do not recognize.  They are, however,</span></span><br><span class="line"><span class="comment">     * free to emit a warning if an annotation contains an unrecognized</span></span><br><span class="line"><span class="comment">     * warning name.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;p&gt; The string &#123;<span class="doctag">@code</span> "unchecked"&#125; is used to suppress</span></span><br><span class="line"><span class="comment">     * unchecked warnings. Compiler vendors should document the</span></span><br><span class="line"><span class="comment">     * additional warning names they support in conjunction with this</span></span><br><span class="line"><span class="comment">     * annotation type. They are encouraged to cooperate to ensure</span></span><br><span class="line"><span class="comment">     * that the same names work across multiple compilers.</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> the set of warnings to be suppressed</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p>对<strong>现有的注解进行解释说明</strong>的注解：</p>
+<ul>
+<li>Retention（保留）：用于指定注解的生命周期-SOURCE\CLASS(default)\RUNTIME</li>
+<li>Target：指定注解能用于修饰那些元素-TYPE/FIELD/METHOD/CONSTRUCTOR… …</li>
+<li>Documented：令注解在被javadoc解析后被保留下来</li>
+<li>Inherited：令注解具有继承性</li>
+</ul>
+<h3 id="JDK8-0-新特性"><a href="#JDK8-0-新特性" class="headerlink" title="JDK8.0+新特性"></a>JDK8.0+新特性</h3><ul>
+<li>可重复注解</li>
+<li>类型注解：TYPE_USER/TYPE_PARAMETER</li>
+</ul>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ul>
+<li>Collection接口：单列数据，单一对象<ol>
+<li>List：有序、可重复</li>
+<li>Set：无序、不可重复</li>
+</ol>
+</li>
+<li>Map接口：双列数据，存储key-value<ol>
+<li>HashMap</li>
+<li>LinkedHashMap</li>
+<li>TreeMap</li>
+<li>HashTable</li>
+<li>Properties</li>
+</ol>
+</li>
+<li>Collections工具类</li>
+</ul>
+<p>Collection接口常用方法：</p>
+<ul>
+<li>add(Object e)：添加一个元素</li>
+<li>addAll(Collection coll)：添加一个集合中的所有元素</li>
+<li>size()：集合的大小</li>
+<li>isEmpty()：集合是否为空</li>
+<li>clear()：清空集合</li>
+<li>contains(Object e)：是否存在元素，<strong>使用equals来比较元素</strong></li>
+<li>containsAll(Collection coll)：判断集合的元素是否都存在</li>
+<li>remove(Object e)</li>
+<li>removeAll(Collection coll)</li>
+<li>retainAll(Collection coll1)：求两个集合的交集，并替换this集合</li>
+<li>Object.equals()</li>
+<li>Object.hashCode()</li>
+<li>toArray()：集合—&gt;Object数组</li>
+<li>Arrays.asList()：数组—&gt;集合</li>
+<li>iterator()：放回Iterator接口的实例</li>
+</ul>
+<p>注：<strong>添加的obj要重写equals方法</strong></p>
+<h3 id="Iterator接口"><a href="#Iterator接口" class="headerlink" title="Iterator接口"></a>Iterator接口</h3><p>迭代器，用于遍历集合中的元素，<strong>只能用一次。不可逆。</strong></p>
+<ul>
+<li>E next()：指针下移</li>
+<li>boolean hasNext()：指针不变</li>
+<li>void remove()：删除集合中的元素（）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 常用遍历</span></span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext())&#123;</span><br><span class="line">    System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="List接口（Collection子接口）"><a href="#List接口（Collection子接口）" class="headerlink" title="List接口（Collection子接口）"></a>List接口（Collection子接口）</h3><p>元素有序、可重复、动态变化大小。List实现类：</p>
+<ul>
+<li>ArrayList：线程不安全，效率高；底层用Object[]<strong>数组</strong></li>
+<li>LinkedList：插入、删除效率高；底层使用<strong>双向链表</strong>实现</li>
+<li>Vector：线程安全，效率低；底层用Object[]<strong>数组</strong></li>
+</ul>
+<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p>JDK7.0：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ArrayList arr = <span class="keyword">new</span> ArrayList();  <span class="comment">// 容量默认为10的Object数组</span></span><br><span class="line"><span class="comment">// add操作会让判断数组大小，扩容机制：变为原来的1.5倍，并赋值给新的数组</span></span><br><span class="line"><span class="comment">// 建议使用带参数的构造器，就避免去频繁的动态扩容</span></span><br></pre></td></tr></table></figure>
+<p>JDK8.0+:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;  <span class="comment">// &#123;&#125;空的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 调用add操作后才开始创建数组，其它与JDK7无异</span></span><br><span class="line"><span class="comment">// 延迟了数组的创建时间</span></span><br></pre></td></tr></table></figure>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 静态内部类，前后指针</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// add操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;  <span class="comment">// 最后一个节点</span></span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">    last = newNode;  <span class="comment">// 新节点作为尾结点</span></span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h4><p>基本不用了</p>
+<h3 id="List接口常用方法"><a href="#List接口常用方法" class="headerlink" title="List接口常用方法"></a>List接口常用方法</h3><ul>
+<li>void add(int index, Object ele)</li>
+<li>boolean addAll(int index, Collection eles)</li>
+<li>Object get(int index)</li>
+<li>int indexOf(Object obj)：如果不存在返回-1</li>
+<li>int lastIndexOf(Object obj)</li>
+<li>Object remove(int index) / boolean remove(Object o)：按照索引删除，并返回此元素</li>
+<li>Object set(int index, Object ele)，按照索引修改，并返回此元素</li>
+<li>List subList(int fromIndex, int toList)</li>
+</ul>
+<h3 id="Set接口（Collection子接口）"><a href="#Set接口（Collection子接口）" class="headerlink" title="Set接口（Collection子接口）"></a>Set接口（Collection子接口）</h3><ul>
+<li><strong>存储无序的</strong>：不等于随机性，体现在哈希值上，根据哈希值存储。</li>
+<li><strong>不可重复的</strong>：利用hashCode方法与equals方法判断是否重复。底层：<strong>数组+链表，哈希值与equals方法，在数组中的位置与哈希值有关</strong>（JDK7与8不一样，对链表的操作分为<strong>头插法</strong>8+与尾插法7-）</li>
+</ul>
+<p>实现类：</p>
+<ul>
+<li><code>HashSet</code>：主要实现类，线程不安全，可以存储null值，底层是一个数组，长度为16<ul>
+<li><code>LinkedHashSet</code>：HashSet的子类，可以按照顺序变量。<strong>原理依然是数组+链表，不过链表的节点的双向量表，记录的是添加的顺序</strong>。遍历的效率高</li>
+</ul>
+</li>
+<li><code>TreeSet</code>：空参构造底层是一个TreeMap，可以对属性排序。<strong>只能添加同类型的数据</strong>，并自然排序（实现Comparable接口）。<strong>根据compareTo来判断对象是否相同（返回0）。</strong><ul>
+<li>定制排序：<code>TreeSet treeset = new TreeSet(Comparator com)</code></li>
+</ul>
+</li>
+</ul>
+<p>所以<strong>一般需要重写hashCode方法与equals方法：相等的对象要有相等的哈希值。</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 面试题：理解hashSet利用哈希值存储、不可重复性的特点</span></span><br><span class="line">Person p1 = <span class="keyword">new</span> Person(<span class="string">"Jack"</span>, <span class="number">12</span>);</span><br><span class="line">Person p2 = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>, <span class="number">22</span>);</span><br><span class="line"></span><br><span class="line">hashSet.add(p1);</span><br><span class="line">hashSet.add(p2);</span><br><span class="line"></span><br><span class="line">System.out.println(hashSet);  <span class="comment">// [Person&#123;name='Tom', age=22&#125;, Person&#123;name='Jack', age=12&#125;]</span></span><br><span class="line"></span><br><span class="line">p1.age = <span class="number">11</span>;</span><br><span class="line">System.out.println(hashSet.remove(p1));  <span class="comment">// false</span></span><br><span class="line">System.out.println(hashSet);  <span class="comment">// [Person&#123;name='Tom', age=22&#125;, Person&#123;name='Jack', age=11&#125;]</span></span><br><span class="line">hashSet.add(<span class="keyword">new</span> Person(<span class="string">"Jack"</span>, <span class="number">11</span>));</span><br><span class="line">System.out.println(hashSet);  <span class="comment">// [Person&#123;name='Tom', age=22&#125;, Person&#123;name='Jack', age=11&#125;, Person&#123;name='Jack', age=11&#125;]</span></span><br><span class="line">hashSet.add(<span class="keyword">new</span> Person(<span class="string">"Jack"</span>, <span class="number">12</span>));</span><br><span class="line">System.out.println(hashSet);  <span class="comment">// [Person&#123;name='Tom', age=22&#125;, Person&#123;name='Jack', age=11&#125;, Person&#123;name='Jack', age=11&#125;, Person&#123;name='Jack', age=12&#125;]</span></span><br></pre></td></tr></table></figure>
+<h3 id="Map接口（Collection子接口）"><a href="#Map接口（Collection子接口）" class="headerlink" title="Map接口（Collection子接口）"></a>Map接口（Collection子接口）</h3><p>双列数据，key-value型数据。实现类</p>
+<ul>
+<li>HashMap：常用实现类。线程不安全的。有null的key与value<ul>
+<li>LinkedHashMap：继承自HashMap，可以按照添加的顺序遍历</li>
+</ul>
+</li>
+<li>TreeMap：可以按照添加的顺序排序（按照key排序）遍历，底层使用红黑树</li>
+<li>Hashtable：古老类。线程安全。不能有null的key与value<ul>
+<li>Properties：用来处理配置文件，key与value都是String型的</li>
+</ul>
+</li>
+</ul>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>底层概述：</p>
+<ul>
+<li>JDK7-：数组+链表</li>
+<li>JDK8+：数组+链表+红黑树</li>
+<li>Key：无序，不重复。使用set存储Key，需要重写equals方法与hashCode方法</li>
+<li>Value：无序，可重复。</li>
+<li>Key-Value：一个Entry</li>
+</ul>
+<p>JDK7：Entry</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HashMap hashMap = <span class="keyword">new</span> HashMap();  <span class="comment">// 默认16长度的Entry数组，数组+链表</span></span><br><span class="line"><span class="comment">// 添加</span></span><br><span class="line">hashMap.put(key, value)  <span class="comment">// 使用key的hashCode计算哈希值，按此哈希值计算存储位置。与Set类似，key的去重过程为先比较哈希值，再使用equals方法比较。</span></span><br><span class="line"><span class="comment">// 如果存在相同的key，则用新的value替换。从始至终都是比较的key</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 扩容：当超出临界值，且存放位置不为空</span></span><br><span class="line"><span class="comment">// 扩容为原来的2倍，并将原来的数据复制过来</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------源码-------------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span></span>&#123; <span class="comment">// 16, 0.75</span></span><br><span class="line">    <span class="keyword">this</span>(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR); <span class="comment">// 默认初始化容量16，默认加载因子0.75</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>(<span class="keyword">int</span> initialCapacity, <span class="keyword">int</span> loadFactor)&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">int</span> capcity = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> (capacity &lt; initialCapacity)&#123;</span><br><span class="line">        capacity &lt;&lt;= <span class="number">1</span>   <span class="comment">// 2倍增加</span></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 临界值，影响扩容时的条件  16*0.75=12</span></span><br><span class="line">    threshold = (<span class="keyword">int</span>)Math.min(capacity*loadFactor, MAXIMUM_CAPACITY + <span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 扩容操作</span></span><br><span class="line"><span class="comment">// 头插法, 新节点next指向当前链表的头部</span></span><br><span class="line"></span><br><span class="line">Entry(<span class="keyword">int</span> h, K k, V v, Entry&lt;K, V&gt; n)&#123;</span><br><span class="line">    value = v;</span><br><span class="line">    next = n;</span><br><span class="line">    key = k;</span><br><span class="line">    hash = h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JDK8：Node</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">HashMap hashMap = <span class="keyword">new</span> HashMap();  <span class="comment">// 底层没有创建数组，Node，数组+链表+红黑树</span></span><br><span class="line"><span class="comment">// 添加，首次调用时，再创建</span></span><br><span class="line">hashMap.put(key, value)  <span class="comment">// 使用key的hashCode计算哈希值，按此哈希值计算存储位置。与Set类似，key的去重过程为先比较哈希值，再使用equals方法比较。</span></span><br><span class="line"><span class="comment">// 如果存在相同的key，则用新的value替换。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 扩容：容量*2，且加载因子*2</span></span><br><span class="line"><span class="comment">// 当某个索引位置处链表长度 &gt; 8 且当前数组长度 &gt; 64时，将此索引位置上的结构转变为红黑树。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------------源码-------------------------------</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span> </span>&#123; <span class="comment">// 加载因子0.75，用于扩容临界值</span></span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR; <span class="comment">// all other fields defaulted</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// put操作</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)  <span class="comment">// 第一个元素</span></span><br><span class="line">        n = (tab = resize()).length;  <span class="comment">// 初始化16</span></span><br><span class="line">    <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)  <span class="comment">// 找到需要插入的位置上是否为空</span></span><br><span class="line">        tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Node&lt;K,V&gt; e; K k;  <span class="comment">// 创建一个临时变量</span></span><br><span class="line">        <span class="keyword">if</span> (p.hash == hash &amp;&amp;  <span class="comment">// 比较两者的哈希值是否相同</span></span><br><span class="line">            <span class="comment">// 再比较key的地址是否相同，再equals比较内容是否相同</span></span><br><span class="line">            ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            e = p;  <span class="comment">// 哈希值相同且key相同的情况，p是旧的元素</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;  <span class="comment">// p旧元素的下一个元素</span></span><br><span class="line">                    p.next = newNode(hash, key, value, <span class="keyword">null</span>);  <span class="comment">// 尾插法</span></span><br><span class="line">                    <span class="comment">// TREEIFY_THRESHOLD = 8，当超过这个长度时将变成红黑树</span></span><br><span class="line">                    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                        treeifyBin(tab, hash);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 下一个元素与本元素比较</span></span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                p = e;  <span class="comment">// 继续考虑下一个元素</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 替换value</span></span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">            V oldValue = e.value;</span><br><span class="line">            <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                e.value = value;</span><br><span class="line">            afterNodeAccess(e);</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ++modCount;</span><br><span class="line">    <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">        resize();</span><br><span class="line">    afterNodeInsertion(evict);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>程序语言</category>
       </categories>
