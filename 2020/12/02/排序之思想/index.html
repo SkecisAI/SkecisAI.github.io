@@ -65,18 +65,18 @@
     })();
 </script>
 
-  <meta name="description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;">
+  <meta name="description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;  每一趟排序后，较大的数都被安排到了正">
 <meta name="keywords" content="算法,排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序之思想（未完）">
 <meta property="og:url" content="http://www.skecis.top/2020/12/02/排序之思想/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;">
+<meta property="og:description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;  每一趟排序后，较大的数都被安排到了正">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-12-14T00:07:51.681Z">
+<meta property="og:updated_time" content="2020-12-14T00:12:55.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序之思想（未完）">
-<meta name="twitter:description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;">
+<meta name="twitter:description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;  每一趟排序后，较大的数都被安排到了正">
   <link rel="canonical" href="http://www.skecis.top/2020/12/02/排序之思想/">
 
 
@@ -309,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-14 08:07:51" itemprop="dateModified" datetime="2020-12-14T08:07:51+08:00">2020-12-14</time>
+                <time title="修改时间：2020-12-14 08:12:55" itemprop="dateModified" datetime="2020-12-14T08:12:55+08:00">2020-12-14</time>
               </span>
             
           
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>387</span>
+              <span>383</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -372,15 +372,12 @@
         <p>阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。</p><h3 id="冒泡排序之思想"><a href="#冒泡排序之思想" class="headerlink" title="冒泡排序之思想"></a>冒泡排序之思想</h3><blockquote>
 <p>每一趟排序：两两元素进行比较并交换位置，核心代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">if</span> (a[i] &gt; a[i+<span class="number">1</span>])&#123;</span><br><span class="line">&gt;   tmp = a[i];</span><br><span class="line">&gt;   a[i] = a[i+<span class="number">1</span>];</span><br><span class="line">&gt;   a[i+<span class="number">1</span>] = tmp;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote><a id="more"></a>
-
-<p>&gt;</p>
-<blockquote>
 <ol>
 <li>每一趟排序后，较大的数都被安排到了正确的位置。故只需n-1次排序即可排序完成</li>
 <li>存在的问题是：假设在一堂排序后数组已为有序，则不需要后面的遍历与比较了。故优化的方法是，设置一个标志变量来判断数组是否已经有序了。</li>
 </ol>
-</blockquote>
+</blockquote><a id="more"></a>
+
 <ul>
 <li>时间复杂度：$Average：O(n^{2})$，$Worst: O(n^{2})$</li>
 <li>空间复杂度：$O(1)$</li>
@@ -408,7 +405,7 @@
   <p><span>本文标题:</span>排序之思想（未完）</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2020年12月02日 - 10:23:15</p>
-  <p><span>最后更新:</span>2020年12月14日 - 08:07:51</p>
+  <p><span>最后更新:</span>2020年12月14日 - 08:12:55</p>
   <p><span>原始链接:</span><a href="/2020/12/02/排序之思想/" title="排序之思想（未完）">http://www.skecis.top/2020/12/02/排序之思想/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/12/02/排序之思想/"  aria-label="复制成功！"></i></span>
   </p>
@@ -477,6 +474,10 @@
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2020/12/14/枷锁/" rel="prev" title="枷锁">
+                  枷锁 <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -543,7 +544,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -556,7 +557,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -569,7 +570,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

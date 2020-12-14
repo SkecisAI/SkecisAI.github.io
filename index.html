@@ -269,6 +269,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/12/14/枷锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkecisAI">
+      <meta itemprop="description" content="IT技术分享，学习机器学习，数据分析等AI技术">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr. Liu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2020/12/14/枷锁/" class="post-title-link" itemprop="url">枷锁</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-14 08:08:42 / 修改时间：08:15:35" itemprop="dateCreated datePublished" datetime="2020-12-14T08:08:42+08:00">2020-12-14</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>48</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>1 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>乌黑，冰冷，坚硬，沉重的枷锁<br>它并不去断裂<br>而是融化在滚烫鲜红的血液里<br>留下一瞬的气泡，不断的破碎  </p>
+
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/12/02/排序之思想/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -309,7 +416,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-14 08:07:51" itemprop="dateModified" datetime="2020-12-14T08:07:51+08:00">2020-12-14</time>
+                <time title="修改时间：2020-12-14 08:12:55" itemprop="dateModified" datetime="2020-12-14T08:12:55+08:00">2020-12-14</time>
               </span>
             
           
@@ -336,7 +443,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>387</span>
+              <span>383</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -364,6 +471,10 @@
           <p>阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。</p><h3 id="冒泡排序之思想"><a href="#冒泡排序之思想" class="headerlink" title="冒泡排序之思想"></a>冒泡排序之思想</h3><blockquote>
 <p>每一趟排序：两两元素进行比较并交换位置，核心代码如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">if</span> (a[i] &gt; a[i+<span class="number">1</span>])&#123;</span><br><span class="line">&gt;   tmp = a[i];</span><br><span class="line">&gt;   a[i] = a[i+<span class="number">1</span>];</span><br><span class="line">&gt;   a[i+<span class="number">1</span>] = tmp;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>每一趟排序后，较大的数都被安排到了正确的位置。故只需n-1次排序即可排序完成</li>
+<li>存在的问题是：假设在一堂排序后数组已为有序，则不需要后面的遍历与比较了。故优化的方法是，设置一个标志变量来判断数组是否已经有序了。</li>
+</ol>
 </blockquote>
           <!--noindex-->
           
@@ -1371,138 +1482,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2019/11/28/python爬虫豆瓣短评/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SkecisAI">
-      <meta itemprop="description" content="IT技术分享，学习机器学习，数据分析等AI技术">
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mr. Liu's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/11/28/python爬虫豆瓣短评/" class="post-title-link" itemprop="url">python爬虫：豆瓣短评</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-11-28 19:08:11" itemprop="dateCreated datePublished" datetime="2019-11-28T19:08:11+08:00">2019-11-28</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-15 16:09:25" itemprop="dateModified" datetime="2019-12-15T16:09:25+08:00">2019-12-15</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python爬虫/" itemprop="url" rel="index"><span itemprop="name">Python爬虫</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>7.4k</span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>13 分钟</span>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="导入必要的包-package"><a href="#导入必要的包-package" class="headerlink" title="导入必要的包(package)"></a>导入必要的包(package)</h2><p>若没有下列的包，可使用<code>pip install 包名</code>命令安装</p><ul>
-<li>re: 使用正则表达式</li>
-<li>json: 解析json内容</li>
-<li>time: 爬虫间歇时间控制</li>
-<li>jieba: 中文分词库</li>
-<li>urlib: 将中文关键字编码(百分号+数字)</li>
-<li>requests: 向网站发出请求</li>
-<li>bs4: 解析网页内容</li>
-<li>wordcloud: 生成词云</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2019/11/28/python爬虫豆瓣短评/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1555,7 +1534,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1568,7 +1547,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -1581,7 +1560,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1802,9 +1781,9 @@ window.addEventListener('pjax:success', () => {
   
     
       
-        
-      
     
+      
+        
       
     
       
