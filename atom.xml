@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.skecis.top/"/>
-  <updated>2020-12-04T06:15:52.274Z</updated>
+  <updated>2020-12-14T00:07:51.681Z</updated>
   <id>http://www.skecis.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.skecis.top/2020/12/02/%E6%8E%92%E5%BA%8F%E4%B9%8B%E6%80%9D%E6%83%B3/"/>
     <id>http://www.skecis.top/2020/12/02/排序之思想/</id>
     <published>2020-12-02T02:23:15.000Z</published>
-    <updated>2020-12-04T06:15:52.274Z</updated>
+    <updated>2020-12-14T00:07:51.681Z</updated>
     
     <content type="html"><![CDATA[<p>阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。</p><h3 id="冒泡排序之思想"><a href="#冒泡排序之思想" class="headerlink" title="冒泡排序之思想"></a>冒泡排序之思想</h3><blockquote><p>每一趟排序：两两元素进行比较并交换位置，核心代码如下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">if</span> (a[i] &gt; a[i+<span class="number">1</span>])&#123;</span><br><span class="line">&gt;   tmp = a[i];</span><br><span class="line">&gt;   a[i] = a[i+<span class="number">1</span>];</span><br><span class="line">&gt;   a[i+<span class="number">1</span>] = tmp;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><a id="more"></a><p>&gt;</p><blockquote><ol><li>每一趟排序后，较大的数都被安排到了正确的位置。故只需n-1次排序即可排序完成</li><li>存在的问题是：假设在一堂排序后数组已为有序，则不需要后面的遍历与比较了。故优化的方法是，设置一个标志变量来判断数组是否已经有序了。</li></ol></blockquote><ul><li>时间复杂度：$Average：O(n^{2})$，$Worst: O(n^{2})$</li><li>空间复杂度：$O(1)$</li><li>适用于n较小的数组</li><li>稳定的排序方法</li></ul><h3 id="插入排序之思想"><a href="#插入排序之思想" class="headerlink" title="插入排序之思想"></a>插入排序之思想</h3><blockquote><p>已第一个元素为首个基准，下标从1开始的每一趟排序：</p></blockquote>]]></content>
     
@@ -35,6 +35,12 @@
     </summary>
     
     
+      <category term="算法与数据结构" scheme="http://www.skecis.top/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="排序" scheme="http://www.skecis.top/tags/%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   

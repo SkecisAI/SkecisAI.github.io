@@ -25,6 +25,13 @@
 <p>已第一个元素为首个基准，下标从1开始的每一趟排序：</p>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>算法与数据结构</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>排序</tag>
+      </tags>
   </entry>
   <entry>
     <title>决策树算法解析</title>
