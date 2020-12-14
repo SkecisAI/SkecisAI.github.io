@@ -65,19 +65,19 @@
     })();
 </script>
 
-  <meta name="description" content="设样本有$m$个类别，$v$是属性中不同值的数量 ID3算法-信息熵信息量分类所期望的信息量: $I=-\sum_{i=1}^{m}\frac{s_{i}}{s}log_{2}(\frac{s_{i}}{s})$">
-<meta name="keywords" content="数据分析,数据挖掘,决策树">
+  <meta name="description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;">
+<meta name="keywords" content="Python, 机器学习, 算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="决策树算法解析">
-<meta property="og:url" content="http://www.skecis.top/2020/10/27/决策树/index.html">
+<meta property="og:title" content="排序之思想（未完）">
+<meta property="og:url" content="http://www.skecis.top/2020/12/02/排序之思想/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="设样本有$m$个类别，$v$是属性中不同值的数量 ID3算法-信息熵信息量分类所期望的信息量: $I=-\sum_{i=1}^{m}\frac{s_{i}}{s}log_{2}(\frac{s_{i}}{s})$">
+<meta property="og:description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-31T05:47:30.247Z">
+<meta property="og:updated_time" content="2020-12-04T06:15:52.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="决策树算法解析">
-<meta name="twitter:description" content="设样本有$m$个类别，$v$是属性中不同值的数量 ID3算法-信息熵信息量分类所期望的信息量: $I=-\sum_{i=1}^{m}\frac{s_{i}}{s}log_{2}(\frac{s_{i}}{s})$">
-  <link rel="canonical" href="http://www.skecis.top/2020/10/27/决策树/">
+<meta name="twitter:title" content="排序之思想（未完）">
+<meta name="twitter:description" content="阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。冒泡排序之思想 每一趟排序：两两元素进行比较并交换位置，核心代码如下 123456&amp;gt;if (a[i] &amp;gt; a[i+1])&amp;#123;&amp;gt;   tmp = a[i];&amp;gt;   a[i] = a[i+1];&amp;gt;   a[i+1] = tmp;&amp;gt;&amp;#125;&amp;gt;">
+  <link rel="canonical" href="http://www.skecis.top/2020/12/02/排序之思想/">
 
 
 <script id="page-configurations">
@@ -91,7 +91,7 @@
   };
 </script>
 
-  <title>决策树算法解析 | Mr. Liu's Blog</title>
+  <title>排序之思想（未完） | Mr. Liu's Blog</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/10/27/决策树/">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/12/02/排序之思想/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SkecisAI">
@@ -282,7 +282,7 @@
       <meta itemprop="name" content="Mr. Liu's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">决策树算法解析
+        <h1 class="post-title" itemprop="name headline">排序之思想（未完）
 
           
         </h1>
@@ -298,7 +298,7 @@
                 
               
 
-              <time title="创建时间：2020-10-27 16:23:36" itemprop="dateCreated datePublished" datetime="2020-10-27T16:23:36+08:00">2020-10-27</time>
+              <time title="创建时间：2020-12-02 10:23:15" itemprop="dateCreated datePublished" datetime="2020-12-02T10:23:15+08:00">2020-12-02</time>
             </span>
           
             
@@ -309,22 +309,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-31 13:47:30" itemprop="dateModified" datetime="2020-10-31T13:47:30+08:00">2020-10-31</time>
+                <time title="修改时间：2020-12-04 14:15:52" itemprop="dateModified" datetime="2020-12-04T14:15:52+08:00">2020-12-04</time>
               </span>
             
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -344,7 +331,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.2k</span>
+              <span>387</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -354,7 +341,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
           
 
@@ -369,33 +356,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>设样本有$m$个类别，$v$是属性中不同值的数量</p>
-</blockquote><h2 id="ID3算法-信息熵"><a href="#ID3算法-信息熵" class="headerlink" title="ID3算法-信息熵"></a>ID3算法-信息熵</h2><h3 id="信息量"><a href="#信息量" class="headerlink" title="信息量"></a>信息量</h3><p>分类所期望的信息量: $I=-\sum_{i=1}^{m}\frac{s_{i}}{s}log_{2}(\frac{s_{i}}{s})$</p><a id="more"></a>
+        <p>阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。</p><h3 id="冒泡排序之思想"><a href="#冒泡排序之思想" class="headerlink" title="冒泡排序之思想"></a>冒泡排序之思想</h3><blockquote>
+<p>每一趟排序：两两元素进行比较并交换位置，核心代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">if</span> (a[i] &gt; a[i+<span class="number">1</span>])&#123;</span><br><span class="line">&gt;   tmp = a[i];</span><br><span class="line">&gt;   a[i] = a[i+<span class="number">1</span>];</span><br><span class="line">&gt;   a[i+<span class="number">1</span>] = tmp;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote><a id="more"></a>
 
-<h3 id="信息熵（加权）"><a href="#信息熵（加权）" class="headerlink" title="信息熵（加权）"></a>信息熵（加权）</h3><p>为了得到准确的分类还需要多少期望信息量，即让划分的每种属性都有相同的类别。<strong>值越小分类就越准确</strong></p>
-<script type="math/tex; mode=display">
-E(属性A)=\sum_{j=1}^{v}\frac{s_{1j}+\dotsb+s_{mj}}{s}I(s_{1j},\dotsc,s_{mj})</script><p><strong>可理解为将该属性划分的每个节点的信息熵加权平均得到的</strong>$E(属性)$</p>
-<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p>信息增益=原来的信息期望量-基于属性划分后的信息需求。基于属性划分后的信息需求即信息熵越小，信息增益就越大。故应选择这样的划分。</p>
-<script type="math/tex; mode=display">
-Gain(属性A)=I-E(属性A)</script><h2 id="C4-5算法-信息增益率"><a href="#C4-5算法-信息增益率" class="headerlink" title="C4.5算法-信息增益率"></a>C4.5算法-信息增益率</h2><p>为了解决<strong>与每个划分相关联的记录太少，以致预测不可靠</strong>。把属性测试条件产生的输出也考虑进去。</p>
-<h3 id="分裂信息（Split-Info）"><a href="#分裂信息（Split-Info）" class="headerlink" title="分裂信息（Split Info）"></a>分裂信息（Split Info）</h3><script type="math/tex; mode=display">
-SplitInfo=-\sum_{i=1}^{k}P(v_{i})log_{2}P(v_{i}),k是划分总数，v_{i}是子女节点样本数占比</script><h3 id="信息增益率（Gain-Ratio）"><a href="#信息增益率（Gain-Ratio）" class="headerlink" title="信息增益率（Gain Ratio）"></a>信息增益率（Gain Ratio）</h3><script type="math/tex; mode=display">
-GainRatio=\frac{\Delta_{info}}{SplitInfo}</script><p>增益率可以说明：<strong>大量的划分会导致信息增益率很小</strong></p>
-<script type="math/tex; mode=display">
-k是属性的划分总数，若每个属性值有着相同的样本数n，则父节点有kn个样本。\\
-则P(v_{i})=\frac{n}{kn}=\frac{1}{k},SplitInfo=-\sum_{i=1}^{k}\frac{1}{k}log_{2}\frac{1}{k}=log_{2}k</script><p>属性划分$k$越大，会导致$SplitInfo$越大，则$GainRatio$越小</p>
-<h2 id="CART算法-Gini不纯度"><a href="#CART算法-Gini不纯度" class="headerlink" title="CART算法-Gini不纯度"></a>CART算法-Gini不纯度</h2><h3 id="Gini不纯度（指数）"><a href="#Gini不纯度（指数）" class="headerlink" title="Gini不纯度（指数）"></a>Gini不纯度（指数）</h3><p>$p(i|t)-节点t中属于类i的记录占比$</p>
-<script type="math/tex; mode=display">
-Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2,c是类别数量</script><h3 id="Gini指标的加权平均"><a href="#Gini指标的加权平均" class="headerlink" title="Gini指标的加权平均"></a>Gini指标的加权平均</h3><h2 id="不纯性度量的总结"><a href="#不纯性度量的总结" class="headerlink" title="不纯性度量的总结"></a>不纯性度量的总结</h2><p>不纯性度量的意义：<strong>不纯性度量的值越大，说明划分效果越差。当所有样本属于同一个类时，不纯性度量的值最小。</strong></p>
+<p>&gt;</p>
+<blockquote>
+<ol>
+<li>每一趟排序后，较大的数都被安排到了正确的位置。故只需n-1次排序即可排序完成</li>
+<li>存在的问题是：假设在一堂排序后数组已为有序，则不需要后面的遍历与比较了。故优化的方法是，设置一个标志变量来判断数组是否已经有序了。</li>
+</ol>
+</blockquote>
 <ul>
-<li>$Entropy(t)=-\sum_{i=0}^{c-1}p(i|t)log_{2}p(i|t)$</li>
-<li>$Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2$</li>
-<li>$ClassificationError(t)=1-\max_{i}[p(i|t)]$</li>
+<li>时间复杂度：$Average：O(n^{2})$，$Worst: O(n^{2})$</li>
+<li>空间复杂度：$O(1)$</li>
+<li>适用于n较小的数组</li>
+<li>稳定的排序方法</li>
 </ul>
-<p>最大化增益$\Delta$:</p>
-<script type="math/tex; mode=display">
-\Delta=I(parent)-\sum_{j=1}^{k}\frac{N(v_{j})}{N}I(v_{j})</script><p>（其中$I(\cdot)$是节点的不纯性度量，$N$是父节点上的样本总数，$k$是不同属性值的个数，$N(v_{j})$是与子女节点$v_{j}$关联的节点数。）</p>
+<h3 id="插入排序之思想"><a href="#插入排序之思想" class="headerlink" title="插入排序之思想"></a>插入排序之思想</h3><blockquote>
+<p>已第一个元素为首个基准，下标从1开始的每一趟排序：</p>
+</blockquote>
 
     </div>
 
@@ -411,12 +392,12 @@ Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2,c是类别数量</script><h3 id="Gini指标
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>决策树算法解析</a></p>
+  <p><span>本文标题:</span>排序之思想（未完）</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
-  <p><span>发布时间:</span>2020年10月27日 - 16:23:36</p>
-  <p><span>最后更新:</span>2020年10月31日 - 13:47:30</p>
-  <p><span>原始链接:</span><a href="/2020/10/27/决策树/" title="决策树算法解析">http://www.skecis.top/2020/10/27/决策树/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/10/27/决策树/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年12月02日 - 10:23:15</p>
+  <p><span>最后更新:</span>2020年12月04日 - 14:15:52</p>
+  <p><span>原始链接:</span><a href="/2020/12/02/排序之思想/" title="排序之思想（未完）">http://www.skecis.top/2020/12/02/排序之思想/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2020/12/02/排序之思想/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -456,27 +437,14 @@ Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2,c是类别数量</script><h3 id="Gini指标
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
-            
-              <a href="/tags/数据挖掘/" rel="tag"># 数据挖掘</a>
-            
-              <a href="/tags/决策树/" rel="tag"># 决策树</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2020/10/09/循环链表快慢指针/" rel="next" title="链表环-快慢指针的数学原理">
-                  <i class="fa fa-chevron-left"></i> 链表环-快慢指针的数学原理
+                <a href="/2020/10/27/决策树/" rel="next" title="决策树算法解析">
+                  <i class="fa fa-chevron-left"></i> 决策树算法解析
                 </a>
               
             </div>
@@ -484,10 +452,6 @@ Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2,c是类别数量</script><h3 id="Gini指标
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2020/12/02/排序之思想/" rel="prev" title="排序之思想（未完）">
-                  排序之思想（未完） <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -536,7 +500,7 @@ Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2,c是类别数量</script><h3 id="Gini指标
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ID3算法-信息熵"><span class="nav-number">1.</span> <span class="nav-text">ID3算法-信息熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息量"><span class="nav-number">1.1.</span> <span class="nav-text">信息量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息熵（加权）"><span class="nav-number">1.2.</span> <span class="nav-text">信息熵（加权）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.3.</span> <span class="nav-text">信息增益</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C4-5算法-信息增益率"><span class="nav-number">2.</span> <span class="nav-text">C4.5算法-信息增益率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分裂信息（Split-Info）"><span class="nav-number">2.1.</span> <span class="nav-text">分裂信息（Split Info）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益率（Gain-Ratio）"><span class="nav-number">2.2.</span> <span class="nav-text">信息增益率（Gain Ratio）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART算法-Gini不纯度"><span class="nav-number">3.</span> <span class="nav-text">CART算法-Gini不纯度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gini不纯度（指数）"><span class="nav-number">3.1.</span> <span class="nav-text">Gini不纯度（指数）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gini指标的加权平均"><span class="nav-number">3.2.</span> <span class="nav-text">Gini指标的加权平均</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不纯性度量的总结"><span class="nav-number">4.</span> <span class="nav-text">不纯性度量的总结</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序之思想"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序之思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序之思想"><span class="nav-number">2.</span> <span class="nav-text">插入排序之思想</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -800,58 +764,6 @@ window.addEventListener('pjax:success', () => {
   
 
   
-    
-      
-<script type="text/x-mathjax-config">
-    MathJax.Ajax.config.path['mhchem'] = '//cdn.jsdelivr.net/npm/mathjax-mhchem@3';
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        extensions: ['[mhchem]/mhchem.js'],
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
-  
 
   
 
@@ -867,7 +779,7 @@ window.addEventListener('pjax:success', () => {
       repo: 'skecisai.github.io',
       owner: 'skecisai',
       admin: ['skecis'],
-      id: 'eff0f0cb03b18a4db52c44731552465f',
+      id: 'af673c9a02cae9fef2843eaf7d7d0a23',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'
