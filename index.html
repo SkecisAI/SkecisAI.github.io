@@ -390,7 +390,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2020/12/02/排序之思想/" class="post-title-link" itemprop="url">排序之思想（未完）</a>
+            <a href="/2020/12/02/排序之思想/" class="post-title-link" itemprop="url">经典排序-思想解析</a>
           
         </h1>
 
@@ -416,7 +416,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-14 08:12:55" itemprop="dateModified" datetime="2020-12-14T08:12:55+08:00">2020-12-14</time>
+                <time title="修改时间：2020-12-18 21:56:16" itemprop="dateModified" datetime="2020-12-18T21:56:16+08:00">2020-12-18</time>
               </span>
             
           
@@ -443,7 +443,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>383</span>
+              <span>3k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -453,7 +453,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>5 分钟</span>
             </span>
           
 
@@ -468,14 +468,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且从小到大排列。</p><h3 id="冒泡排序之思想"><a href="#冒泡排序之思想" class="headerlink" title="冒泡排序之思想"></a>冒泡排序之思想</h3><blockquote>
-<p>每一趟排序：两两元素进行比较并交换位置，核心代码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">if</span> (a[i] &gt; a[i+<span class="number">1</span>])&#123;</span><br><span class="line">&gt;   tmp = a[i];</span><br><span class="line">&gt;   a[i] = a[i+<span class="number">1</span>];</span><br><span class="line">&gt;   a[i+<span class="number">1</span>] = tmp;</span><br><span class="line">&gt;&#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>每一趟排序后，较大的数都被安排到了正确的位置。故只需n-1次排序即可排序完成</li>
-<li>存在的问题是：假设在一堂排序后数组已为有序，则不需要后面的遍历与比较了。故优化的方法是，设置一个标志变量来判断数组是否已经有序了。</li>
-</ol>
-</blockquote>
+          <p>阐述每种排序方法的思想与复杂度。假设数组大小为$n$，且<strong>从小到大</strong>排列。</p><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>每一趟排序：<strong>两两元素进行比较并交换位置</strong>，核心代码如下</p>
           <!--noindex-->
           
             <div class="post-button">
@@ -1620,13 +1613,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">148k
+    <span title="站点总字数">151k
     </span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:29
+    <span title="站点阅读时长">4:34
     </span>
 </div>
   <div class="theme-info">
