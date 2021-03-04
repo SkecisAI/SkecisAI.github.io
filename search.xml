@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>mysql中explain的使用</title>
+    <url>/2021/03/04/mysql%E4%B8%ADexplain%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="explain"><a href="#explain" class="headerlink" title="explain"></a>explain</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span></span><br></pre></td></tr></table></figure><p>explain用在查询语句之前，会输出一个表，表中的每个字段有着各自的含义：</p><a id="more"></a>
+
+<ul>
+<li><code>id</code>: select的标识符，自动分配且唯一</li>
+<li><code>select_type</code>: select的查询类型</li>
+<li><code>table</code>: 查询的表名称</li>
+<li><code>partitions</code>: 匹配的分区</li>
+<li><code>type</code>: join类型</li>
+<li><code>possible_keys</code>: 有可能使用到的key</li>
+<li><code>key</code>：真实使用的key</li>
+<li><code>key_len</code>: 使用的key的字节长度</li>
+<li><code>ref</code>: columns compared to index</li>
+<li><code>rows</code>: 查询到的数据条数</li>
+<li><code>extra</code>: 额外的信息</li>
+</ul>
+<h2 id="重要字段的说明"><a href="#重要字段的说明" class="headerlink" title="重要字段的说明"></a>重要字段的说明</h2><h3 id="select-type-查询的类型"><a href="#select-type-查询的类型" class="headerlink" title="select_type-查询的类型"></a>select_type-查询的类型</h3><ul>
+<li><code>SIMPLE</code> – the query is a simple SELECT query without any subqueries or UNIONs：没有子查询和UNION语句</li>
+<li><code>PRIMARY</code> – the SELECT is in the outermost query in a JOIN：最外层的查询</li>
+<li><code>DERIVED</code> – the SELECT is part of a subquery within a FROM clause：在from中的子查询</li>
+<li><code>SUBQUERY</code> – the first SELECT in a subquery：子查询中的第一个SELECT</li>
+<li><code>DEPENDENT SUBQUERY</code> – a subquery which is dependent upon on outer query</li>
+<li><code>UNCACHEABLE SUBQUERY</code> – a subquery which is not cacheable (there are certain conditions for a query to be cacheable)</li>
+<li><code>UNION</code> – the SELECT is the second or later statement of a UNION</li>
+<li><code>DEPENDENT UNION</code> – the second or later SELECT of a UNION is dependent on an outer query</li>
+<li><code>UNION RESULT</code> – the SELECT is a result of a UNION</li>
+</ul>
+<h3 id="type-查询的效率"><a href="#type-查询的效率" class="headerlink" title="type-查询的效率"></a>type-查询的效率</h3><ul>
+<li><code>system</code> – the table has only zero or one row: 查询结果只有一行或零行，特殊的const</li>
+<li><code>const</code> – the table has only one matching row which is indexed. This is the fastest type of join because the table only has to be read once and the column’s value can be treated as a constant when joining other tables.：只有一行结果，且使用了索引</li>
+<li><code>eq_ref</code> – all parts of an index are used by the join and the index is PRIMARY KEY or UNIQUE NOT NULL. This is the next best possible join type.：使用了索引的全部，并且索引是主键或唯一索引</li>
+<li><code>ref</code> – all of the matching rows of an indexed column are read for each combination of rows from the previous table. This type of join appears for indexed columns compared using = or &lt;=&gt; operators.：所有匹配的行，使用=的操作符</li>
+<li><code>fulltext</code> – the join uses the table’s FULLTEXT index.：全文索引的使用</li>
+<li><code>ref_or_null</code> – this is the same as ref but also contains rows with a null value for the column.</li>
+<li><code>index_merge</code> – the join uses a list of indexes to produce the result set. The key column of EXPLAIN‘s output will contain the keys used.:使用了一个索引列表产生的结果集（即包含多个索引）</li>
+<li><code>unique_subquery</code> – an IN subquery returns only one result from the table and makes use of the primary key.</li>
+<li><code>index_subquery</code> – the same as unique_subquery but returns more than one result row.</li>
+<li><code>range</code> – an index is used to find matching rows in a specific range, typically when the key column is compared to a constant using operators like BETWEEN, IN, &gt;, &gt;=, etc.：范围查询</li>
+<li><code>index</code> – the entire index tree is scanned to find matching rows.：整个索引树被扫描</li>
+<li><code>all</code> – the entire table is scanned to find matching rows for the join. This is the worst join type and usually indicates the lack of appropriate indexes on the table.：全表扫描，效率最差</li>
+</ul>
+<p>效率从高到低：system &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; all</p>
+<h3 id="key-len-索引的字节数"><a href="#key-len-索引的字节数" class="headerlink" title="key_len: 索引的字节数"></a>key_len: 索引的字节数</h3><ul>
+<li>字符串<ul>
+<li>char(n): n bytes</li>
+<li>varchar(n): utf8=3n+2, utf8mb4=4n+2</li>
+</ul>
+</li>
+<li>数值类型<ul>
+<li>tinyint: 1 bytes</li>
+<li>smallint: 2 bytes</li>
+<li>mediumint: 3 bytes</li>
+<li>int: 4 bytes</li>
+<li>bigint: 8 bytes</li>
+</ul>
+</li>
+<li>时间类型<ul>
+<li>date: 3 bytes</li>
+<li>timestamp: 4 bytes</li>
+<li>datetime: 8 bytes</li>
+</ul>
+</li>
+<li>字段属性: NULL 1 bytes, NOT NULL 0 bytes</li>
+</ul>
+]]></content>
+      <categories>
+        <category>程序语言</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>枷锁</title>
     <url>/2020/12/14/%E6%9E%B7%E9%94%81/</url>
     <content><![CDATA[<p>乌黑，冰冷，坚硬，沉重的枷锁<br>它并不去断裂<br>而是融化在滚烫鲜红的血液里<br>留下一瞬的气泡，不断的破碎  </p>
@@ -1598,8 +1673,8 @@ k_{i}\geq k_{2i+1}
         <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>Python</tag>
+        <tag>算法</tag>
         <tag>内存分配</tag>
       </tags>
   </entry>
@@ -2258,8 +2333,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>Python</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
 </search>
