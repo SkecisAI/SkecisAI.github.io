@@ -208,10 +208,13 @@ Gini(t)=1-\sum_{i=0}^{c-1}[p(i|t)]^2,c是类别数量</script><h3 id="Gini指标
     <title>链表环-快慢指针的数学原理</title>
     <url>/2020/10/09/%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/</url>
     <content><![CDATA[<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head.next;</span><br><span class="line">        <span class="keyword">while</span>(slow != fast)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast == <span class="keyword">null</span> || fast.next == <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><a id="more"></a>
-<h2 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h2><p>设<strong>快指针</strong>与<strong>慢指针</strong>距离$d$格，快指针每次移动2格，满指针每次移动1格。当两个指针都进入环后，那么相遇时有：</p>
+<h2 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h2><p>设<strong>快指针</strong>在<strong>慢指针</strong>距离1格，快指针每次移动2格，满指针每次移动1格。当两个指针都进入环后，那么移动$n$次且相遇时有：</p>
 <script type="math/tex; mode=display">
-d+n=2n,可推出: d=n, d小于等于环的长度。</script><p><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/%E5%9B%BE%E8%A7%A3.png" alt="图解"></p>
-<p>此方程有解。<strong>故若链表中存在环，那么快慢指针必定会相遇。</strong></p>
+此处：(2n+1)\%s=n\%s=m,s为环的长度（不是链表长度）\\
+设:2n+1=s*k_{1}+m,k_{1}\in Z\\
+n=s*k_2+m,k_{2}\in Z\\
+得：n+1=s*(k_{1}-k_{2}),(k_{1},k_{2}\in Z,k_{1}>k_{2} )</script><p><img src="https://skecis-blog-1300426987.cos.ap-chengdu.myqcloud.com/blog_images/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/%E5%9B%BE%E8%A7%A3.png" alt="图解"></p>
+<p>$k_{1}$与$k_{2}$取合适的整数时，此方程的n有解。<strong>故若链表中存在环，那么快慢指针必定会相遇。</strong></p>
 ]]></content>
       <categories>
         <category>算法与数据结构</category>
@@ -1246,8 +1249,8 @@ y = g^{-1}(w^{T}x+b)</script>]]></content>
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>linear regression</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1461,8 +1464,8 @@ k_{i}\geq k_{2i+1}
         <category>算法与数据结构</category>
       </categories>
       <tags>
-        <tag>排序</tag>
         <tag>数据结构</tag>
+        <tag>排序</tag>
       </tags>
   </entry>
   <entry>
@@ -1536,8 +1539,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>算法</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
