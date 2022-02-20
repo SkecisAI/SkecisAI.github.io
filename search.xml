@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>cpp学习笔记</title>
+    <url>/2022/01/27/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol>
+<li>“\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：<code>&quot;123456\t&quot;=&quot;123456__&quot;(&#39;_&#39;代表一个空格，此处两个空格)</code>，<code>&quot;12345678\t&quot;=&quot;12345678________&quot;</code>。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>程序语言</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql中explain的使用</title>
     <url>/2021/03/04/mysql%E4%B8%ADexplain%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h2 id="explain"><a href="#explain" class="headerlink" title="explain"></a>explain</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">explain</span> <span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">table</span></span><br></pre></td></tr></table></figure><p>explain用在查询语句之前，会输出一个表，表中的每个字段有着各自的含义：</p><a id="more"></a>
@@ -1249,8 +1263,8 @@ y = g^{-1}(w^{T}x+b)</script>]]></content>
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>linear regression</tag>
         <tag>算法</tag>
+        <tag>linear regression</tag>
       </tags>
   </entry>
   <entry>
@@ -1677,8 +1691,8 @@ k_{i}\geq k_{2i+1}
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>算法</tag>
         <tag>内存分配</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
