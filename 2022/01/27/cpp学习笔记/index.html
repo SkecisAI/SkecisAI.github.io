@@ -65,18 +65,18 @@
     })();
 </script>
 
-  <meta name="description" content="第一部分 “\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：&amp;quot;123456\t&amp;quot;=&amp;quot;123456__&amp;quot;(&amp;#39;_&amp;#39;代表一个空格，此处两个空格)，&amp;quot;12345678\t&amp;quot;=&amp;quot;12345678________&amp;quot;。">
+  <meta name="description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
 <meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++学习笔记">
 <meta property="og:url" content="http://www.skecis.top/2022/01/27/cpp学习笔记/index.html">
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
-<meta property="og:description" content="第一部分 “\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：&amp;quot;123456\t&amp;quot;=&amp;quot;123456__&amp;quot;(&amp;#39;_&amp;#39;代表一个空格，此处两个空格)，&amp;quot;12345678\t&amp;quot;=&amp;quot;12345678________&amp;quot;。">
+<meta property="og:description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-02-20T02:44:26.672Z">
+<meta property="og:updated_time" content="2022-02-20T07:43:09.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++学习笔记">
-<meta name="twitter:description" content="第一部分 “\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：&amp;quot;123456\t&amp;quot;=&amp;quot;123456__&amp;quot;(&amp;#39;_&amp;#39;代表一个空格，此处两个空格)，&amp;quot;12345678\t&amp;quot;=&amp;quot;12345678________&amp;quot;。">
+<meta name="twitter:description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
   <link rel="canonical" href="http://www.skecis.top/2022/01/27/cpp学习笔记/">
 
 
@@ -309,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-20 10:44:26" itemprop="dateModified" datetime="2022-02-20T10:44:26+08:00">2022-02-20</time>
+                <time title="修改时间：2022-02-20 15:43:09" itemprop="dateModified" datetime="2022-02-20T15:43:09+08:00">2022-02-20</time>
               </span>
             
           
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>197</span>
+              <span>444</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -369,10 +369,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol>
+        <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ol>
+<li>函数名第一个字母大写，其后每个单词字母开头大写，驼峰式</li>
+<li>变量名小写，单词之间下划线连接</li>
+<li>类名，驼峰式。</li>
+</ol><a id="more"></a>
+<h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol>
 <li>“\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：<code>&quot;123456\t&quot;=&quot;123456__&quot;(&#39;_&#39;代表一个空格，此处两个空格)</code>，<code>&quot;12345678\t&quot;=&quot;12345678________&quot;</code>。</li>
+<li>数组地址：数组名代表第一个数组元素的地址，<code>&amp;[数组名]</code>代表整个数组的地址。</li>
+<li>宏与内联函数相关。</li>
+<li>为函数参数添加默认值，方向必须是从右向左</li>
+<li>具体化函数模板，针对于特殊类型的操作：<code>template &lt;&gt; [返回类型][函数名]&lt;特殊类型&gt;(参数列表)</code>，<strong>注：普通函数模板并非定义，具体化函数模板才是具体类型的函数定义</strong></li>
+<li>使用名称空间中声明的变量，而不是使用全局变量</li>
 </ol>
-
+<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2>
     </div>
 
     
@@ -390,7 +400,7 @@
   <p><span>本文标题:</span>C++学习笔记</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2022年01月27日 - 14:00:19</p>
-  <p><span>最后更新:</span>2022年02月20日 - 10:44:26</p>
+  <p><span>最后更新:</span>2022年02月20日 - 15:43:09</p>
   <p><span>原始链接:</span><a href="/2022/01/27/cpp学习笔记/" title="C++学习笔记">http://www.skecis.top/2022/01/27/cpp学习笔记/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2022/01/27/cpp学习笔记/"  aria-label="复制成功！"></i></span>
   </p>
@@ -504,7 +514,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分"><span class="nav-number">1.</span> <span class="nav-text">第一部分</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分"><span class="nav-number">2.</span> <span class="nav-text">第一部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分"><span class="nav-number">3.</span> <span class="nav-text">第二部分</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
