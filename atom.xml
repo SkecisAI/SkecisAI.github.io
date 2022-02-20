@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.skecis.top/"/>
-  <updated>2022-01-27T06:22:00.598Z</updated>
+  <updated>2022-02-20T02:44:26.672Z</updated>
   <id>http://www.skecis.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>cpp学习笔记</title>
+    <title>C++学习笔记</title>
     <link href="http://www.skecis.top/2022/01/27/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.skecis.top/2022/01/27/cpp学习笔记/</id>
     <published>2022-01-27T06:00:19.000Z</published>
-    <updated>2022-01-27T06:22:00.598Z</updated>
+    <updated>2022-02-20T02:44:26.672Z</updated>
     
     <content type="html"><![CDATA[<h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol><li>“\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：<code>&quot;123456\t&quot;=&quot;123456__&quot;(&#39;_&#39;代表一个空格，此处两个空格)</code>，<code>&quot;12345678\t&quot;=&quot;12345678________&quot;</code>。</li></ol>]]></content>
     
