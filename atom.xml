@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.skecis.top/"/>
-  <updated>2022-02-20T07:43:09.645Z</updated>
+  <updated>2022-02-22T09:36:20.230Z</updated>
   <id>http://www.skecis.top/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://www.skecis.top/2022/01/27/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.skecis.top/2022/01/27/cpp学习笔记/</id>
     <published>2022-01-27T06:00:19.000Z</published>
-    <updated>2022-02-20T07:43:09.645Z</updated>
+    <updated>2022-02-22T09:36:20.230Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ol><li>函数名第一个字母大写，其后每个单词字母开头大写，驼峰式</li><li>变量名小写，单词之间下划线连接</li><li>类名，驼峰式。</li></ol><a id="more"></a><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol><li>“\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：<code>&quot;123456\t&quot;=&quot;123456__&quot;(&#39;_&#39;代表一个空格，此处两个空格)</code>，<code>&quot;12345678\t&quot;=&quot;12345678________&quot;</code>。</li><li>数组地址：数组名代表第一个数组元素的地址，<code>&amp;[数组名]</code>代表整个数组的地址。</li><li>宏与内联函数相关。</li><li>为函数参数添加默认值，方向必须是从右向左</li><li>具体化函数模板，针对于特殊类型的操作：<code>template &lt;&gt; [返回类型][函数名]&lt;特殊类型&gt;(参数列表)</code>，<strong>注：普通函数模板并非定义，具体化函数模板才是具体类型的函数定义</strong></li><li>使用名称空间中声明的变量，而不是使用全局变量</li></ol><h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ol><li>函数名第一个字母大写，其后每个单词字母开头大写，驼峰式</li><li>变量名小写，单词之间下划线连接</li><li>类名，驼峰式。</li></ol><a id="more"></a><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol><li>“\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：<code>&quot;123456\t&quot;=&quot;123456__&quot;(&#39;_&#39;代表一个空格，此处两个空格)</code>，<code>&quot;12345678\t&quot;=&quot;12345678________&quot;</code>。</li><li>数组地址：数组名代表第一个数组元素的地址，<code>&amp;[数组名]</code>代表整个数组的地址。</li><li>宏与内联函数相关。</li><li>为函数参数添加默认值，方向必须是从右向左</li><li>具体化函数模板，针对于特殊类型的操作：<code>template &lt;&gt; [返回类型][函数名]&lt;特殊类型&gt;(参数列表)</code>，<strong>注：普通函数模板并非定义，具体化函数模板才是具体类型的函数定义</strong></li><li>使用名称空间中声明的变量，而不是使用全局变量</li></ol><h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><ol><li>创建对象：<code>ClassName object_name([参数列表])</code>或者列表初始化：<code>ClassName object_name = {[成员属性], }</code></li><li><code>this</code>：是指向<strong>调用对象</strong>的指针</li><li>类的友元函数是非成员函数，但其访问权限与成员函数相同。友元一般用于多个操作数的运算，且其中会使用到类的私有成员。</li><li><p>复制构造函数：<code>ClassName(const ClassName&amp;)</code>—调用情景</p><ol><li>新建一个对象，并将其初始化为已有对象时</li><li>函数按值传递对象时（相当于创建原始变量的一个副本）</li><li>函数返回对象时</li></ol></li><li><p>先创建的对象后析构，后创建的对象先析构。析构函数的调用时机：在当时代码块结束时，析构在该代码块中定义的对象</p></li></ol>]]></content>
     
     <summary type="html">
     
@@ -460,9 +460,9 @@
       <category term="机器学习" scheme="http://www.skecis.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="机器学习" scheme="http://www.skecis.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="机器学习" scheme="http://www.skecis.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -516,9 +516,9 @@
     
       <category term="Python" scheme="http://www.skecis.top/tags/Python/"/>
     
-      <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="内存分配" scheme="http://www.skecis.top/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/"/>
+    
+      <category term="算法" scheme="http://www.skecis.top/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
