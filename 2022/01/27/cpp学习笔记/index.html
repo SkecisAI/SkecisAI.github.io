@@ -73,7 +73,7 @@
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
 <meta property="og:description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-02-22T09:36:20.230Z">
+<meta property="og:updated_time" content="2022-02-25T12:43:08.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++学习笔记">
 <meta name="twitter:description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
@@ -309,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-22 17:36:20" itemprop="dateModified" datetime="2022-02-22T17:36:20+08:00">2022-02-22</time>
+                <time title="修改时间：2022-02-25 20:43:08" itemprop="dateModified" datetime="2022-02-25T20:43:08+08:00">2022-02-25</time>
               </span>
             
           
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>738</span>
+              <span>1.5k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
           
 
@@ -374,27 +374,50 @@
 <li>变量名小写，单词之间下划线连接</li>
 <li>类名，驼峰式。</li>
 </ol><a id="more"></a>
-<h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><ol>
+<h2 id="第一部分：基础"><a href="#第一部分：基础" class="headerlink" title="第一部分：基础"></a>第一部分：基础</h2><ol>
 <li>“\t”：水平制表符，占8个字符的位置，  若该字符前的字符不满8个，该字符补齐剩下的空位，满8个以上的，去除8倍数的字符，再补齐剩下的空位。例：<code>&quot;123456\t&quot;=&quot;123456__&quot;(&#39;_&#39;代表一个空格，此处两个空格)</code>，<code>&quot;12345678\t&quot;=&quot;12345678________&quot;</code>。</li>
 <li>数组地址：数组名代表第一个数组元素的地址，<code>&amp;[数组名]</code>代表整个数组的地址。</li>
 <li>宏与内联函数相关。</li>
 <li>为函数参数添加默认值，方向必须是从右向左</li>
-<li>具体化函数模板，针对于特殊类型的操作：<code>template &lt;&gt; [返回类型][函数名]&lt;特殊类型&gt;(参数列表)</code>，<strong>注：普通函数模板并非定义，具体化函数模板才是具体类型的函数定义</strong></li>
+<li><strong>具体化函数模板</strong>，针对于特殊类型的操作：<code>template &lt;&gt; [返回类型][函数名]&lt;特殊类型&gt;(参数列表)</code>，<strong>注：普通函数模板并非定义，具体化函数模板才是具体类型的函数定义</strong></li>
 <li>使用名称空间中声明的变量，而不是使用全局变量</li>
+<li><code>nullptr</code>表示空指针：<code>int* p = nullptr</code></li>
+<li>定位new运算符：<code>new(指针名) classname</code>，将在指针所指向的空间中对class进行内存分配。</li>
+<li>内联函数不需要寻址，当编译器执行到内联函数时直接将其展开，故内联函数以简洁为主。</li>
+<li><p>嵌套模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将模板作为参数：<code>template&lt;template&lt;typename T&gt; class [参数名]&gt;</code>，其中的参数必须是一个模板类。</p>
+</li>
 </ol>
-<h2 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h2><ol>
+<h2 id="第二部分：面向对象"><a href="#第二部分：面向对象" class="headerlink" title="第二部分：面向对象"></a>第二部分：面向对象</h2><ol>
 <li>创建对象：<code>ClassName object_name([参数列表])</code>或者列表初始化：<code>ClassName object_name = {[成员属性], }</code></li>
 <li><code>this</code>：是指向<strong>调用对象</strong>的指针</li>
 <li>类的友元函数是非成员函数，但其访问权限与成员函数相同。友元一般用于多个操作数的运算，且其中会使用到类的私有成员。</li>
-<li><p>复制构造函数：<code>ClassName(const ClassName&amp;)</code>—调用情景</p>
+<li><p>复制构造函数：<code>ClassName(const ClassName&amp;)</code>，默认复制构造函数逐个复制成员的值（浅复制），对应的（深度复制）：复制成员产生新的副本</p>
 <ol>
 <li>新建一个对象，并将其初始化为已有对象时</li>
 <li>函数按值传递对象时（相当于创建原始变量的一个副本）</li>
-<li>函数返回对象时</li>
+<li>函数返回对象时（返回引用则不会调用，效率更高）</li>
 </ol>
 </li>
 <li><p>先创建的对象后析构，后创建的对象先析构。析构函数的调用时机：在当时代码块结束时，析构在该代码块中定义的对象</p>
 </li>
+<li>静态类成员函数：<ol>
+<li>对象不能调用</li>
+<li>函数中只能使用静态成员</li>
+</ol>
+</li>
+<li>类成员初始化列表：<code>Constructor():mem1(m1), mem2(m2), mem(m3) {...}</code>，初始化的顺序为他们被声明的顺序</li>
+<li>基类先被初始化，再初始化派生类</li>
+<li>基类指针或引用可以指向派生类，但不能使用派生类的方法</li>
+<li>虚函数<code>virtual</code>：<strong>成员函数</strong>将根据引用或指针指向的对象类型是派生类还是基类来选择对应的方法</li>
+<li><code>protected</code>保护成员：派生类的成员可以直接访问保护成员，而不能访问私有成员</li>
+<li>包含纯虚函数的类不能被创建对象，即是抽象基类：<code>virtual void fun()=0</code></li>
+<li>使用<code>explicit</code>防止单参数构造函数的隐式转换。</li>
+<li>虚基类：当多个类继承同一个虚基类时，只产生一个副本。而非虚基类会为每个派生类产生一个副本。</li>
+<li>模板类：<code>template&lt;class T&gt;</code></li>
+<li>模板类的<strong>约束模板友元函数</strong>会在模板类中使用类的模板，<strong>非约束模板友元函数</strong>只使用新的模板</li>
 </ol>
 
     </div>
@@ -414,7 +437,7 @@
   <p><span>本文标题:</span>C++学习笔记</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2022年01月27日 - 14:00:19</p>
-  <p><span>最后更新:</span>2022年02月22日 - 17:36:20</p>
+  <p><span>最后更新:</span>2022年02月25日 - 20:43:08</p>
   <p><span>原始链接:</span><a href="/2022/01/27/cpp学习笔记/" title="C++学习笔记">http://www.skecis.top/2022/01/27/cpp学习笔记/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2022/01/27/cpp学习笔记/"  aria-label="复制成功！"></i></span>
   </p>
@@ -528,7 +551,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分"><span class="nav-number">2.</span> <span class="nav-text">第一部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分"><span class="nav-number">3.</span> <span class="nav-text">第二部分</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：基础"><span class="nav-number">2.</span> <span class="nav-text">第一部分：基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：面向对象"><span class="nav-number">3.</span> <span class="nav-text">第二部分：面向对象</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -633,13 +656,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">154k
+    <span title="站点总字数">155k
     </span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:41
+    <span title="站点阅读时长">4:42
     </span>
 </div>
   <div class="theme-info">
