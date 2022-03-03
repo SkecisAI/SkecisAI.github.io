@@ -14,6 +14,11 @@
 <li>宏与内联函数相关。</li>
 <li>为函数参数添加默认值，方向必须是从右向左</li>
 <li><strong>具体化函数模板</strong>，针对于特殊类型的操作：<code>template &lt;&gt; [返回类型][函数名]&lt;特殊类型&gt;(参数列表)</code>，<strong>注：普通函数模板并非定义，具体化函数模板才是具体类型的函数定义</strong></li>
+</ol>
+<ul>
+<li>函数模板不能作为其他函数的参数，具体化的函数模板才能作为参数传递</li>
+</ul>
+<ol>
 <li>使用名称空间中声明的变量，而不是使用全局变量</li>
 <li><code>nullptr</code>表示空指针：<code>int* p = nullptr</code></li>
 <li>定位new运算符：<code>new(指针名) classname</code>，将在指针所指向的空间中对class进行内存分配。</li>
@@ -22,6 +27,16 @@
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> U&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将模板作为参数：<code>template&lt;template&lt;typename T&gt; class [参数名]&gt;</code>，其中的参数必须是一个模板类。</p>
+</li>
+<li>字符串的输入：<ol>
+<li><code>cin</code>：接受一个单词（用空格或换行符区分），<strong>会将换行符留在输入队列中</strong></li>
+<li><code>getline()</code>：接受一行输入，以回车键为标志停止读取，<strong>且不保存换行符</strong></li>
+<li><code>get()</code>：与前者功能相同，不同的是<strong>会将换行符留在输入队列中</strong>，解决办法是<code>get([字符串名], [大小]).get()</code>（或分开成两行，后者读取输入队列中的换行符）</li>
+</ol>
+</li>
+<li>左值-变量；右值-常量或临时对象。左值引用不能指向右值，常左值引用可以指向右值（函数重载时，右值参数优先寻找右值引用，其次寻找常左值引用）</li>
+<li>静态内容，将只在所声明的文件中可见</li>
+<li>函数指针：<code>[返回类型] (*指针名)([参数列表])</code>，使用函数指针调用函数：<code>fun()或(*fun)()</code>都是可用的<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">void</span> (*p1)() = add; <span class="comment">// void add() &#123;&#125;</span></span><br><span class="line">    <span class="keyword">void</span> (**p)() = &amp;p1; <span class="comment">// 二级函数指针指向一级函数指针的地址。</span></span><br><span class="line">    (*(*p))(); <span class="comment">// 调用add</span></span><br><span class="line"><span class="comment">///////////////</span></span><br><span class="line">    <span class="keyword">int</span> (**p1) () = <span class="keyword">new</span>(<span class="keyword">int</span>(*[<span class="number">2</span>])()); <span class="comment">// 函数指针数组</span></span><br><span class="line">    p1[<span class="number">0</span>] = add;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p1[<span class="number">0</span>]();     <span class="comment">// 等于func()的调用形式</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (*p1[<span class="number">0</span>])();  <span class="comment">// 等于(*fun)()的调用形式</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (*(*p1[<span class="number">0</span>]))(); <span class="comment">// 等于(*fun)()的调用形式</span></span><br><span class="line">    ... <span class="comment">// 可以添加多个(*)等价于(*fun)()的调用形式</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="第二部分：面向对象"><a href="#第二部分：面向对象" class="headerlink" title="第二部分：面向对象"></a>第二部分：面向对象</h2><ol>
@@ -52,6 +67,48 @@
 <li>虚基类：当多个类继承同一个虚基类时，只产生一个副本。而非虚基类会为每个派生类产生一个副本。</li>
 <li>模板类：<code>template&lt;class T&gt;</code></li>
 <li>模板类的<strong>约束模板友元函数</strong>会在模板类中使用类的模板，<strong>非约束模板友元函数</strong>只使用新的模板</li>
+<li>友元类：<code>friend class [classname]</code>，友元类的所有方法都可以访问原始类的私有成员和保护成员</li>
+<li><p><strong>前向声明</strong>：<code>class [需要使用友元函数的类];</code>，防止友元函数的类与需要友元函数的类产生编译时的循环依赖。正确的顺序如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> [使用友元函数的类];</span>  <span class="comment">// 前向声明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> [友元函数的类] &#123;</span>&#125;  <span class="comment">//其中包含对另一个类私有或共有成员的使用</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> [使用友元函数的类] </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">void</span> [友元函数的类限定]::[函数名]([参数列表]);</span><br><span class="line">    ...</span><br><span class="line">&#125;  <span class="comment">//  包含友元函数的定义</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>throw</code>抛出的异常被<code>catch</code>捕获，并且抛出的异常类型与捕获的异常类型所匹配</p>
+</li>
+<li>将基类异常放在<code>catch</code>层次的最后一层</li>
+<li>类一旦定义了含有参数的构造函数，则将删掉类的默认无参构造函数</li>
+<li>类和结构体中的静态成员要在外部初始化，因为静态成员不属于某一个实例</li>
+</ol>
+<h2 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h2><ol>
+<li><p>RTTI（运行阶段类型识别，动态类型转换）</p>
+<ol>
+<li><code>dynamic_cast&lt;Type *&gt;([指针p])</code>: 如果p是Type或其派生出来的，将成功转化为Type类型的指针。否则结果为<strong>空指针</strong></li>
+<li><code>typeid</code>运算符返回<code>type_info</code>类，后者重载了<code>==</code>和<code>!=</code>运算符。</li>
+</ol>
+</li>
+<li>智能指针：自动删除不需要的分配的堆内存。无需调用delete<ol>
+<li><code>unique_ptr&lt;class&gt; [变量名](new class())</code>：只有一个智能指针可使用（没有复制构造函数）</li>
+<li><code>shared_ptr&lt;class [变量名](new class())&gt;</code>：采用引用计数来跟踪指针，计数为0才将其释放掉</li>
+</ol>
+</li>
+<li>函数适配器（<code>bind1st、bind2nd</code>）：用于在二元函数于一元函数之间转换</li>
+</ol>
+<h2 id="第四部分：C-11新特性"><a href="#第四部分：C-11新特性" class="headerlink" title="第四部分：C++11新特性"></a>第四部分：C++11新特性</h2><ol>
+<li>新类型：<code>long long</code>和<code>unsigned long long</code></li>
+<li>大括号用于初始化：<code>int x = {3}</code>、<code>int *p = new int [4] {1, 2, 3, 4}</code></li>
+<li>模板类<code>std::initializer_list</code>，可用于常规函数的参数</li>
+<li><code>decltype(x) y</code>：让y的类型与x相同，其中x是一个表达式</li>
+<li>返回类型后置：<code>int add(double, int) = auto add(double, int) -&gt; int</code></li>
+<li>创建别名：<code>using []=[]</code></li>
+<li>类成员的初始化</li>
+<li>新容器：forward_list、unordered_map、unordered_mulitmap、unordered_set、unordered_multiset</li>
+<li>右值引用(右值为字面量)：<code>int&amp;&amp; r = 12</code></li>
+<li>lambda表达式：<code>[可能要使用的外部变量](参数列表){语句块}</code></li>
+<li><p>包装器(<code>include&lt;functional&gt;</code>)：<code>function&lt;[返回类型]([参数类型列表])&gt; 名称</code>，指向函数名、函数指针或lambda表达式。用于整合调用特征标相同的函数，即返回值和参数类型相同（例如让模板函数只实例化一次，缩小了可执行代码exe的规模）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> function&lt;<span class="keyword">double</span>(<span class="keyword">double</span>)&gt; fdd;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">use_f</span><span class="params">(T t, function&lt;<span class="keyword">double</span>(<span class="keyword">double</span>)&gt; f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"use_f.\n"</span>;</span><br><span class="line">	<span class="keyword">return</span> f(t); <span class="comment">// 在这里重载的括号运算符</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fp</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">double</span> fp;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Fp(<span class="keyword">double</span> z = <span class="number">1.0</span>) : fp(z) &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"constructor.\n"</span>; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">double</span> p)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"operator().\n"</span>; <span class="keyword">return</span> fp * p; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; use_f&lt;<span class="keyword">double</span>&gt;(<span class="number">2.0</span>, Fp(<span class="number">3.0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义移动构造函数会导致赋值运算符重载被删除然后报错：<code>...operator=(...).. cant be referenced--it is a deleted function.</code></p>
+</li>
+<li><code>override</code>：指出函数要覆盖一个虚方法。<code>final</code>：指出函数不能被重写</li>
+<li>可变参数模板：<code>Arg... arg</code><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Args...&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t, <span class="keyword">const</span> Args&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 使用t</span></span><br><span class="line">    func(args...) <span class="comment">// 递归调用，对剩下的参数解包</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 让递归终止的函数</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 使用t，不再递归调用func</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -1310,8 +1367,8 @@ y = g^{-1}(w^{T}x+b)</script>]]></content>
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>linear regression</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1600,8 +1657,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>算法</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>
