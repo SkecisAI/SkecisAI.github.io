@@ -73,7 +73,7 @@
 <meta property="og:site_name" content="Mr. Liu&#39;s Blog">
 <meta property="og:description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-03-03T10:11:11.214Z">
+<meta property="og:updated_time" content="2022-03-04T09:47:36.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++学习笔记">
 <meta name="twitter:description" content="命名规范 函数名第一个字母大写，其后每个单词字母开头大写，驼峰式 变量名小写，单词之间下划线连接 类名，驼峰式。">
@@ -309,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-03 18:11:11" itemprop="dateModified" datetime="2022-03-03T18:11:11+08:00">2022-03-03</time>
+                <time title="修改时间：2022-03-04 17:47:36" itemprop="dateModified" datetime="2022-03-04T17:47:36+08:00">2022-03-04</time>
               </span>
             
           
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>4.4k</span>
+              <span>6.6k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -354,7 +354,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>8 分钟</span>
+              <span>12 分钟</span>
             </span>
           
 
@@ -443,7 +443,7 @@
 <li>类一旦定义了含有参数的构造函数，则将删掉类的默认无参构造函数</li>
 <li>类和结构体中的静态成员要在外部初始化，因为静态成员不属于某一个实例</li>
 </ol>
-<h2 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h2><ol>
+<h2 id="第三部分：高级特性"><a href="#第三部分：高级特性" class="headerlink" title="第三部分：高级特性"></a>第三部分：高级特性</h2><ol>
 <li><p>RTTI（运行阶段类型识别，动态类型转换）</p>
 <ol>
 <li><code>dynamic_cast&lt;Type *&gt;([指针p])</code>: 如果p是Type或其派生出来的，将成功转化为Type类型的指针。否则结果为<strong>空指针</strong></li>
@@ -456,6 +456,17 @@
 </ol>
 </li>
 <li>函数适配器（<code>bind1st、bind2nd</code>）：用于在二元函数于一元函数之间转换</li>
+<li><p>迭代器：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">iterator</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    iterator(): pt(<span class="literal">nullptr</span>) &#123; &#125;</span><br><span class="line">    iterator(Node* pn): pt(pn) &#123; &#125;</span><br><span class="line">    <span class="keyword">double</span> <span class="keyword">operator</span>*() &#123; <span class="keyword">return</span> pt-&gt;item;&#125;  <span class="comment">// 重载*运算符取值</span></span><br><span class="line">    iterator&amp; <span class="keyword">operator</span>++()  <span class="comment">// 重载前缀++运算符: ++it</span></span><br><span class="line">    &#123;</span><br><span class="line">        pt = pt-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;<span class="comment">// it 指向下一个元素</span></span><br><span class="line">    iterator <span class="keyword">operator</span>++(<span class="keyword">int</span>)  <span class="comment">// 重载后缀++运算符：it++</span></span><br><span class="line">    &#123;</span><br><span class="line">        iterator tmp = *<span class="keyword">this</span>;</span><br><span class="line">        pt = pt-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;<span class="comment">// 保存并使用原来的it所指的位置，但it本身已经指向下一个元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>输入迭代器：来自容器的信息被视为输入</li>
+<li>输出迭代器：传输给容器的信息被视为输出</li>
+<li>正向迭代器：总是按照相同的顺序遍历值</li>
+<li>双向迭代器：双向遍历容器</li>
+<li>随机访问迭代器：直接跳到容器中的任何一个元素</li>
+<li>ostream_iterator, istream_iterator, reverse_iterator, front_insert_iterator, back_insert_iterator, insert_iterator</li>
+</ol>
+</li>
 </ol>
 <h2 id="第四部分：C-11新特性"><a href="#第四部分：C-11新特性" class="headerlink" title="第四部分：C++11新特性"></a>第四部分：C++11新特性</h2><ol>
 <li>新类型：<code>long long</code>和<code>unsigned long long</code></li>
@@ -465,7 +476,7 @@
 <li>返回类型后置：<code>int add(double, int) = auto add(double, int) -&gt; int</code></li>
 <li>创建别名：<code>using []=[]</code></li>
 <li>类成员的初始化</li>
-<li>新容器：forward_list、unordered_map、unordered_mulitmap、unordered_set、unordered_multiset</li>
+<li>新容器：<code>forward_list</code>、<code>unordered_map</code>、<code>unordered_mulitmap</code>、<code>unordered_se</code>t、<code>unordered_multiset</code></li>
 <li>右值引用(右值为字面量)：<code>int&amp;&amp; r = 12</code></li>
 <li>lambda表达式：<code>[可能要使用的外部变量](参数列表){语句块}</code></li>
 <li><p>包装器(<code>include&lt;functional&gt;</code>)：<code>function&lt;[返回类型]([参数类型列表])&gt; 名称</code>，指向函数名、函数指针或lambda表达式。用于整合调用特征标相同的函数，即返回值和参数类型相同（例如让模板函数只实例化一次，缩小了可执行代码exe的规模）</p>
@@ -474,7 +485,82 @@
 <li><p>定义移动构造函数会导致赋值运算符重载被删除然后报错：<code>...operator=(...).. cant be referenced--it is a deleted function.</code></p>
 </li>
 <li><code>override</code>：指出函数要覆盖一个虚方法。<code>final</code>：指出函数不能被重写</li>
-<li>可变参数模板：<code>Arg... arg</code><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Args...&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t, <span class="keyword">const</span> Args&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 使用t</span></span><br><span class="line">    func(args...) <span class="comment">// 递归调用，对剩下的参数解包</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 让递归终止的函数</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 使用t，不再递归调用func</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>可变参数模板：<code>Arg... arg</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Args...&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t, <span class="keyword">const</span> Args&amp;... args)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 使用t</span></span><br><span class="line">    func(args...) <span class="comment">// 递归调用，对剩下的参数解包</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 让递归终止的函数</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(T t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 使用t，不再递归调用func</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移动语义：</p>
+<ol>
+<li>移动构造函数<code>classname(classname &amp;&amp; c){...必须清空c的信息...}</code></li>
+<li>移动赋值运算<code>classname&amp; operator=(classname&amp;&amp; c){判断自我赋值...重置this指向对象的信息...return *this;}</code></li>
+<li>强制移动：<code>(typename&amp;&amp;)左值变量</code>或<code>std::move(左值变量)</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="第五部分：STL"><a href="#第五部分：STL" class="headerlink" title="第五部分：STL"></a>第五部分：<code>STL</code></h2><h3 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h3><ol>
+<li><code>vector&lt;typename&gt;</code>: 数组的类表示<ol>
+<li><code>size()</code>：返回容器中元素数目</li>
+<li><code>end()</code>: 返回一个指向超尾元素（最后一个元素的下一个位置）的迭代器</li>
+<li><code>push_back(element)</code>: 将元素添加到容器末尾</li>
+<li><code>erase(指向开始位置, 指向结尾位置的下一个位置)</code>：删除指定区间的元素，参数为迭代器</li>
+<li><code>insert(插入位置，插入区间的起始位置，插入区间的结尾位置的下一个位置)</code>：将一个容器的区间内容插入到新的位置中</li>
+<li><code>for_each(开始位置, 结尾位置的下个位置, 函数)</code></li>
+<li><code>random_shuffle(开始位置，结尾位置的下个位置)</code></li>
+<li><code>sort(开始位置, 结尾位置的下一个位置，[布尔函数])</code></li>
+</ol>
+</li>
+<li><code>deque&lt;typename&gt;</code>:双端队列<ol>
+<li><code>push_front(element)</code>：于队头添加元素</li>
+<li><code>push_back(element)</code>：于队尾添加元素</li>
+</ol>
+</li>
+<li><code>list&lt;typename&gt;</code>:双向链表<ol>
+<li><code>merge(list x)</code>:将调用链表与链表x合并，连个链表必须有序。结果保存在调用链表中</li>
+<li><code>remove(const T&amp; val)</code>:在链表中删除val的所有实例</li>
+<li><code>unique()</code>:将连续的相同元素压缩为单个元素</li>
+</ol>
+</li>
+<li><code>forward_list&lt;typename&gt;</code>:单链表</li>
+<li><code>queue</code>: 适配器类（底层类为<code>deque</code>）<ol>
+<li><code>empty()</code></li>
+<li><code>size()</code></li>
+<li><code>front()</code>：返回指向队首元素的引用</li>
+<li><code>back()</code>：返回指向队尾元素的引用</li>
+<li><code>push(cont T&amp; x)</code>：在队尾插入x</li>
+<li><code>pop()</code>：删除队首元素</li>
+</ol>
+</li>
+<li><code>priority_queue</code>：适配器类（底层类是vector），最大的元素在队首</li>
+<li><code>stack</code>：适配器类（底层类为vector）<ol>
+<li><code>empty()</code></li>
+<li><code>size()</code></li>
+<li><code>top()</code>：返回指向栈顶元素的引用</li>
+<li><code>push(const T&amp; x)</code>：在栈顶部插入x</li>
+<li><code>pop()</code>: 删除栈顶元素</li>
+</ol>
+</li>
+</ol>
+<h3 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h3><p>将键与值关联起来的容器</p>
+<ol>
+<li><code>set&lt;typename&gt;</code>：键与值相同，值就是键，可翻转，自动排序，键是唯一的<ol>
+<li><code>lower_bound(key)</code>：将键作为参数，并返回一个指向集合中第一个<strong>不小于</strong>键参数的成员的迭代器</li>
+<li><code>upper_bound(key)</code>：将键作为参数，并返回一个指向集合中第一个<strong>大于</strong>键参数的成员的迭代器</li>
+<li><code>set_union(1.begin(), 1.end(), 2.begin(), 2.end(), 输出迭代器)</code>:求解两个集合的并集</li>
+</ol>
+</li>
+<li><code>multiset</code></li>
+<li><code>map</code><ol>
+<li><code>find(key)</code>: 寻找键为key的元素，找到则返回一个指向该位置的迭代器，否则返回<code>map.end()</code></li>
+</ol>
+</li>
+<li><code>multimap&lt;key_typename, value_typename&gt;</code>：键与值不同，同一个键可能与多个值关联，自动排序<ol>
+<li><code>equal_range(key)</code>：获取已给key的所有键值对，返回两个迭代器组成的pair，且该pair的second指向超尾</li>
+</ol>
+</li>
+<li><code>pair&lt;const key_type, data_type&gt;</code>：一个键值对对象，map中的键值对<ol>
+<li><code>first</code>: 访问键</li>
+<li><code>second</code>：访问值</li>
+</ol>
+</li>
 </ol>
 
     </div>
@@ -494,7 +580,7 @@
   <p><span>本文标题:</span>C++学习笔记</a></p>
   <p><span>文章作者:</span>SkecisAI</a></p>
   <p><span>发布时间:</span>2022年01月27日 - 14:00:19</p>
-  <p><span>最后更新:</span>2022年03月03日 - 18:11:11</p>
+  <p><span>最后更新:</span>2022年03月04日 - 17:47:36</p>
   <p><span>原始链接:</span><a href="/2022/01/27/cpp学习笔记/" title="C++学习笔记">http://www.skecis.top/2022/01/27/cpp学习笔记/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.skecis.top/2022/01/27/cpp学习笔记/"  aria-label="复制成功！"></i></span>
   </p>
@@ -608,7 +694,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：基础"><span class="nav-number">2.</span> <span class="nav-text">第一部分：基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：面向对象"><span class="nav-number">3.</span> <span class="nav-text">第二部分：面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三部分"><span class="nav-number">4.</span> <span class="nav-text">第三部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四部分：C-11新特性"><span class="nav-number">5.</span> <span class="nav-text">第四部分：C++11新特性</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">1.</span> <span class="nav-text">命名规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一部分：基础"><span class="nav-number">2.</span> <span class="nav-text">第一部分：基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二部分：面向对象"><span class="nav-number">3.</span> <span class="nav-text">第二部分：面向对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三部分：高级特性"><span class="nav-number">4.</span> <span class="nav-text">第三部分：高级特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四部分：C-11新特性"><span class="nav-number">5.</span> <span class="nav-text">第四部分：C++11新特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五部分：STL"><span class="nav-number">6.</span> <span class="nav-text">第五部分：STL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列容器"><span class="nav-number">6.1.</span> <span class="nav-text">序列容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关联容器"><span class="nav-number">6.2.</span> <span class="nav-text">关联容器</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -713,13 +799,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">158k
+    <span title="站点总字数">160k
     </span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:47
+    <span title="站点阅读时长">4:51
     </span>
 </div>
   <div class="theme-info">
