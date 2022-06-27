@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>二叉堆</title>
+    <url>/2022/06/27/%E4%BA%8C%E5%8F%89%E5%A0%86/</url>
+    <content><![CDATA[<h2 id="二叉堆C-实现"><a href="#二叉堆C-实现" class="headerlink" title="二叉堆C++实现"></a>二叉堆C++实现</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryHeap</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">get_heap_size</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> binary_heap.size(); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">peak_top</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> index_at(<span class="number">1</span>); &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">index_at</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> binary_heap[i - <span class="number">1</span>]; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set_at</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> v)</span> </span>&#123; binary_heap[i - <span class="number">1</span>] = v; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adjust_heap</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adjust_heap_down</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; binary_heap = &#123;&#125;;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> index;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> BinaryHeap::index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 往二叉堆中插入元素</span></span><br><span class="line"><span class="keyword">void</span> BinaryHeap::push(<span class="keyword">int</span> v)</span><br><span class="line">&#123;</span><br><span class="line">	binary_heap.push_back(v);</span><br><span class="line">	index++;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (binary_heap.size() == <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 调整堆</span></span><br><span class="line">	adjust_heap(index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取二叉堆中的堆顶元素</span></span><br><span class="line"><span class="keyword">int</span> BinaryHeap::pop()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (!binary_heap.size()) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将最后一个叶子节点换到头节点</span></span><br><span class="line">	<span class="keyword">int</span> ret = index_at(<span class="number">1</span>);</span><br><span class="line">	binary_heap[<span class="number">1</span>] = index_at(index);</span><br><span class="line"></span><br><span class="line">	adjust_heap_down(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调整堆</span></span><br><span class="line"><span class="keyword">void</span> BinaryHeap::adjust_heap(<span class="keyword">int</span> idx)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> root;</span><br><span class="line">	<span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> ((root = idx / <span class="number">2</span>) &gt; <span class="number">0</span> &amp;&amp; compare(index_at(idx), index_at(root)) &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tmp = index_at(idx);</span><br><span class="line">		set_at(idx, index_at(root));</span><br><span class="line">		set_at(root, tmp);</span><br><span class="line"></span><br><span class="line">		idx = root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向下调整堆</span></span><br><span class="line"><span class="keyword">void</span> BinaryHeap::adjust_heap_down(<span class="keyword">int</span> idx)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> lchild;</span><br><span class="line">	<span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> ((lchild = <span class="number">2</span> * idx) &lt;= index)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (lchild + <span class="number">1</span> &lt;= index &amp;&amp; compare(index_at(lchild + <span class="number">1</span>), index_at(lchild)) &lt; <span class="number">0</span>)</span><br><span class="line">			lchild = lchild + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (compare(index_at(lchild), index_at(idx)))</span><br><span class="line">		&#123;</span><br><span class="line">			tmp = index_at(idx);</span><br><span class="line">			set_at(idx, index_at(lchild));</span><br><span class="line">			set_at(lchild, tmp);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		idx = lchild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 比较器</span></span><br><span class="line"><span class="keyword">int</span> BinaryHeap::compare(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> l - r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BinaryHeap binaryh;</span><br><span class="line">	binaryh.push(<span class="number">12</span>);</span><br><span class="line">	binaryh.push(<span class="number">17</span>);</span><br><span class="line">	binaryh.push(<span class="number">11</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; binaryh.peak_top() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法与数据结构</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>堆</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++学习笔记</title>
     <url>/2022/01/27/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ol>
@@ -36,7 +49,16 @@
 </li>
 <li>左值-变量；右值-常量或临时对象。左值引用不能指向右值，常左值引用可以指向右值（函数重载时，右值参数优先寻找右值引用，其次寻找常左值引用）</li>
 <li>静态内容，将只在所声明的文件中可见</li>
-<li>函数指针：<code>[返回类型] (*指针名)([参数列表])</code>，使用函数指针调用函数：<code>fun()或(*fun)()</code>都是可用的<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">void</span> (*p1)() = add; <span class="comment">// void add() &#123;&#125;</span></span><br><span class="line">    <span class="keyword">void</span> (**p)() = &amp;p1; <span class="comment">// 二级函数指针指向一级函数指针的地址。</span></span><br><span class="line">    (*(*p))(); <span class="comment">// 调用add</span></span><br><span class="line"><span class="comment">///////////////</span></span><br><span class="line">    <span class="keyword">int</span> (**p1) () = <span class="keyword">new</span>(<span class="keyword">int</span>(*[<span class="number">2</span>])()); <span class="comment">// 函数指针数组</span></span><br><span class="line">    p1[<span class="number">0</span>] = add;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p1[<span class="number">0</span>]();     <span class="comment">// 等于func()的调用形式</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (*p1[<span class="number">0</span>])();  <span class="comment">// 等于(*fun)()的调用形式</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (*(*p1[<span class="number">0</span>]))(); <span class="comment">// 等于(*fun)()的调用形式</span></span><br><span class="line">    ... <span class="comment">// 可以添加多个(*)等价于(*fun)()的调用形式</span></span><br></pre></td></tr></table></figure>
+<li><p>函数指针：<code>[返回类型] (*指针名)([参数列表])</code>，使用函数指针调用函数：<code>fun()或(*fun)()</code>都是可用的</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">void</span> (*p1)() = add; <span class="comment">// void add() &#123;&#125;</span></span><br><span class="line">    <span class="keyword">void</span> (**p)() = &amp;p1; <span class="comment">// 二级函数指针指向一级函数指针的地址。</span></span><br><span class="line">    (*(*p))(); <span class="comment">// 调用add</span></span><br><span class="line"><span class="comment">///////////////</span></span><br><span class="line">    <span class="keyword">int</span> (**p1) () = <span class="keyword">new</span>(<span class="keyword">int</span>(*[<span class="number">2</span>])()); <span class="comment">// 函数指针数组</span></span><br><span class="line">    p1[<span class="number">0</span>] = add;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; p1[<span class="number">0</span>]();     <span class="comment">// 等于func()的调用形式</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (*p1[<span class="number">0</span>])();  <span class="comment">// 等于(*fun)()的调用形式</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (*(*p1[<span class="number">0</span>]))(); <span class="comment">// 等于(*fun)()的调用形式</span></span><br><span class="line">    ... <span class="comment">// 可以添加多个(*)等价于(*fun)()的调用形式</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>string</code>类：</p>
+<ol>
+<li><code>s1.append(s2)</code>：字符串拼接（修改了s1），返回s1</li>
+<li><code>s1.at(pos)</code>: 返回s1中位于pos的字符</li>
+<li><code>find</code>: 具有多个参数，寻找字符</li>
+<li><code>replace</code></li>
+</ol>
 </li>
 </ol>
 <h2 id="第二部分：面向对象"><a href="#第二部分：面向对象" class="headerlink" title="第二部分：面向对象"></a>第二部分：面向对象</h2><ol>
@@ -76,6 +98,7 @@
 <li>将基类异常放在<code>catch</code>层次的最后一层</li>
 <li>类一旦定义了含有参数的构造函数，则将删掉类的默认无参构造函数</li>
 <li>类和结构体中的静态成员要在外部初始化，因为静态成员不属于某一个实例</li>
+<li>const对象只能调用const成员函数，且const成员函数不能修改对象属性。若要修改属性，则需将属性设为mutable</li>
 </ol>
 <h2 id="第三部分：高级特性"><a href="#第三部分：高级特性" class="headerlink" title="第三部分：高级特性"></a>第三部分：高级特性</h2><ol>
 <li><p>RTTI（运行阶段类型识别，动态类型转换）</p>
@@ -131,11 +154,15 @@
 </li>
 </ol>
 <h2 id="第五部分：STL"><a href="#第五部分：STL" class="headerlink" title="第五部分：STL"></a>第五部分：<code>STL</code></h2><h3 id="序列容器"><a href="#序列容器" class="headerlink" title="序列容器"></a>序列容器</h3><ol>
-<li><code>vector&lt;typename&gt;</code>: 数组的类表示<ol>
+<li><p><code>vector&lt;typename&gt;</code>: 数组的类表示</p>
+<ol>
 <li><code>size()</code>：返回容器中元素数目</li>
 <li><code>end()</code>: 返回一个指向超尾元素（最后一个元素的下一个位置）的迭代器</li>
-<li><code>push_back(element)</code>: 将元素添加到容器末尾</li>
-<li><code>erase(指向开始位置, 指向结尾位置的下一个位置)</code>：删除指定区间的元素，参数为迭代器</li>
+<li><p><code>push_back(element)</code>: 将元素添加到容器末尾</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) <span class="comment">// std::vector&lt;Point&gt; pts</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"capacity: "</span> &lt;&lt; pts.capacity() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	pts.push_back(Point(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>));  <span class="comment">// 此操作会创建临时对象，并调用复制构造函数，复制到pts中。并且每一次添加都会动态扩充vector的大小，并将旧的值拷贝（调用复制构造函数）到新的值中</span></span><br><span class="line">       <span class="comment">// 接着将临时对象析构</span></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"-----end capacity: "</span> &lt;&lt; pts.capacity() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line">   <span class="comment">/*</span></span><br><span class="line"><span class="comment">   1. 若事先定好vector的大小，则不会在添加时发生复制操作。</span></span><br><span class="line"><span class="comment">   2. 且push_back(class(..))与emplace_back(class(..))等效（都会发生拷贝操作），emplace_back(构造参数列表)即使用了可变参数模板，则不会发生拷贝操作，效率最好。</span></span><br><span class="line"><span class="comment">   /*</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>erase(指向开始位置, 指向结尾位置的下一个位置)</code>：删除指定区间的元素，参数为迭代器</p>
+</li>
 <li><code>insert(插入位置，插入区间的起始位置，插入区间的结尾位置的下一个位置)</code>：将一个容器的区间内容插入到新的位置中</li>
 <li><code>for_each(开始位置, 结尾位置的下个位置, 函数)</code></li>
 <li><code>random_shuffle(开始位置，结尾位置的下个位置)</code></li>
@@ -181,8 +208,8 @@
 <li><code>set_union(1.begin(), 1.end(), 2.begin(), 2.end(), 输出迭代器)</code>:求解两个集合的并集</li>
 </ol>
 </li>
-<li><code>multiset</code></li>
-<li><code>map</code><ol>
+<li><code>multiset</code>: 允许又重复的值</li>
+<li><code>map</code>：底层结构是<strong>红黑树</strong><ol>
 <li><code>find(key)</code>: 寻找键为key的元素，找到则返回一个指向该位置的迭代器，否则返回<code>map.end()</code></li>
 </ol>
 </li>
@@ -195,6 +222,7 @@
 <li><code>second</code>：访问值</li>
 </ol>
 </li>
+<li><code>unordered container</code>: 底层是hashtable（类似于java）</li>
 </ol>
 ]]></content>
       <categories>
@@ -1453,8 +1481,8 @@ y = g^{-1}(w^{T}x+b)</script>]]></content>
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
         <tag>linear regression</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1743,8 +1771,8 @@ k_{i}\geq k_{2i+1}
         <category>机器学习</category>
       </categories>
       <tags>
-        <tag>机器学习</tag>
         <tag>算法</tag>
+        <tag>机器学习</tag>
       </tags>
   </entry>
   <entry>

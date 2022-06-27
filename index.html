@@ -269,6 +269,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2022/06/27/二叉堆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SkecisAI">
+      <meta itemprop="description" content="IT技术分享，学习机器学习，数据分析等AI技术">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr. Liu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2022/06/27/二叉堆/" class="post-title-link" itemprop="url">二叉堆</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2022-06-27 21:29:30 / 修改时间：21:31:44" itemprop="dateCreated datePublished" datetime="2022-06-27T21:29:30+08:00">2022-06-27</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法与数据结构/" itemprop="url" rel="index"><span itemprop="name">算法与数据结构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>2k</span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span>4 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="二叉堆C-实现"><a href="#二叉堆C-实现" class="headerlink" title="二叉堆C++实现"></a>二叉堆C++实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BinaryHeap</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> v)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">get_heap_size</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> binary_heap.size(); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">peak_top</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> index_at(<span class="number">1</span>); &#125;;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">index_at</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123; <span class="keyword">return</span> binary_heap[i - <span class="number">1</span>]; &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set_at</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> v)</span> </span>&#123; binary_heap[i - <span class="number">1</span>] = v; &#125;;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adjust_heap</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">adjust_heap_down</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; binary_heap = &#123;&#125;;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> index;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> BinaryHeap::index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 往二叉堆中插入元素</span></span><br><span class="line"><span class="keyword">void</span> BinaryHeap::push(<span class="keyword">int</span> v)</span><br><span class="line">&#123;</span><br><span class="line">	binary_heap.push_back(v);</span><br><span class="line">	index++;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (binary_heap.size() == <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 调整堆</span></span><br><span class="line">	adjust_heap(index);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取二叉堆中的堆顶元素</span></span><br><span class="line"><span class="keyword">int</span> BinaryHeap::pop()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (!binary_heap.size()) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将最后一个叶子节点换到头节点</span></span><br><span class="line">	<span class="keyword">int</span> ret = index_at(<span class="number">1</span>);</span><br><span class="line">	binary_heap[<span class="number">1</span>] = index_at(index);</span><br><span class="line"></span><br><span class="line">	adjust_heap_down(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调整堆</span></span><br><span class="line"><span class="keyword">void</span> BinaryHeap::adjust_heap(<span class="keyword">int</span> idx)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> root;</span><br><span class="line">	<span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> ((root = idx / <span class="number">2</span>) &gt; <span class="number">0</span> &amp;&amp; compare(index_at(idx), index_at(root)) &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		tmp = index_at(idx);</span><br><span class="line">		set_at(idx, index_at(root));</span><br><span class="line">		set_at(root, tmp);</span><br><span class="line"></span><br><span class="line">		idx = root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向下调整堆</span></span><br><span class="line"><span class="keyword">void</span> BinaryHeap::adjust_heap_down(<span class="keyword">int</span> idx)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> lchild;</span><br><span class="line">	<span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> ((lchild = <span class="number">2</span> * idx) &lt;= index)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (lchild + <span class="number">1</span> &lt;= index &amp;&amp; compare(index_at(lchild + <span class="number">1</span>), index_at(lchild)) &lt; <span class="number">0</span>)</span><br><span class="line">			lchild = lchild + <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (compare(index_at(lchild), index_at(idx)))</span><br><span class="line">		&#123;</span><br><span class="line">			tmp = index_at(idx);</span><br><span class="line">			set_at(idx, index_at(lchild));</span><br><span class="line">			set_at(lchild, tmp);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		idx = lchild;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 比较器</span></span><br><span class="line"><span class="keyword">int</span> BinaryHeap::compare(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> l - r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	BinaryHeap binaryh;</span><br><span class="line">	binaryh.push(<span class="number">12</span>);</span><br><span class="line">	binaryh.push(<span class="number">17</span>);</span><br><span class="line">	binaryh.push(<span class="number">11</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; binaryh.peak_top() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </article>
+  
+  
+  
+
+    
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2022/01/27/cpp学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -309,7 +415,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-04 17:47:36" itemprop="dateModified" datetime="2022-03-04T17:47:36+08:00">2022-03-04</time>
+                <time title="修改时间：2022-03-07 17:17:49" itemprop="dateModified" datetime="2022-03-07T17:17:49+08:00">2022-03-07</time>
               </span>
             
           
@@ -336,7 +442,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.6k</span>
+              <span>7.3k</span>
             </span>
           
             <span class="post-meta-item" title="阅读时长">
@@ -346,7 +452,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span>12 分钟</span>
+              <span>13 分钟</span>
             </span>
           
 
@@ -1361,127 +1467,6 @@
   
 
     
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.skecis.top/2020/06/02/概率论一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="SkecisAI">
-      <meta itemprop="description" content="IT技术分享，学习机器学习，数据分析等AI技术">
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mr. Liu's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2020/06/02/概率论一/" class="post-title-link" itemprop="url">概率论一：随机事件与概率</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2020-06-02 16:00:01 / 修改时间：17:23:42" itemprop="dateCreated datePublished" datetime="2020-06-02T16:00:01+08:00">2020-06-02</time>
-            </span>
-          
-            
-
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">本文字数：</span>
-              
-              <span>1.4k</span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              
-              <span>3 分钟</span>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="随机事件"><a href="#随机事件" class="headerlink" title="随机事件"></a>随机事件</h2><h3 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h3><p>随机事件：</p><ul>
-<li>随机现象的一切可能基本结果组成的集合称为<strong>样本空间</strong>，记为$\Omega=\left\{ \omega \right\}$，其中$\omega$为基本结果，又称为<strong>样本点</strong>。</li>
-<li>随机现象的某些样本点组成的集合称为<strong>随机事件</strong>，常用大写字母$A,B,C,…$表示。由样本空间$\Omega$中的单个元素组成的子集称为<strong>基本事件</strong>。</li>
-<li>如果$A$与$B$没有相同的样本点，则称$A$与$B$</li>
-<li>事件$A$的<strong>对立事件</strong>$\bar{A}$，由在$\Omega$中而不在$A$中的样本点组成的新事件。</li>
-<li>德摩根律：$\bar{A\cup B}=\bar{A}\cap\bar{B}$</li>
-</ul>
-          <!--noindex-->
-          
-            <div class="post-button">
-              <a class="btn" href="/2020/06/02/概率论一/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </article>
-  
-  
-  
-
-    
   </div>
 
   
@@ -1534,7 +1519,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1560,7 +1545,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -1620,13 +1605,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">160k
+    <span title="站点总字数">163k
     </span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:51
+    <span title="站点阅读时长">4:56
     </span>
 </div>
   <div class="theme-info">
@@ -1787,9 +1772,9 @@ window.addEventListener('pjax:success', () => {
       
     
       
-        
-      
     
+      
+        
       
     
       
